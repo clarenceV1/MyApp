@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
-import com.wodejia.myapp.app.AppFragment;
 import com.wodejia.myapp.app.Constant;
 import com.wodejia.myapp.controller.UserDetailController;
 import com.wodejia.myapp.data.UserInfoDetailRequestDO;
@@ -26,7 +25,7 @@ import rx.Subscriber;
 /**
  * Created by clarence on 16/9/8.
  */
-public class UserDetailFragment extends AppFragment {
+public class UserDetailFragment extends ContactsDetailBaseFragment {
 
     @BindView(R.id.tvName)
     TextView tvName;
@@ -38,23 +37,7 @@ public class UserDetailFragment extends AppFragment {
     @Inject
     UserDetailController controller;
 
-    int userId;
-    boolean sendRelative;
     UserInfoDetailRequestDO userInfoDO;
-
-    /**
-     * 获取用户fragment
-     * @param userId
-     * @return
-     */
-    public static Fragment getUserFragment(int userId, boolean sendRelative){
-        UserDetailFragment userInfoDetailFragment = new UserDetailFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(Constant.EXTRA_ID, userId);
-        bundle.putBoolean(Constant.EXTRA_SEND_RELATIVE, sendRelative);
-        userInfoDetailFragment.setArguments(bundle);
-        return userInfoDetailFragment;
-    }
 
     @Override
     public void initVariables() {
@@ -68,13 +51,8 @@ public class UserDetailFragment extends AppFragment {
 
     @Override
     protected void initView(View view) {
-        getIntents(getArguments());
+        super.initView(view);
         load();
-    }
-
-    public void getIntents(Bundle bundle) {
-        userId = bundle.getInt(Constant.EXTRA_ID, 0);
-        sendRelative = bundle.getBoolean(Constant.EXTRA_SEND_RELATIVE, false);
     }
 
     private void load() {
@@ -87,7 +65,7 @@ public class UserDetailFragment extends AppFragment {
             @Override
             public void onError(Throwable e) {
                 ToastUtils.showToast(getContext(), "userInfo is error");
-                userInfoDO = controller.getMockData(userId, sendRelative);
+                userInfoDO = controller.getMockData(id, sendRelative);
                 if (sendRelative && userInfoDO.getUserinfoAnnexDO() != null) {
                     EventBus.getDefault().post(new ContactsDetailEvent(userInfoDO.getUserinfoAnnexDO()));
                 }
@@ -96,7 +74,7 @@ public class UserDetailFragment extends AppFragment {
 
             @Override
             public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
-                userInfoDO = controller.getMockData(userId, sendRelative);
+                userInfoDO = controller.getMockData(id, sendRelative);
                 if (sendRelative && userInfoDO.getUserinfoAnnexDO() != null) {
                     EventBus.getDefault().post(new ContactsDetailEvent(userInfoDO.getUserinfoAnnexDO()));
                 }

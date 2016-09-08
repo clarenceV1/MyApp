@@ -41,7 +41,7 @@ public class ContactsDetailActivity extends AppActivity {
         setContentView(R.layout.userinfo);
         getIntents(getIntent());
 
-        Fragment fragment = getFragment(type, id, true);
+        Fragment fragment = ContactsDetailBaseFragment.getFragment(type, id, true);
         addFragment(fragment, R.id.flFragment1);
     }
 
@@ -60,31 +60,14 @@ public class ContactsDetailActivity extends AppActivity {
         int userId = event.getUserId();
         if (annexDO != null) {
             if (annexDO.getShopId() != 0) {
-                fragment = getFragment(Constant.SHOP_TYPE, annexDO.getShopId(), false);
+                fragment = ContactsDetailBaseFragment.getFragment(Constant.SHOP_TYPE, annexDO.getShopId(), false);
             }
         } else if (userId != 0) {
-            fragment = getFragment(Constant.AREAS_TYPE, userId, false);
+            fragment = ContactsDetailBaseFragment.getFragment(Constant.AREAS_TYPE, userId, false);
         }
         if (fragment != null) {
             addFragment(fragment, R.id.flFragment2);
         }
-    }
-
-    public Fragment getFragment(int type, int id, boolean sendRelative) {
-        Fragment fragment = null;
-        switch (type) {
-            case Constant.AREAS_TYPE:
-                fragment = UserDetailFragment.getUserFragment(id, sendRelative);
-                break;
-            case Constant.LOGISTICS_TYPE:
-                break;
-            case Constant.SHOP_TYPE:
-                fragment = ShopDetailFragment.getShopFragment(id, sendRelative);
-                break;
-            case Constant.OFFICE_TYPE:
-                break;
-        }
-        return fragment;
     }
 
     private void addFragment(Fragment fragment, int id) {
