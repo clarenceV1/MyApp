@@ -42,16 +42,22 @@ public class ContactsMainAdapter extends FragmentStatePagerAdapter {
         return contactsRequestDOList == null ? 0 : contactsRequestDOList.size();
     }
 
-    public String getFragmentName(String key) {
-        if (!TextUtils.isEmpty(key)) {
-            if (key.equals(Constant.LOGISTICS_TYPE)) { //物流
-                return ContactsLogisticsFragment.class.getName();
-            } else if (key.equals(Constant.OFFICE_TYPE)) { //办事处
-                return ContactsOfficeFragment.class.getName();
-            } else if (key.equals(Constant.SHOP_TYPE)) { //店铺
-                return ContactsShopFragment.class.getName();
-            }
+    public String getFragmentName(int type) {
+        String title = "出错了";
+        switch (type) {
+            case Constant.AREAS_TYPE:
+                title = ContactsOwnerFragment.class.getName(); //业主
+                break;
+            case Constant.LOGISTICS_TYPE:
+                title = ContactsLogisticsFragment.class.getName();
+                break;
+            case Constant.SHOP_TYPE:
+                title = ContactsShopFragment.class.getName();
+                break;
+            case Constant.OFFICE_TYPE:
+                title = ContactsOfficeFragment.class.getName();
+                break;
         }
-        return ContactsOwnerFragment.class.getName(); //业主
+        return title;
     }
 }

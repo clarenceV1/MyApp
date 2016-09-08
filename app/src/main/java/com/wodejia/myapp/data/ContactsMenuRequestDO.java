@@ -7,15 +7,15 @@ import java.io.Serializable;
  */
 public class ContactsMenuRequestDO implements Serializable {
 
-    private String key;
+    private int key;
     private String value;
     private String title;
 
-    public String getKey() {
+    public int getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(int key) {
         this.key = key;
     }
 

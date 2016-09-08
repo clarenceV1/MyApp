@@ -46,10 +46,10 @@ public class UserDetailController {
      * 获取用户信息
      *
      * @param userId
-     * @param isAll  是否是所有信息
+     * @param sendRelative  是否是所有信息
      * @return
      */
-    public UserInfoDetailRequestDO getMockData(int userId, boolean isAll) {
+    public UserInfoDetailRequestDO getMockData(int userId, boolean sendRelative) {
         UserInfoDetailRequestDO userInfoDetailRequestDO = new UserInfoDetailRequestDO();
         UserInfoBaseDO baseDO = new UserInfoBaseDO();
         baseDO.setUserId(userId);
@@ -59,7 +59,7 @@ public class UserDetailController {
         baseDO.setUserTelephone("13779926287");
         userInfoDetailRequestDO.setUserInfoBaseDO(baseDO);
 
-        if (isAll) {
+        if (sendRelative) {
             UserinfoAnnexDO annexDO = new UserinfoAnnexDO();
             annexDO.setAreasId(1);
             annexDO.setHouseId(1);

@@ -2,6 +2,7 @@ package com.wodejia.myapp.contacts;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,10 +14,12 @@ import com.wodejia.myapp.app.Constant;
 import com.wodejia.myapp.controller.ShopDetailController;
 import com.wodejia.myapp.data.ShopDetailRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.event.ContactsDetailEvent;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import de.greenrobot.event.EventBus;
 import rx.Subscriber;
 
 /**
@@ -36,6 +39,21 @@ public class ShopDetailFragment extends AppFragment {
 
     int shopId;
     ShopDetailRequestDO shopDetailRequestDO;
+    boolean sendRelative;
+
+    /**
+     * 获取商店fragment
+     * @param shopId
+     * @return
+     */
+    public static Fragment getShopFragment(int shopId, boolean sendRelative){
+        ShopDetailFragment shopDetailFragment = new ShopDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constant.EXTRA_ID, shopId);
+        bundle.putBoolean(Constant.EXTRA_SEND_RELATIVE, sendRelative);
+        shopDetailFragment.setArguments(bundle);
+        return shopDetailFragment;
+    }
 
     @Override
     public void initVariables() {
@@ -54,7 +72,7 @@ public class ShopDetailFragment extends AppFragment {
     }
 
     public void getIntents(Bundle bundle) {
-        shopId = bundle.getInt(Constant.EXTRA_SHOP_ID, 0);
+        shopId = bundle.getInt(Constant.EXTRA_ID, 0);
     }
 
     private void load() {
@@ -74,6 +92,9 @@ public class ShopDetailFragment extends AppFragment {
             @Override
             public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
                 shopDetailRequestDO = controller.getMockData(shopId);
+                if (sendRelative && shopDetailRequestDO.getUserId() != 0) {
+                    EventBus.getDefault().post(new ContactsDetailEvent(shopDetailRequestDO.getUserId()));
+                }
                 initView();
             }
         });

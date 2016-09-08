@@ -9,7 +9,7 @@ import com.wodejia.myapp.contacts.ContactsOwnerFragment;
 import com.wodejia.myapp.contacts.ContactsMainFragment;
 import com.wodejia.myapp.contacts.ContactsShopFragment;
 import com.wodejia.myapp.contacts.ShopDetailFragment;
-import com.wodejia.myapp.contacts.UserInfoActivity;
+import com.wodejia.myapp.contacts.ContactsDetailActivity;
 import com.wodejia.myapp.contacts.UserDetailFragment;
 import com.wodejia.myapp.dagger.module.ActivityModule;
 
@@ -39,7 +39,7 @@ public interface ActivityComponent {
 
     void inject(ContactsOfficeFragment officeFragment);
 
-    void inject(UserInfoActivity userInfoActivity);
+    void inject(ContactsDetailActivity userInfoActivity);
 
     void inject(UserDetailFragment userInfoDetailFragment);
 

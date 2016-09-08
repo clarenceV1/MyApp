@@ -1,7 +1,6 @@
 package com.wodejia.myapp.controller;
 
 import com.wodejia.myapp.data.ShopDetailRequestDO;
-import com.wodejia.myapp.data.UserInfoDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 
@@ -47,6 +46,7 @@ public class ShopDetailController {
         shopDetailRequestDO.setShopName("五金店");
         shopDetailRequestDO.setShopIcon("http://img1.imgtn.bdimg.com/it/u=3957342138,1132542497&fm=21&gp=0.jpg");
         shopDetailRequestDO.setShopAddress("软件园二期");
+        shopDetailRequestDO.setUserId(1);
         return shopDetailRequestDO;
     }
 }

@@ -48,9 +48,9 @@ public class ContactsOfficeController {
     public static List<ContactsOfficeRequestDO> getMockData(ContactsMenuRequestDO contactsRequestDO) {
         List<ContactsOfficeRequestDO> result = new ArrayList<>();
         if (contactsRequestDO != null) {
-            String key = contactsRequestDO.getKey();
+            int key = contactsRequestDO.getKey();
             String value = contactsRequestDO.getValue();
-            if (key.equals(Constant.OFFICE_TYPE)) {
+            if (key == Constant.OFFICE_TYPE){
                 for (int i = 0; i < 3; i++) {
                     ContactsOfficeRequestDO officeRequetDO = new ContactsOfficeRequestDO();
                     if (i == 0) {
@@ -60,14 +60,14 @@ public class ContactsOfficeController {
                         officeRequetDO.setOfficeIcon("http://tz.sinzhu.com/UploadSoftPic/200710/20071009153755599.jpg");
                         officeRequetDO.setOfficeName("居委会");
                         officeRequetDO.setOfficeAddress("东安北1里");
-                    } else if(i==1){
+                    } else if (i == 1) {
                         officeRequetDO.setUserId(2);
                         officeRequetDO.setUserTelephone("222222222");
                         officeRequetDO.setOfficeId(2);
                         officeRequetDO.setOfficeIcon("http://tz.sinzhu.com/UploadSoftPic/200710/20071009153755599.jpg");
                         officeRequetDO.setOfficeName("派出所");
                         officeRequetDO.setOfficeAddress("东安北3里");
-                    }else{
+                    } else {
                         officeRequetDO.setUserId(3);
                         officeRequetDO.setUserTelephone("33333333");
                         officeRequetDO.setOfficeId(3);

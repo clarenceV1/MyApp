@@ -5,12 +5,12 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/flUserFragment"
+        android:id="@+id/flFragment1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <FrameLayout
-        android:id="@+id/flShopFragment"
+        android:id="@+id/flFragment2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

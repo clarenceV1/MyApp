@@ -48,9 +48,9 @@ public class ContactsShopController {
     public static List<ContactsShopRequestDO> getMockData(ContactsMenuRequestDO contactsRequestDO) {
         List<ContactsShopRequestDO> result = new ArrayList<>();
         if (contactsRequestDO != null) {
-            String key = contactsRequestDO.getKey();
+            int key = contactsRequestDO.getKey();
             String value = contactsRequestDO.getValue();
-            if (key.equals(Constant.SHOP_TYPE)) {
+            if (key == Constant.SHOP_TYPE){
                 for (int i = 0; i < 2; i++) {
                     ContactsShopRequestDO shopRequetDO = new ContactsShopRequestDO();
                     if (i == 0) {

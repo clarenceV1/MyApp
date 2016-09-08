@@ -51,9 +51,9 @@ public class ContactsOwnerController {
     public List<ContactsOwnerRequestDO> getMockData(ContactsMenuRequestDO contactsRequestDO) {
         List<ContactsOwnerRequestDO> result = new ArrayList<>();
         if (contactsRequestDO != null) {
-            String key = contactsRequestDO.getKey();
+            int key = contactsRequestDO.getKey();
             String value = contactsRequestDO.getValue();
-            if (key.equals(Constant.AREAS_TYPE)) {
+            if (key == Constant.AREAS_TYPE){
                 int userId = 0;
                 for (int x = 1; x < 12; x++) { //哪栋
                     for (int i = 1; i < 12; i++) {// 哪层

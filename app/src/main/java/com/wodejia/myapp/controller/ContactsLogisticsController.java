@@ -47,9 +47,9 @@ public class ContactsLogisticsController {
     public static List<ContactsLogisticsRequestDO> getMockData(ContactsMenuRequestDO contactsRequestDO) {
         List<ContactsLogisticsRequestDO> result = new ArrayList<>();
         if (contactsRequestDO != null) {
-            String key = contactsRequestDO.getKey();
+            int key = contactsRequestDO.getKey();
             String value = contactsRequestDO.getValue();
-            if (key.equals(Constant.LOGISTICS_TYPE)) {
+            if (key == Constant.LOGISTICS_TYPE) {
                 for (int i = 0; i < 2; i++) {
                     ContactsLogisticsRequestDO logisticsRequetDO = new ContactsLogisticsRequestDO();
                     if (i == 0) {

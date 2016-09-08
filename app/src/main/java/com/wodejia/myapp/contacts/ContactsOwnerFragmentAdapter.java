@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
+import com.wodejia.myapp.app.Constant;
 import com.wodejia.myapp.data.ContactsOwnerRequestDO;
 
 /**
@@ -33,7 +34,7 @@ public class ContactsOwnerFragmentAdapter extends ContactsBaseFragmentAdapter {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserInfoActivity.enter(v.getContext(), userInfoDO.getUserId());
+                ContactsDetailActivity.enter(v.getContext(), userInfoDO.getUserId(), Constant.AREAS_TYPE);
             }
         });
 
