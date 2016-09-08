@@ -2,14 +2,13 @@ package com.wodejia.myapp.contacts;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.text.TextUtils;
 
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.ContactsRequestDO;
+import com.wodejia.myapp.data.ContactsMenuRequestDO;
 
 import java.util.List;
 
@@ -17,10 +16,10 @@ import java.util.List;
  * Created by clarence on 16/7/14.
  */
 public class ContactsMainAdapter extends FragmentStatePagerAdapter {
-    List<ContactsRequestDO> contactsRequestDOList;
+    List<ContactsMenuRequestDO> contactsRequestDOList;
     Context context;
 
-    public ContactsMainAdapter(FragmentManager fm, Context context, List<ContactsRequestDO> contactsRequestDOList) {
+    public ContactsMainAdapter(FragmentManager fm, Context context, List<ContactsMenuRequestDO> contactsRequestDOList) {
         super(fm);
         this.context = context;
         this.contactsRequestDOList = contactsRequestDOList;

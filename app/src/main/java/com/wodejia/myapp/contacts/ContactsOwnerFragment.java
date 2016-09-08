@@ -3,8 +3,8 @@ package com.wodejia.myapp.contacts;
 import android.text.TextUtils;
 
 import com.example.clarence.utillibrary.ToastUtils;
-import com.wodejia.myapp.controller.ContactsOwnerFragmentController;
-import com.wodejia.myapp.data.OwnerRequetDO;
+import com.wodejia.myapp.controller.ContactsOwnerController;
+import com.wodejia.myapp.data.ContactsOwnerRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import rx.Subscriber;
  */
 public class ContactsOwnerFragment extends ContactsBaseFragment {
     @Inject
-    ContactsOwnerFragmentController controller;
+    ContactsOwnerController controller;
 
     @Override
     public void initVariables() {
@@ -51,11 +51,11 @@ public class ContactsOwnerFragment extends ContactsBaseFragment {
         });
     }
 
-    public void loginData(List<OwnerRequetDO> request) {
+    public void loginData(List<ContactsOwnerRequestDO> request) {
         if (request == null) {
             return;
         }
-        for (OwnerRequetDO ownerRequetDO : request) {
+        for (ContactsOwnerRequestDO ownerRequetDO : request) {
             if (!TextUtils.isEmpty(ownerRequetDO.getUserName())) {
                 String letter = null;
                 try {

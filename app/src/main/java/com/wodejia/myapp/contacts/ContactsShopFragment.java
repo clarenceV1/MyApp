@@ -4,8 +4,8 @@ import android.text.TextUtils;
 
 import com.example.clarence.utillibrary.PinyinUtils;
 import com.example.clarence.utillibrary.ToastUtils;
-import com.wodejia.myapp.controller.ContactsShopFragmentController;
-import com.wodejia.myapp.data.ShopRequetDO;
+import com.wodejia.myapp.controller.ContactsShopController;
+import com.wodejia.myapp.data.ContactsShopRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import rx.Subscriber;
  */
 public class ContactsShopFragment extends ContactsBaseFragment {
     @Inject
-    ContactsShopFragmentController controller;
+    ContactsShopController controller;
 
     @Override
     public void initVariables() {
@@ -51,11 +51,11 @@ public class ContactsShopFragment extends ContactsBaseFragment {
         });
     }
 
-    public void loginData(List<ShopRequetDO> request) {
+    public void loginData(List<ContactsShopRequestDO> request) {
         if (request == null) {
             return;
         }
-        for (ShopRequetDO shopRequetDO : request) {
+        for (ContactsShopRequestDO shopRequetDO : request) {
             if (!TextUtils.isEmpty(shopRequetDO.getShopName())) {
                 String letter = PinyinUtils.getCharacterSimple(shopRequetDO.getShopName().charAt(0));
                 if (letter == null) {

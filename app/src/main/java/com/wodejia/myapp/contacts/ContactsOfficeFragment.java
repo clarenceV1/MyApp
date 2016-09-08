@@ -4,8 +4,8 @@ import android.text.TextUtils;
 
 import com.example.clarence.utillibrary.PinyinUtils;
 import com.example.clarence.utillibrary.ToastUtils;
-import com.wodejia.myapp.controller.ContactsOfficeFragmentController;
-import com.wodejia.myapp.data.OfficeRequetDO;
+import com.wodejia.myapp.controller.ContactsOfficeController;
+import com.wodejia.myapp.data.ContactsOfficeRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import rx.Subscriber;
  */
 public class ContactsOfficeFragment extends ContactsBaseFragment {
     @Inject
-    ContactsOfficeFragmentController controller;
+    ContactsOfficeController controller;
 
     @Override
     public void initVariables() {
@@ -51,11 +51,11 @@ public class ContactsOfficeFragment extends ContactsBaseFragment {
         });
     }
 
-    public void loginData(List<OfficeRequetDO> request) {
+    public void loginData(List<ContactsOfficeRequestDO> request) {
         if (request == null) {
             return;
         }
-        for (OfficeRequetDO officeRequetDO : request) {
+        for (ContactsOfficeRequestDO officeRequetDO : request) {
             if (!TextUtils.isEmpty(officeRequetDO.getOfficeName())) {
                 String letter = PinyinUtils.getCharacterSimple(officeRequetDO.getOfficeName().charAt(0));
                 if (letter == null) {

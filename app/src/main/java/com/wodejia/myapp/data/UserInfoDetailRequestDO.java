@@ -5,53 +5,33 @@ package com.wodejia.myapp.data;
  */
 public class UserInfoDetailRequestDO {
     /**
-     * 用户ID
+     *用户id
      */
-    private int userID;
+    private int userId;
+    /**
+     *用户昵称
+     */
+    private String userNickname;
     /**
      *  用户头像
      */
     private String userIcon;
     /**
-     * 用户昵称
-     */
-    private String userNickname;
-    /**
      * 用户名
      */
     private String userName;
     /**
+     * userQq
+     */
+    private String userQq;
+    /**
+     * 微信
+     */
+    private String userWechat;
+    /**
      * 手机号
      */
     private String userTelephone;
-    /**
-     * 小区名称
-     */
-    private String areasName;
-    /**
-     * 户型
-     */
-    private String houseType;
-    /**
-     * 面积
-     */
-    private String houseArea;
-    /**
-     * 房号
-     */
-    private String houseNum;
-    /**
-     * 店铺名
-     */
-    private String shopName;
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
 
     public String getUserNickname() {
         return userNickname;
@@ -59,6 +39,14 @@ public class UserInfoDetailRequestDO {
 
     public void setUserNickname(String userNickname) {
         this.userNickname = userNickname;
+    }
+
+    public String getUserIcon() {
+        return userIcon;
+    }
+
+    public void setUserIcon(String userIcon) {
+        this.userIcon = userIcon;
     }
 
     public String getUserName() {
@@ -69,6 +57,22 @@ public class UserInfoDetailRequestDO {
         this.userName = userName;
     }
 
+    public String getUserQq() {
+        return userQq;
+    }
+
+    public void setUserQq(String userQq) {
+        this.userQq = userQq;
+    }
+
+    public String getUserWechat() {
+        return userWechat;
+    }
+
+    public void setUserWechat(String userWechat) {
+        this.userWechat = userWechat;
+    }
+
     public String getUserTelephone() {
         return userTelephone;
     }
@@ -77,51 +81,11 @@ public class UserInfoDetailRequestDO {
         this.userTelephone = userTelephone;
     }
 
-    public String getAreasName() {
-        return areasName;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setAreasName(String areasName) {
-        this.areasName = areasName;
-    }
-
-    public String getHouseType() {
-        return houseType;
-    }
-
-    public void setHouseType(String houseType) {
-        this.houseType = houseType;
-    }
-
-    public String getHouseArea() {
-        return houseArea;
-    }
-
-    public void setHouseArea(String houseArea) {
-        this.houseArea = houseArea;
-    }
-
-    public String getHouseNum() {
-        return houseNum;
-    }
-
-    public void setHouseNum(String houseNum) {
-        this.houseNum = houseNum;
-    }
-
-    public String getShopName() {
-        return shopName;
-    }
-
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
-
-    public String getUserIcon() {
-        return userIcon;
-    }
-
-    public void setUserIcon(String userIcon) {
-        this.userIcon = userIcon;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

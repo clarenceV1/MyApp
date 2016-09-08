@@ -8,7 +8,7 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppFragment;
 import com.wodejia.myapp.controller.ContactsMainController;
-import com.wodejia.myapp.data.ContactsRequestDO;
+import com.wodejia.myapp.data.ContactsMenuRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class ContactsMainFragment extends AppFragment {
 
     ContactsMainAdapter adapter;
 
-    List<ContactsRequestDO> contactsRequestDOList = new ArrayList<>();
+    List<ContactsMenuRequestDO> contactsRequestDOList = new ArrayList<>();
 
     @Override
     public void initVariables() {

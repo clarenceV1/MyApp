@@ -7,10 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.clarence.utillibrary.CommonUtils;
-import com.example.clarence.utillibrary.LogUtils;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 import com.wodejia.myapp.R;
-import com.wodejia.myapp.data.ContactsBaseDO;
+import com.wodejia.myapp.data.ContactsBaseRequestDO;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +19,7 @@ import java.util.List;
  * Created by clarence on 16/8/30.
  */
 public abstract class ContactsBaseFragmentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements StickyRecyclerHeadersAdapter<RecyclerView.ViewHolder> {
-    public List<ContactsBaseDO> items = new ArrayList<>();
+    public List<ContactsBaseRequestDO> items = new ArrayList<>();
 
     public ContactsBaseFragmentAdapter() {
         setHasStableIds(true);
@@ -58,7 +57,7 @@ public abstract class ContactsBaseFragmentAdapter extends RecyclerView.Adapter<R
         return items.get(position).getFirstLetter();
     }
 
-    public void addAll(Collection<? extends ContactsBaseDO> collection) {
+    public void addAll(Collection<? extends ContactsBaseRequestDO> collection) {
         if (collection != null) {
             items.addAll(collection);
             notifyDataSetChanged();

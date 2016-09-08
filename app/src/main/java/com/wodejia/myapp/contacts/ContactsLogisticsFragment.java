@@ -4,8 +4,8 @@ import android.text.TextUtils;
 
 import com.example.clarence.utillibrary.PinyinUtils;
 import com.example.clarence.utillibrary.ToastUtils;
-import com.wodejia.myapp.controller.ContactsLogisticsFragmentController;
-import com.wodejia.myapp.data.LogisticsRequetDO;
+import com.wodejia.myapp.controller.ContactsLogisticsController;
+import com.wodejia.myapp.data.ContactsLogisticsRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import rx.Subscriber;
  */
 public class ContactsLogisticsFragment extends ContactsBaseFragment {
     @Inject
-    ContactsLogisticsFragmentController controller;
+    ContactsLogisticsController controller;
 
     @Override
     public void initVariables() {
@@ -51,11 +51,11 @@ public class ContactsLogisticsFragment extends ContactsBaseFragment {
         });
     }
 
-    public void loginData(List<LogisticsRequetDO> request) {
+    public void loginData(List<ContactsLogisticsRequestDO> request) {
         if (request == null) {
             return;
         }
-        for (LogisticsRequetDO logisticsRequetDO : request) {
+        for (ContactsLogisticsRequestDO logisticsRequetDO : request) {
             if (!TextUtils.isEmpty(logisticsRequetDO.getLogisticsName())) {
                 String letter = PinyinUtils.getCharacterSimple(logisticsRequetDO.getLogisticsName().charAt(0));
                 if (letter == null) {
