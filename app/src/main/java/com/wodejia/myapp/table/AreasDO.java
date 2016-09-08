@@ -4,7 +4,8 @@ package com.wodejia.myapp.table;
  * 小区
  * Created by clarence on 16/9/2.
  */
-public class AreasDO extends BaseDO {
+public class AreasDO {
+    private int areasId;
     /**
      * 房地产编号
      */
@@ -17,6 +18,14 @@ public class AreasDO extends BaseDO {
      * 小区地址
      */
     private String areasAddress;
+
+    public int getAreasId() {
+        return areasId;
+    }
+
+    public void setAreasId(int areasId) {
+        this.areasId = areasId;
+    }
 
     public int getEstateId() {
         return estateId;

@@ -13,10 +13,13 @@ import com.wodejia.myapp.app.Constant;
 import com.wodejia.myapp.controller.UserDetailController;
 import com.wodejia.myapp.data.UserInfoDetailRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.event.UserEvent;
+import com.wodejia.myapp.table.UserInfoBaseDO;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import de.greenrobot.event.EventBus;
 import rx.Subscriber;
 
 /**
@@ -37,6 +40,7 @@ public class UserDetailFragment extends AppFragment {
     UserDetailController controller;
 
     int userId;
+    boolean sendRelative;
 
     @Override
     public void initVariables() {
@@ -55,7 +59,8 @@ public class UserDetailFragment extends AppFragment {
     }
 
     public void getIntents(Bundle bundle) {
-        userId = bundle.getInt(Constant.EXTRA_USERID, 0);
+        userId = bundle.getInt(Constant.EXTRA_USER_ID, 0);
+        sendRelative = bundle.getBoolean(Constant.EXTRA_SEND_RELATIVE, false);
     }
 
     private void load() {
@@ -68,21 +73,30 @@ public class UserDetailFragment extends AppFragment {
             @Override
             public void onError(Throwable e) {
                 ToastUtils.showToast(getContext(), "userInfo is error");
+                userInfoDO = controller.getMockData(userId, sendRelative);
+                if (sendRelative && userInfoDO.getUserinfoAnnexDO() != null) {
+                    EventBus.getDefault().post(new UserEvent(userInfoDO.getUserinfoAnnexDO()));
+                }
+                initView();
             }
 
             @Override
             public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
-                userInfoDO = controller.getMockData(userId);
+                userInfoDO = controller.getMockData(userId, sendRelative);
+                if (sendRelative && userInfoDO.getUserinfoAnnexDO() != null) {
+                    EventBus.getDefault().post(new UserEvent(userInfoDO.getUserinfoAnnexDO()));
+                }
                 initView();
             }
         });
     }
 
     private void initView() {
-        if (userInfoDO != null) {
-            tvName.setText(userInfoDO.getUserName());
-            tvTelephone.setText("tel:" + userInfoDO.getUserTelephone());
-            Uri uri = Uri.parse(userInfoDO.getUserIcon());
+        if (userInfoDO != null && userInfoDO.getUserInfoBaseDO() != null) {
+            UserInfoBaseDO baseDO = userInfoDO.getUserInfoBaseDO();
+            tvName.setText(baseDO.getUserName());
+            tvTelephone.setText("tel:" + baseDO.getUserTelephone());
+            Uri uri = Uri.parse(baseDO.getUserIcon());
             sdUserHeadIcon.setImageURI(uri);
         }
     }

@@ -19,7 +19,7 @@ public class TestData {
     public static EstateDO getProperty(int id) {
         List<EstateDO> estateDOList = getPropertyList();
         for (EstateDO estateDO : estateDOList) {
-            if (estateDO.getId() == id) {
+            if (estateDO.getEstateId() == id) {
                 return estateDO;
             }
         }
@@ -30,12 +30,12 @@ public class TestData {
         List<EstateDO> estateDOList = new ArrayList<>();
         //房地产
         EstateDO wuyuehua = new EstateDO();
-        wuyuehua.setId(1);
+        wuyuehua.setEstateId(1);
         wuyuehua.setEstateName("五月花");
         estateDOList.add(wuyuehua);
 
         EstateDO haide = new EstateDO();
-        haide.setId(1);
+        haide.setEstateId(1);
         haide.setEstateName("海德");
         estateDOList.add(haide);
         return estateDOList;
@@ -44,7 +44,7 @@ public class TestData {
     public static AreasDO getAreasDO(int id) {
         List<AreasDO> areasDOList = getAreasDOList();
         for (AreasDO areasDO : areasDOList) {
-            if (areasDO.getId() == id) {
+            if (areasDO.getAreasId() == id) {
                 return areasDO;
             }
         }
@@ -55,7 +55,7 @@ public class TestData {
         List<AreasDO> areasDOList = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             AreasDO areado = new AreasDO();
-            areado.setId(i + 1);
+            areado.setAreasId(i + 1);
             areado.setAreasName("五月花" + i + "期");
             areado.setAreasAddress("集美东垵北二里");
             areado.setEstateId(1);
@@ -70,7 +70,7 @@ public class TestData {
             UserInfoDO userInfoDO = new UserInfoDO();
 
             UserInfoBaseDO userInfoBaseDO = new UserInfoBaseDO();
-            userInfoBaseDO.setId(i + 1);
+            userInfoBaseDO.setUserId(i + 1);
             userInfoBaseDO.setUserName(names.get(i));
             userInfoBaseDO.setUserTelephone(13779926287l + "");
             userInfoBaseDO.setUserNickname("昵称" + i);
@@ -89,7 +89,7 @@ public class TestData {
             userinfoAnnexDO.setLogisticsId(1);
             userinfoAnnexDO.setOfficeId(1);
             userinfoAnnexDO.setShopId(1);
-            userinfoAnnexDO.setUserId(userInfoBaseDO.getId());
+            userinfoAnnexDO.setUserId(userInfoBaseDO.getUserId());
             userInfoDO.setUserinfoAnnexDO(userinfoAnnexDO);
 
             UserInfoDOList.add(userInfoDO);
@@ -126,7 +126,7 @@ public class TestData {
 
     public static HouseDO getHouseDO(int houseId) {
         HouseDO houseDO = new HouseDO();
-        houseDO.setId(1);
+        houseDO.setHouseId(1);
         houseDO.setHouseNum("1501");
         houseDO.setHouseArea("93平");
         houseDO.setHouseType("3房2厅2卫");

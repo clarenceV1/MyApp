@@ -4,7 +4,7 @@ package com.wodejia.myapp.table;
  * 用户信息附属表
  * Created by clarence on 16/9/2.
  */
-public class UserinfoAnnexDO extends BaseDO {
+public class UserinfoAnnexDO {
     /**
      * 用户ID
      */

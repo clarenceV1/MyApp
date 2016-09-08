@@ -4,7 +4,8 @@ package com.wodejia.myapp.table;
  * 办事处
  * Created by clarence on 16/9/2.
  */
-public class OfficeDO extends BaseDO{
+public class OfficeDO{
+    private int officeId;
     /**
      *名称
      */
@@ -21,6 +22,14 @@ public class OfficeDO extends BaseDO{
      * 地址
      */
     private String officeAddress;
+
+    public int getOfficeId() {
+        return officeId;
+    }
+
+    public void setOfficeId(int officeId) {
+        this.officeId = officeId;
+    }
 
     public String getOfficeIcon() {
         return officeIcon;

@@ -3,6 +3,8 @@ package com.wodejia.myapp.controller;
 import com.wodejia.myapp.data.UserInfoDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
+import com.wodejia.myapp.table.UserInfoBaseDO;
+import com.wodejia.myapp.table.UserinfoAnnexDO;
 
 import javax.inject.Inject;
 
@@ -40,13 +42,34 @@ public class UserDetailController {
         }
     }
 
-    public UserInfoDetailRequestDO getMockData(int userId) {
+    /**
+     * 获取用户信息
+     *
+     * @param userId
+     * @param isAll  是否是所有信息
+     * @return
+     */
+    public UserInfoDetailRequestDO getMockData(int userId, boolean isAll) {
         UserInfoDetailRequestDO userInfoDetailRequestDO = new UserInfoDetailRequestDO();
-        userInfoDetailRequestDO.setUserId(userId);
-        userInfoDetailRequestDO.setUserName("猜猜");
-        userInfoDetailRequestDO.setUserIcon("http://img4.imgtn.bdimg.com/it/u=639941756,2707761062&fm=15&gp=0.jpg");
-        userInfoDetailRequestDO.setUserNickname("小猜");
-        userInfoDetailRequestDO.setUserTelephone("13779926287");
+        UserInfoBaseDO baseDO = new UserInfoBaseDO();
+        baseDO.setUserId(userId);
+        baseDO.setUserName("猜猜");
+        baseDO.setUserIcon("http://img4.imgtn.bdimg.com/it/u=639941756,2707761062&fm=15&gp=0.jpg");
+        baseDO.setUserNickname("小猜");
+        baseDO.setUserTelephone("13779926287");
+        userInfoDetailRequestDO.setUserInfoBaseDO(baseDO);
+
+        if (isAll) {
+            UserinfoAnnexDO annexDO = new UserinfoAnnexDO();
+            annexDO.setAreasId(1);
+            annexDO.setHouseId(1);
+            annexDO.setLogisticsId(1);
+            annexDO.setOfficeId(1);
+            annexDO.setPropertyId(1);
+            annexDO.setShopId(1);
+            annexDO.setUserId(1);
+            userInfoDetailRequestDO.setUserinfoAnnexDO(annexDO);
+        }
         return userInfoDetailRequestDO;
     }
 }

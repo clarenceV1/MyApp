@@ -1,10 +1,13 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.data;
 
 /**
  * 店铺
  * Created by clarence on 16/9/2.
  */
-public class ShopDO {
+public class ShopDetailRequestDO {
+    /**
+     * 店铺id
+     */
     private int shopId;
     /**
      * 店铺名
@@ -18,14 +21,6 @@ public class ShopDO {
      * 店铺地址
      */
     private String shopAddress;
-
-    public int getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
-    }
 
     public String getShopName() {
         return shopName;
@@ -49,5 +44,13 @@ public class ShopDO {
 
     public void setShopIcon(String shopIcon) {
         this.shopIcon = shopIcon;
+    }
+
+    public int getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
     }
 }

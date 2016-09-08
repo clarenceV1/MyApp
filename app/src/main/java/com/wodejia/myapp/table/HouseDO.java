@@ -4,7 +4,8 @@ package com.wodejia.myapp.table;
  * 房屋
  * Created by clarence on 16/9/2.
  */
-public class HouseDO extends BaseDO {
+public class HouseDO {
+    private int houseId;
     /**
      * 哪栋
      */
@@ -21,6 +22,14 @@ public class HouseDO extends BaseDO {
      * 面积
      */
     private String houseArea;
+
+    public int getHouseId() {
+        return houseId;
+    }
+
+    public void setHouseId(int houseId) {
+        this.houseId = houseId;
+    }
 
     public String getHouseType() {
         return houseType;

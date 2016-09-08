@@ -1,14 +1,13 @@
 package com.wodejia.myapp.table;
 
-import java.io.Serializable;
-
 /**
  * 用户基本信息表
  * Created by clarence on 16/8/31.
  */
-public class UserInfoBaseDO extends BaseDO implements Serializable {
+public class UserInfoBaseDO {
+    private int userId;
     /**
-     *用户昵称
+     * 用户昵称
      */
     private String userNickname;
     /**
@@ -31,6 +30,14 @@ public class UserInfoBaseDO extends BaseDO implements Serializable {
      * 手机号
      */
     private String userTelephone;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getUserTelephone() {
         return userTelephone;
