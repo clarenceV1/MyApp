@@ -26,9 +26,21 @@ public class ContactsOfficeRequestDO extends ContactsBaseRequestDO {
      */
     private int userId;
     /**
+     * 用户名
+     */
+    private String userName;
+    /**
      * 手机号
      */
     private String userTelephone;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getOfficeIcon() {
         return officeIcon;

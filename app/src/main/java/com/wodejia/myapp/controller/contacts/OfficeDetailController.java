@@ -1,7 +1,6 @@
-package com.wodejia.myapp.controller;
+package com.wodejia.myapp.controller.contacts;
 
-import com.wodejia.myapp.data.Weather;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.OfficeDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 
@@ -17,10 +16,10 @@ import rx.schedulers.Schedulers;
 /**
  * Created by clarence on 16/9/5.
  */
-public class MainController {
+public class OfficeDetailController {
 
     @Inject
-    public MainController() {
+    public OfficeDetailController() {
     }
 
     public void request(Subscriber subscriber) {
@@ -41,16 +40,13 @@ public class MainController {
         }
     }
 
-    public String getWeather(WeatherInfoResponseDO weatherInfoResponseDO) {
-        if (weatherInfoResponseDO != null && weatherInfoResponseDO.getWeatherinfo() != null) {
-            StringBuffer stringBuffer = new StringBuffer();
-            Weather weather = weatherInfoResponseDO.getWeatherinfo();
-            stringBuffer.append(weather.getCity()).append(" ");
-            stringBuffer.append(weather.getWeather()).append(" ");
-            stringBuffer.append(weather.getTemp1()).append("-");
-            stringBuffer.append(weather.getTemp2());
-            return stringBuffer.toString();
-        }
-        return null;
+    public OfficeDetailRequestDO getMockData(int officeId) {
+        OfficeDetailRequestDO officeDetailRequestDO = new OfficeDetailRequestDO();
+        officeDetailRequestDO.setOfficeId(1);
+        officeDetailRequestDO.setOfficeAddress("东垵居委会");
+        officeDetailRequestDO.setOfficeIcon("http://tz.sinzhu.com/UploadSoftPic/200710/20071009153755599.jpg");
+        officeDetailRequestDO.setOfficeName("居委会");
+        officeDetailRequestDO.setUserId(1);
+        return officeDetailRequestDO;
     }
 }

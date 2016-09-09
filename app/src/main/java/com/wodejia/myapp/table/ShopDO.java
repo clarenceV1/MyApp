@@ -5,7 +5,14 @@ package com.wodejia.myapp.table;
  * Created by clarence on 16/9/2.
  */
 public class ShopDO {
+    /**
+     * 店铺ID
+     */
     private int shopId;
+    /**
+     * 老板ID
+     */
+    private int userId;
     /**
      * 店铺名
      */
@@ -18,6 +25,14 @@ public class ShopDO {
      * 店铺地址
      */
     private String shopAddress;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getShopId() {
         return shopId;

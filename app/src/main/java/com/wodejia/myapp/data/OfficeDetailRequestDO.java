@@ -1,10 +1,9 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.data;
 
 /**
- * 办事处
- * Created by clarence on 16/9/2.
+ * Created by clarence on 16/9/9.
  */
-public class OfficeDO {
+public class OfficeDetailRequestDO {
     /**
      * 办事处ID
      */
@@ -42,20 +41,20 @@ public class OfficeDO {
         this.officeId = officeId;
     }
 
-    public String getOfficeIcon() {
-        return officeIcon;
-    }
-
-    public void setOfficeIcon(String officeIcon) {
-        this.officeIcon = officeIcon;
-    }
-
     public String getOfficeName() {
         return officeName;
     }
 
     public void setOfficeName(String officeName) {
         this.officeName = officeName;
+    }
+
+    public String getOfficeIcon() {
+        return officeIcon;
+    }
+
+    public void setOfficeIcon(String officeIcon) {
+        this.officeIcon = officeIcon;
     }
 
     public String getOfficeAddress() {

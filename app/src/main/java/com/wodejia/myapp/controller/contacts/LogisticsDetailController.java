@@ -1,7 +1,6 @@
-package com.wodejia.myapp.controller;
+package com.wodejia.myapp.controller.contacts;
 
-import com.wodejia.myapp.data.Weather;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.LogisticsDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 
@@ -17,10 +16,10 @@ import rx.schedulers.Schedulers;
 /**
  * Created by clarence on 16/9/5.
  */
-public class MainController {
+public class LogisticsDetailController {
 
     @Inject
-    public MainController() {
+    public LogisticsDetailController() {
     }
 
     public void request(Subscriber subscriber) {
@@ -41,16 +40,12 @@ public class MainController {
         }
     }
 
-    public String getWeather(WeatherInfoResponseDO weatherInfoResponseDO) {
-        if (weatherInfoResponseDO != null && weatherInfoResponseDO.getWeatherinfo() != null) {
-            StringBuffer stringBuffer = new StringBuffer();
-            Weather weather = weatherInfoResponseDO.getWeatherinfo();
-            stringBuffer.append(weather.getCity()).append(" ");
-            stringBuffer.append(weather.getWeather()).append(" ");
-            stringBuffer.append(weather.getTemp1()).append("-");
-            stringBuffer.append(weather.getTemp2());
-            return stringBuffer.toString();
-        }
-        return null;
+    public LogisticsDetailRequestDO getMockData(int logisticsId) {
+        LogisticsDetailRequestDO logisticsDetailRequestDO = new LogisticsDetailRequestDO();
+        logisticsDetailRequestDO.setLogisticsId(1);
+        logisticsDetailRequestDO.setUserId(1);
+        logisticsDetailRequestDO.setLogisticsName("顺丰");
+        logisticsDetailRequestDO.setLogisticsIcon("http://image.suning.cn/content/catentries/00000000012355/000000000123557813/fullimage/000000000123557813_1f.jpg");
+        return logisticsDetailRequestDO;
     }
 }

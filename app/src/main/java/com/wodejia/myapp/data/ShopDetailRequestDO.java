@@ -10,6 +10,10 @@ public class ShopDetailRequestDO {
      */
     private int shopId;
     /**
+     * 负责人ID
+     */
+    private int userId;
+    /**
      * 店铺名
      */
     private String shopName;
@@ -21,8 +25,6 @@ public class ShopDetailRequestDO {
      * 店铺地址
      */
     private String shopAddress;
-
-    private int userId;
 
     public int getUserId() {
         return userId;

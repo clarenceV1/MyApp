@@ -1,10 +1,9 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.data;
 
 /**
- * 物流
- * Created by clarence on 16/9/2.
+ * Created by clarence on 16/9/9.
  */
-public class LogisticsDO {
+public class LogisticsDetailRequestDO {
     /**
      * 物流ID
      */

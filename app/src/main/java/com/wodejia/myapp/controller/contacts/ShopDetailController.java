@@ -1,9 +1,11 @@
-package com.wodejia.myapp.controller;
+package com.wodejia.myapp.controller.contacts;
 
-import com.wodejia.myapp.data.Weather;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.ShopDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -17,10 +19,10 @@ import rx.schedulers.Schedulers;
 /**
  * Created by clarence on 16/9/5.
  */
-public class MainController {
+public class ShopDetailController {
 
     @Inject
-    public MainController() {
+    public ShopDetailController() {
     }
 
     public void request(Subscriber subscriber) {
@@ -41,16 +43,13 @@ public class MainController {
         }
     }
 
-    public String getWeather(WeatherInfoResponseDO weatherInfoResponseDO) {
-        if (weatherInfoResponseDO != null && weatherInfoResponseDO.getWeatherinfo() != null) {
-            StringBuffer stringBuffer = new StringBuffer();
-            Weather weather = weatherInfoResponseDO.getWeatherinfo();
-            stringBuffer.append(weather.getCity()).append(" ");
-            stringBuffer.append(weather.getWeather()).append(" ");
-            stringBuffer.append(weather.getTemp1()).append("-");
-            stringBuffer.append(weather.getTemp2());
-            return stringBuffer.toString();
-        }
-        return null;
+    public ShopDetailRequestDO getMockData(int shopId) {
+        ShopDetailRequestDO shopDetailRequestDO = new ShopDetailRequestDO();
+        shopDetailRequestDO.setShopId(shopId);
+        shopDetailRequestDO.setShopName("五金店");
+        shopDetailRequestDO.setShopIcon("http://img1.imgtn.bdimg.com/it/u=3957342138,1132542497&fm=21&gp=0.jpg");
+        shopDetailRequestDO.setShopAddress("软件园二期");
+        shopDetailRequestDO.setUserId(1);
+        return shopDetailRequestDO;
     }
 }

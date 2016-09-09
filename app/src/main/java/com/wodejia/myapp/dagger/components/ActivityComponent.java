@@ -1,17 +1,20 @@
 package com.wodejia.myapp.dagger.components;
 
-import com.wodejia.myapp.MainActivity;
+import com.wodejia.myapp.ui.MainActivity;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.app.AppFragment;
-import com.wodejia.myapp.contacts.ContactsLogisticsFragment;
-import com.wodejia.myapp.contacts.ContactsOfficeFragment;
-import com.wodejia.myapp.contacts.ContactsOwnerFragment;
-import com.wodejia.myapp.contacts.ContactsMainFragment;
-import com.wodejia.myapp.contacts.ContactsShopFragment;
-import com.wodejia.myapp.contacts.ShopDetailFragment;
-import com.wodejia.myapp.contacts.ContactsDetailActivity;
-import com.wodejia.myapp.contacts.UserDetailFragment;
+import com.wodejia.myapp.ui.contacts.ContactsLogisticsFragment;
+import com.wodejia.myapp.ui.contacts.ContactsOfficeFragment;
+import com.wodejia.myapp.ui.contacts.ContactsOwnerFragment;
+import com.wodejia.myapp.ui.contacts.ContactsMainFragment;
+import com.wodejia.myapp.ui.contacts.ContactsShopFragment;
+import com.wodejia.myapp.ui.contacts.LogisticsDetailFragment;
+import com.wodejia.myapp.ui.contacts.OfficeDetailFragment;
+import com.wodejia.myapp.ui.contacts.OwnerDetailFragment;
+import com.wodejia.myapp.ui.contacts.ShopDetailFragment;
+import com.wodejia.myapp.ui.contacts.ContactsDetailActivity;
 import com.wodejia.myapp.dagger.module.ActivityModule;
+import com.wodejia.myapp.ui.user.LoginFragment;
 
 import dagger.Component;
 
@@ -24,6 +27,8 @@ import dagger.Component;
 public interface ActivityComponent {
 
     void inject(AppActivity activity);
+
+    void inject(LoginFragment loginActivity);
 
     void inject(MainActivity mainActivity);
 
@@ -41,8 +46,11 @@ public interface ActivityComponent {
 
     void inject(ContactsDetailActivity userInfoActivity);
 
-    void inject(UserDetailFragment userInfoDetailFragment);
+    void inject(OwnerDetailFragment userInfoDetailFragment);
 
     void inject(ShopDetailFragment shopDetailFragment);
 
+    void inject(OfficeDetailFragment officeDetailFragment);
+
+    void inject(LogisticsDetailFragment logisticsDetailFragment);
 }

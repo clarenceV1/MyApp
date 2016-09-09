@@ -5,7 +5,18 @@ package com.wodejia.myapp.table;
  * Created by clarence on 16/9/2.
  */
 public class HouseDO {
+    /**
+     * 房屋编号
+     */
     private int houseId;
+    /**
+     * 业主iD
+     */
+    private int userId;
+    /**
+     * 房屋图片
+     */
+    private String houseIcon;
     /**
      * 哪栋
      */
@@ -22,6 +33,22 @@ public class HouseDO {
      * 面积
      */
     private String houseArea;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getHouseIcon() {
+        return houseIcon;
+    }
+
+    public void setHouseIcon(String houseIcon) {
+        this.houseIcon = houseIcon;
+    }
 
     public int getHouseId() {
         return houseId;

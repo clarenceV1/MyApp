@@ -1,6 +1,5 @@
 package com.wodejia.myapp;
 
-import com.wodejia.myapp.data.UserInfoDetailRequestDO;
 import com.wodejia.myapp.table.AreasDO;
 import com.wodejia.myapp.table.EstateDO;
 import com.wodejia.myapp.table.HouseDO;

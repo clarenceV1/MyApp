@@ -7,7 +7,7 @@ import com.wodejia.myapp.table.UserinfoAnnexDO;
  */
 public class ContactsDetailEvent {
     UserinfoAnnexDO userinfoAnnexDO;
-    int userId;
+    private int userId;
 
     public ContactsDetailEvent(UserinfoAnnexDO userinfoAnnexDO) {
         this.userinfoAnnexDO = userinfoAnnexDO;

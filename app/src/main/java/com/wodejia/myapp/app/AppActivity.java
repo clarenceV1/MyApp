@@ -54,7 +54,7 @@ public abstract class AppActivity extends AppCompatActivity {
         return activityComponent;
     }
 
-    protected void addFragment(int containerViewId, Fragment fragment) {
+    protected void replaceFragment(int containerViewId, Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(containerViewId, fragment);
