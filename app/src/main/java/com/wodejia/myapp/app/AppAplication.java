@@ -6,6 +6,7 @@ import com.example.clarence.imageloaderlibrary.ImageLoaderFactory;
 import com.wodejia.myapp.dagger.components.AppComponent;
 import com.wodejia.myapp.dagger.components.DaggerAppComponent;
 import com.wodejia.myapp.dagger.module.AppModule;
+import com.wodejia.myapp.db.DbManager;
 
 import javax.inject.Inject;
 
@@ -24,6 +25,7 @@ public class AppAplication extends CApplication {
         super.onCreate();
         initializeInjector();
         ImageLoaderFactory.initFresco(this);
+        DbManager.getInstance().init(this);
     }
 
     private void initializeInjector() {
@@ -36,4 +38,5 @@ public class AppAplication extends CApplication {
     public AppComponent getApplicationComponent() {
         return applicationComponent;
     }
+
 }

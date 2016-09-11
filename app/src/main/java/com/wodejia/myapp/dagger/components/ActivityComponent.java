@@ -15,20 +15,26 @@ import com.wodejia.myapp.ui.contacts.ShopDetailFragment;
 import com.wodejia.myapp.ui.contacts.ContactsDetailActivity;
 import com.wodejia.myapp.dagger.module.ActivityModule;
 import com.wodejia.myapp.ui.user.LoginFragment;
+import com.wodejia.myapp.ui.user.RegisterFragment;
 
 import dagger.Component;
 
 @ScopeActivity
 @Component(
-        dependencies = {AppComponent.class},
-        modules = {ActivityModule.class
+        dependencies = {
+                AppComponent.class
+        },
+        modules = {
+                ActivityModule.class,
         }
 )
 public interface ActivityComponent {
 
     void inject(AppActivity activity);
 
-    void inject(LoginFragment loginActivity);
+    void inject(LoginFragment loginFragment);
+
+    void inject(RegisterFragment registerFragment);
 
     void inject(MainActivity mainActivity);
 

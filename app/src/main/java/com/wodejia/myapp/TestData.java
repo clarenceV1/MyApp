@@ -54,7 +54,7 @@ public class TestData {
         List<AreasDO> areasDOList = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             AreasDO areado = new AreasDO();
-            areado.setAreasId(i + 1);
+            areado.setAreasId(new Long(i + 1));
             areado.setAreasName("五月花" + i + "期");
             areado.setAreasAddress("集美东垵北二里");
             areado.setEstateId(1);
@@ -62,6 +62,7 @@ public class TestData {
         }
         return areasDOList;
     }
+
     public static List<UserInfoDO> getUserInfoDOList() {
         List<UserInfoDO> UserInfoDOList = new ArrayList<>();
         List<String> names = getName();

@@ -1,5 +1,6 @@
 package com.wodejia.myapp.controller.contacts;
 
+import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.app.Constant;
 import com.wodejia.myapp.data.ContactsMenuRequestDO;
 import com.wodejia.myapp.data.ContactsOwnerRequestDO;
@@ -23,7 +24,7 @@ import rx.schedulers.Schedulers;
  * 业主
  * Created by clarence on 16/9/5.
  */
-public class ContactsOwnerController {
+public class ContactsOwnerController extends AppController {
     @Inject
     ContactsMainManager contactsMainManager;
 

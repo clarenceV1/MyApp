@@ -3,10 +3,10 @@ package com.wodejia.myapp.dagger.module;
 import android.app.Activity;
 
 import com.example.clarence.corelibrary.ConfigSwitch;
-import com.example.clarence.datastorelibrary.StoreFactory;
-import com.example.clarence.datastorelibrary.db.DbManager;
-import com.wodejia.myapp.app.DbHelper;
 import com.wodejia.myapp.dagger.components.ScopeActivity;
+import com.wodejia.myapp.db.DbManager;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -32,13 +32,6 @@ public class ActivityModule {
     @ScopeActivity
     ConfigSwitch providesConfigSwitch() {
         return new ConfigSwitch(activity);
-    }
-
-
-    @Provides
-    @ScopeActivity
-    DbManager providesAppManager() {
-        return StoreFactory.getDbManager(new DbHelper(activity).getDaoConfig());
     }
 }
 

@@ -1,5 +1,6 @@
 package com.wodejia.myapp.controller.contacts;
 
+import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.data.OwnerDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
@@ -18,7 +19,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by clarence on 16/9/5.
  */
-public class UserDetailController {
+public class UserDetailController extends AppController {
 
     @Inject
     public UserDetailController() {

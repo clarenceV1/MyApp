@@ -1,5 +1,6 @@
 package com.wodejia.myapp.controller.contacts;
 
+import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.data.ShopDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
@@ -19,7 +20,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by clarence on 16/9/5.
  */
-public class ShopDetailController {
+public class ShopDetailController extends AppController {
 
     @Inject
     public ShopDetailController() {

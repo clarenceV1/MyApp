@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.clarence.corelibrary.ConfigManager;
+import com.wodejia.myapp.db.DbManager;
 
 import javax.inject.Singleton;
 

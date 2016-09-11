@@ -1,21 +1,17 @@
 package com.wodejia.myapp.ui.user;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
-import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.app.AppFragment;
 import com.wodejia.myapp.controller.user.LoginController;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by clarence on 16/9/9.
@@ -39,7 +35,7 @@ public class LoginFragment extends AppFragment {
 
     @Override
     protected int getLayout() {
-        return R.layout.login;
+        return R.layout.login_fragment;
     }
 
     @Override

@@ -22,6 +22,7 @@ import com.wodejia.myapp.data.Weather;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 import com.wodejia.myapp.ui.user.LoginFragment;
 import com.wodejia.myapp.ui.user.LoginState;
+import com.wodejia.myapp.ui.user.RegisterFragment;
 
 import javax.inject.Inject;
 
@@ -43,9 +44,7 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-
     MainHeadManager mainHeadManager;
-
 
     @Override
     public void initVariables() {
@@ -59,6 +58,11 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
         ButterKnife.bind(this);
         initView();
         load();
+        test();
+    }
+
+    private void test() {
+        controller.test();
     }
 
     private void initView() {
@@ -157,5 +161,12 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
     @Override
     public void logout() {
 
+    }
+
+    @Override
+    public void register() {
+        RegisterFragment registerFragment = new RegisterFragment();
+        replaceFragment(R.id.mainframelayout, registerFragment);
+        drawer.closeDrawer(GravityCompat.START);
     }
 }

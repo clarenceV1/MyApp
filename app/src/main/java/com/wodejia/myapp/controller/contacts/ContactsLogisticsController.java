@@ -1,5 +1,6 @@
 package com.wodejia.myapp.controller.contacts;
 
+import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.app.Constant;
 import com.wodejia.myapp.data.ContactsMenuRequestDO;
 import com.wodejia.myapp.data.ContactsLogisticsRequestDO;
@@ -21,7 +22,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by clarence on 16/9/5.
  */
-public class ContactsLogisticsController {
+public class ContactsLogisticsController extends AppController {
 
     @Inject
     public ContactsLogisticsController() {

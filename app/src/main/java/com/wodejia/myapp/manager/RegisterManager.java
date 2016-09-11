@@ -5,12 +5,10 @@ import com.wodejia.myapp.app.AppManager;
 import javax.inject.Inject;
 
 /**
- * Created by clarence on 16/9/5.
+ * Created by clarence on 16/9/10.
  */
-public class ContactsMainManager extends AppManager{
-
+public class RegisterManager extends AppManager {
     @Inject
-    public ContactsMainManager() {
-
+    public RegisterManager() {
     }
 }

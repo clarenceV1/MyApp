@@ -67,9 +67,8 @@ public class MainHeadManager {
             @Override
             public void onClick(View v) {
                 if (loginState != null) {
-                    loginState.logout();
+                    loginState.register();
                 }
-                logout();
             }
         });
     }

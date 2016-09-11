@@ -17,5 +17,15 @@
     <string name="loginComit">登录</string>
     <string name="mainRegister">注册</string>
     <string name="mainLogin">登录</string>
+    <string name="phoneComit">获取验证码</string>
+    <string name="verifyCode">验证码</string>
+    <string name="verifyCodeHint">6位数</string>
+    <string name="registComit">注册</string>
+    <string name="phoneError">请输入正确的手机号</string>
+    <string name="verifyCodeError">验证码必须是6位</string>
+    <string name="passwordError">密码必须是6-12位</string>
+    <string name="registSuccess">注册成功</string>
+    <string name="registFail">注册失败</string>
+    <string name="verifyCodeComitError">获取验证码失败</string>
 
 </resources>

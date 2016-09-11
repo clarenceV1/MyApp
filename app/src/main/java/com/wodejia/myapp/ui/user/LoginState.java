@@ -7,4 +7,6 @@ public interface LoginState {
     public void login();
 
     public void logout();
+
+    public void register();
 }

@@ -1,9 +1,18 @@
 package com.wodejia.myapp.controller;
 
+import com.example.clarence.utillibrary.LogUtils;
+import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.data.Weather;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.db.DbManager;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
+import com.wodejia.myapp.table.AreasDO;
+import com.wodejia.myapp.table.AreasDODao;
+import com.wodejia.myapp.table.DaoMaster;
+import com.wodejia.myapp.table.DaoSession;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -17,7 +26,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by clarence on 16/9/5.
  */
-public class MainController {
+public class MainController extends AppController {
 
     @Inject
     public MainController() {
@@ -52,5 +61,18 @@ public class MainController {
             return stringBuffer.toString();
         }
         return null;
+    }
+
+    public void test() {
+        AreasDODao areasDODao = mDaoSession.getAreasDODao();
+        AreasDO areasDO = new AreasDO();
+        areasDO.setEstateId(1);
+        areasDO.setAreasAddress("222");
+        areasDO.setAreasName("2111");
+        areasDODao.insert(areasDO);
+        List<AreasDO> areasDOList = areasDODao.queryBuilder().build().list();
+        if (areasDOList != null) {
+            LogUtils.d("testsql",areasDOList.toString());
+        }
     }
 }
