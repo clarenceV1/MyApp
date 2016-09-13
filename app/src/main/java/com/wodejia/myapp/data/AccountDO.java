@@ -1,9 +1,17 @@
 package com.wodejia.myapp.data;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Transient;
+import org.greenrobot.greendao.annotation.Generated;
+
 /**
  * Created by clarence on 16/9/9.
  */
+@Entity
 public class AccountDO {
+    @Id(autoincrement = true)
+    private Long id;
     /**
      * 账号
      */
@@ -11,6 +19,7 @@ public class AccountDO {
     /**
      * 密码
      */
+    @Transient
     private String password;
     /**
      * 用户ID
@@ -28,6 +37,21 @@ public class AccountDO {
      * 用户名
      */
     private String userName;
+
+    @Generated(hash = 1664475347)
+    public AccountDO(Long id, String account, int userId, String userNickname,
+            String userIcon, String userName) {
+        this.id = id;
+        this.account = account;
+        this.userId = userId;
+        this.userNickname = userNickname;
+        this.userIcon = userIcon;
+        this.userName = userName;
+    }
+
+    @Generated(hash = 443324541)
+    public AccountDO() {
+    }
 
     public String getPassword() {
         return password;
@@ -75,5 +99,13 @@ public class AccountDO {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -2,13 +2,13 @@ package com.wodejia.myapp.data;
 
 
 public class WeatherInfoResponseDO {
-    public Weather weatherinfo;
+    public WeatherDO weatherinfo;
 
-    public Weather getWeatherinfo() {
+    public WeatherDO getWeatherinfo() {
         return weatherinfo;
     }
 
-    public void setWeatherinfo(Weather weatherinfo) {
+    public void setWeatherinfo(WeatherDO weatherinfo) {
         this.weatherinfo = weatherinfo;
     }
 }

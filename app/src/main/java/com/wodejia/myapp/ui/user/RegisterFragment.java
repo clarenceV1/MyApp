@@ -1,5 +1,6 @@
 package com.wodejia.myapp.ui.user;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +35,17 @@ public class RegisterFragment extends AppFragment {
     @BindView(R.id.etVerifyCode)
     EditText etVerifyCode;
 
+    LoginState loginState;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            loginState = (LoginState) getActivity();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initVariables() {
@@ -102,7 +114,9 @@ public class RegisterFragment extends AppFragment {
             @Override
             public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
                 ToastUtils.showToast(getContext(), R.string.registSuccess);
-
+                if (loginState != null) {
+                    loginState.goLogin();
+                }
             }
         });
     }

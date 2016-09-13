@@ -1,9 +1,5 @@
 package com.wodejia.myapp.app;
 
-import com.wodejia.myapp.db.DbManager;
-import com.wodejia.myapp.table.DaoMaster;
-import com.wodejia.myapp.table.DaoSession;
-
 import javax.inject.Inject;
 
 /**
@@ -11,12 +7,8 @@ import javax.inject.Inject;
  */
 public class AppController {
 
-    public DaoMaster mDaoMaster;
-    public DaoSession mDaoSession;
-
     @Inject
     public AppController() {
-        mDaoMaster = DbManager.getInstance().getMaster();
-        mDaoSession = DbManager.getInstance().getSession();
+
     }
 }

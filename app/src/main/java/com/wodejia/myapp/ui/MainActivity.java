@@ -11,14 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
+import com.wodejia.myapp.data.AccountDO;
 import com.wodejia.myapp.ui.contacts.ContactsMainFragment;
 import com.wodejia.myapp.controller.MainController;
-import com.wodejia.myapp.data.Weather;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 import com.wodejia.myapp.ui.user.LoginFragment;
 import com.wodejia.myapp.ui.user.LoginState;
@@ -58,11 +57,6 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
         ButterKnife.bind(this);
         initView();
         load();
-        test();
-    }
-
-    private void test() {
-        controller.test();
     }
 
     private void initView() {
@@ -149,24 +143,32 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
                 }
             }
         });
+        AccountDO accountDO = controller.getAccount();
+        loginSuccess(accountDO);
     }
 
     @Override
-    public void login() {
+    public void loginSuccess(AccountDO accountDO) {
+        mainHeadManager.login(accountDO);
+    }
+
+    @Override
+    public void goLogin() {
         LoginFragment loginFragment = new LoginFragment();
         replaceFragment(R.id.mainframelayout, loginFragment);
         drawer.closeDrawer(GravityCompat.START);
     }
 
     @Override
-    public void logout() {
+    public void goLogout() {
 
     }
 
     @Override
-    public void register() {
+    public void goRegister() {
         RegisterFragment registerFragment = new RegisterFragment();
         replaceFragment(R.id.mainframelayout, registerFragment);
         drawer.closeDrawer(GravityCompat.START);
     }
+
 }

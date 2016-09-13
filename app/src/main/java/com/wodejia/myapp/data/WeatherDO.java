@@ -1,6 +1,6 @@
 package com.wodejia.myapp.data;
 
-public class Weather {
+public class WeatherDO {
     public String city;
     public String cityid;
     public String temp1;

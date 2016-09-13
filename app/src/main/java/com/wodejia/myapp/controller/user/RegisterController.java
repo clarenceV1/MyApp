@@ -88,7 +88,7 @@ public class RegisterController extends AppController {
      * @return
      */
     public boolean checkVerifyCode(String verifyCode) {
-        return TextUtils.isEmpty(verifyCode) || verifyCode.length() == 6;
+        return TextUtils.isEmpty(verifyCode) || verifyCode.length() != 6;
     }
 
     /**

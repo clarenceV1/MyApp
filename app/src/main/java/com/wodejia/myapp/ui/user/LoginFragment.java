@@ -1,5 +1,6 @@
 package com.wodejia.myapp.ui.user;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,10 +9,13 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppFragment;
 import com.wodejia.myapp.controller.user.LoginController;
+import com.wodejia.myapp.data.AccountDO;
+import com.wodejia.myapp.data.WeatherInfoResponseDO;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import rx.Subscriber;
 
 /**
  * Created by clarence on 16/9/9.
@@ -27,6 +31,18 @@ public class LoginFragment extends AppFragment {
     EditText etPassword;
     @BindView(R.id.btnLogin)
     Button btnLogin;
+
+    LoginState loginState;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            loginState = (LoginState) getActivity();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initVariables() {
@@ -48,7 +64,31 @@ public class LoginFragment extends AppFragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showToast(getContext(), "登录提交");
+                comitLogin();
+            }
+        });
+    }
+
+    private void comitLogin() {
+        controller.loginComit(new Subscriber<WeatherInfoResponseDO>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                ToastUtils.showToast(getContext(), R.string.loginFail);
+            }
+
+            @Override
+            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+                ToastUtils.showToast(getContext(), R.string.loginSuccess);
+                AccountDO accountDO = controller.getMockData();
+                controller.saveAccount(accountDO);
+                if (loginState != null) {
+                    loginState.loginSuccess(accountDO);
+                }
             }
         });
     }

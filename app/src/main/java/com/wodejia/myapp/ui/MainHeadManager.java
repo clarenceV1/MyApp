@@ -35,7 +35,6 @@ public class MainHeadManager {
 
     LoginState loginState;
 
-
     public MainHeadManager(NavigationView navigationView, LoginState loginState) {
         this.navigationView = navigationView;
         this.loginState = loginState;
@@ -50,6 +49,7 @@ public class MainHeadManager {
         tvUserNickname = (TextView) menuHead.findViewById(R.id.tvUserNickname);
         tvRegister = (TextView) menuHead.findViewById(R.id.tvRegister);
         tvLogin = (TextView) menuHead.findViewById(R.id.tvLogin);
+        llLogin = (LinearLayout) menuHead.findViewById(R.id.llLogin);
         llLogout = (LinearLayout) menuHead.findViewById(R.id.llLogout);
         initListener();
     }
@@ -59,7 +59,7 @@ public class MainHeadManager {
             @Override
             public void onClick(View v) {
                 if (loginState != null) {
-                    loginState.login();
+                    loginState.goLogin();
                 }
             }
         });
@@ -67,7 +67,7 @@ public class MainHeadManager {
             @Override
             public void onClick(View v) {
                 if (loginState != null) {
-                    loginState.register();
+                    loginState.goRegister();
                 }
             }
         });
@@ -96,7 +96,6 @@ public class MainHeadManager {
         setUserNickname(account.getUserNickname());
         setUserAccount(account.getAccount());
         setUserIcon(account.getUserIcon());
-
     }
 
     /**
