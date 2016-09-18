@@ -70,6 +70,15 @@ public class LoginFragment extends AppFragment {
     }
 
     private void comitLogin() {
+        String account = etAccount.getText().toString();
+        if (!controller.checkAccunt(account)) {
+            ToastUtils.showToast(getActivity(), R.string.phoneError);
+        }
+        String password = etPassword.getText().toString();
+        if (!controller.checkPassword(password)) {
+            ToastUtils.showToast(getActivity(), R.string.passwordError);
+            return;
+        }
         controller.loginComit(new Subscriber<WeatherInfoResponseDO>() {
             @Override
             public void onCompleted() {

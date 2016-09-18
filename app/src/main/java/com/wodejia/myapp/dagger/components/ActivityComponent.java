@@ -1,5 +1,6 @@
 package com.wodejia.myapp.dagger.components;
 
+import com.wodejia.myapp.ui.qiniu.ImageUploadActivity;
 import com.wodejia.myapp.ui.MainActivity;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.app.AppFragment;
@@ -59,4 +60,6 @@ public interface ActivityComponent {
     void inject(OfficeDetailFragment officeDetailFragment);
 
     void inject(LogisticsDetailFragment logisticsDetailFragment);
+
+    void inject(ImageUploadActivity imageUploadActivity);
 }

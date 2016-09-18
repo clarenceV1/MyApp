@@ -72,16 +72,6 @@ public class RegisterController extends AppController {
     }
 
     /**
-     * 检查账号
-     *
-     * @param account
-     * @return
-     */
-    public boolean checkAccunt(String account) {
-        return TextUtils.isEmpty(account) || !CommonUtils.isMobilePhone(account);
-    }
-
-    /**
      * 检查验证码
      *
      * @param verifyCode
@@ -89,15 +79,5 @@ public class RegisterController extends AppController {
      */
     public boolean checkVerifyCode(String verifyCode) {
         return TextUtils.isEmpty(verifyCode) || verifyCode.length() != 6;
-    }
-
-    /**
-     * 检查密码
-     *
-     * @param password
-     * @return
-     */
-    public boolean checkPassword(String password) {
-        return TextUtils.isEmpty(password) || password.length() < 6 || password.length() > 12;
     }
 }

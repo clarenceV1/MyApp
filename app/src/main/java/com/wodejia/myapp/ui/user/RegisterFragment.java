@@ -83,7 +83,7 @@ public class RegisterFragment extends AppFragment {
      */
     private void registComit() {
         String account = etAccount.getText().toString();
-        if (controller.checkAccunt(account)) {
+        if (!controller.checkAccunt(account)) {
             ToastUtils.showToast(getActivity(), R.string.phoneError);
             return;
         }
@@ -95,7 +95,7 @@ public class RegisterFragment extends AppFragment {
         }
 
         String password = etPassword.getText().toString();
-        if (controller.checkPassword(password)) {
+        if (!controller.checkPassword(password)) {
             ToastUtils.showToast(getActivity(), R.string.passwordError);
             return;
         }
@@ -126,7 +126,7 @@ public class RegisterFragment extends AppFragment {
      */
     private void requestVerifyCode() {
         String account = etAccount.getText().toString();
-        if (controller.checkAccunt(account)) {
+        if (!controller.checkAccunt(account)) {
             ToastUtils.showToast(getActivity(), R.string.phoneError);
             return;
         }

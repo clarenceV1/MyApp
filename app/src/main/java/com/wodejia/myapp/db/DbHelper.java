@@ -3,7 +3,8 @@ package com.wodejia.myapp.db;
 import android.content.Context;
 import android.util.Log;
 
-import com.wodejia.myapp.table.DaoMaster;
+
+import com.wodejia.myapp.data.DaoMaster;
 
 import org.greenrobot.greendao.database.Database;
 

@@ -2,8 +2,8 @@ package com.wodejia.myapp.db;
 
 import android.content.Context;
 
-import com.wodejia.myapp.table.DaoMaster;
-import com.wodejia.myapp.table.DaoSession;
+import com.wodejia.myapp.data.DaoMaster;
+import com.wodejia.myapp.data.DaoSession;
 
 
 /**

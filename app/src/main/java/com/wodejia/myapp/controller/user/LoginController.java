@@ -1,5 +1,8 @@
 package com.wodejia.myapp.controller.user;
 
+import android.text.TextUtils;
+
+import com.example.clarence.utillibrary.CommonUtils;
 import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.data.AccountDO;
 import com.wodejia.myapp.data.AccountDODao;

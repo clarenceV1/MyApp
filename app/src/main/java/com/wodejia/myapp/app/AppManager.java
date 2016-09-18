@@ -1,8 +1,8 @@
 package com.wodejia.myapp.app;
 
+import com.wodejia.myapp.data.DaoMaster;
+import com.wodejia.myapp.data.DaoSession;
 import com.wodejia.myapp.db.DbManager;
-import com.wodejia.myapp.table.DaoMaster;
-import com.wodejia.myapp.table.DaoSession;
 
 import javax.inject.Inject;
 
