@@ -89,6 +89,7 @@ public class ImageUploadActivity extends AppActivity {
         } catch (ActivityNotFoundException ex) {
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -195,32 +196,25 @@ public class ImageUploadActivity extends AppActivity {
         this.uploadManager.put(uploadFile, null, uploadToken,
                 new UpCompletionHandler() {
                     @Override
-                    public void complete(String key, ResponseInfo respInfo,
-                                         JSONObject jsonData) {
+                    public void complete(String key, ResponseInfo respInfo, JSONObject jsonData) {
                         AsyncRun.run(new Runnable() {
                             @Override
                             public void run() {
                                 // reset status
-                              //  uploadStatusLayout.setVisibility(LinearLayout.INVISIBLE);
                                 uploadProgressBar.setProgress(0);
                             }
                         });
 
-                        long lastMillis = System.currentTimeMillis()
-                                - startTime;
+                        long lastMillis = System.currentTimeMillis() - startTime;
                         if (respInfo.isOK()) {
                             try {
                                 String fileKey = jsonData.getString("key");
                                 String fileHash = jsonData.getString("hash");
-                                writeLog("File Size: "
-                                        + Tools.formatSize(uploadFileLength));
+                                writeLog("File Size: " + Tools.formatSize(uploadFileLength));
                                 writeLog("File Key: " + fileKey);
                                 writeLog("File Hash: " + fileHash);
-                                writeLog("Last Time: "
-                                        + Tools.formatMilliSeconds(lastMillis));
-                                writeLog("Average Speed: "
-                                        + Tools.formatSpeed(fileLength,
-                                        lastMillis));
+                                writeLog("Last Time: " + Tools.formatMilliSeconds(lastMillis));
+                                writeLog("Average Speed: " + Tools.formatSpeed(fileLength, lastMillis));
                                 writeLog("X-Reqid: " + respInfo.reqId);
                                 writeLog("X-Via: " + respInfo.xvia);
                                 writeLog("--------------------------------");
