@@ -4,12 +4,18 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.clarence.utillibrary.DownloadUtils;
+import com.example.clarence.utillibrary.FileUtils;
+import com.example.clarence.utillibrary.IntentUtils;
+import com.example.clarence.utillibrary.LogUtils;
 import com.example.clarence.utillibrary.ToastUtils;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UpProgressHandler;
@@ -21,7 +27,11 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
-
+import com.wodejia.myapp.app.Constant;
+import com.wodejia.myapp.controller.QiniuController;
+import com.wodejia.myapp.data.QiniuTokenDO;
+import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.http.ApiUrl;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,14 +39,18 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Subscriber;
 
 /**
  * Created by clarence on 16/9/18.
  */
 public class ImageUploadActivity extends AppActivity {
-    private static final int REQUEST_CODE = 8090;
+    @Inject
+    QiniuController controller;
 
     @BindView(R.id.uploadProgressBar)
     ProgressBar uploadProgressBar;
@@ -50,9 +64,12 @@ public class ImageUploadActivity extends AppActivity {
     TextView uploadPercentageTextView;
     @BindView(R.id.uploadLogTextView)
     TextView uploadLogTextView;
+    @BindView(R.id.simpleDraweeView)
+    SimpleDraweeView simpleDraweeView;
+
+    private static final int REQUEST_CODE = 8090;
 
     private String uploadFilePath;
-    private UploadManager uploadManager;
     private long uploadLastTimePoint;
     private long uploadLastOffset;
     private long uploadFileLength;
@@ -76,17 +93,18 @@ public class ImageUploadActivity extends AppActivity {
     }
 
     private void initView() {
+        uploadProgressBar.setProgress(0);
         uploadProgressBar.setMax(100);
         uploadStatusLayout.setVisibility(View.INVISIBLE);
     }
 
     public void selectUploadFile(View view) {
-        Intent target = FileUtils.createGetContentIntent();
-        Intent intent = Intent.createChooser(target,
-                "选择文件");
+        Intent target = IntentUtils.createGetContentIntent();
+        Intent intent = Intent.createChooser(target, "选择文件");
         try {
             this.startActivityForResult(intent, REQUEST_CODE);
         } catch (ActivityNotFoundException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -94,13 +112,10 @@ public class ImageUploadActivity extends AppActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_CODE:
-                // If the file selection was successful
                 if (resultCode == RESULT_OK) {
                     if (data != null) {
-                        // Get the URI of the selected file
                         final Uri uri = data.getData();
                         try {
-                            // Get the file path from the URI
                             final String path = FileUtils.getPath(this, uri);
                             this.uploadFilePath = path;
                             this.clearLog();
@@ -114,145 +129,74 @@ public class ImageUploadActivity extends AppActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
     public void uploadFile(View view) {
-        if (this.uploadFilePath == null) {
+        if (uploadFilePath == null) {
             return;
         }
-        //从业务服务器获取上传凭证
-        new Thread(new Runnable() {
+        File uploadFile = new File(uploadFilePath);
+        uploadFileLength = uploadFile.length();
+        uploadLastTimePoint = System.currentTimeMillis();
+        uploadLastOffset = 0;
+        prepareUpLoad(uploadFileLength);
+        UploadOptions uploadOptions = new UploadOptions(null, null, false, new UpProgressHandler() {
             @Override
-            public void run() {
-                final OkHttpClient httpClient = new OkHttpClient();
-                Request req = new Request.Builder().url(QiniuLabConfig.makeUrl(
-                        QiniuLabConfig.REMOTE_SERVICE_SERVER,
-                        QiniuLabConfig.SIMPLE_UPLOAD_WITHOUT_KEY_PATH)).method("GET", null).build();
-                Response resp = null;
-                try {
-                    resp = httpClient.newCall(req).execute();
-                    JSONObject jsonObject = new JSONObject(resp.body().string());
-                    String uploadToken = jsonObject.getString("uptoken");
-                    writeLog("申请凭证:" + uploadToken);
-                    upload(uploadToken);
-                } catch (IOException e) {
-                    AsyncRun.run(new Runnable() {
-                        @Override
-                        public void run() {
-                            ToastUtils.showToast(ImageUploadActivity.this,"申请上传凭证失败!");
-                        }
-                    });
-                    writeLog("申请上传凭证失败!" + resp.toString());
-                } catch (JSONException e) {
-                    writeLog("申请上传凭证失败!");
-                    writeLog("StatusCode:" + resp.code());
-                    if (resp != null) {
-                        writeLog("Response:" + resp.toString());
-                    }
-                    writeLog("Exception:" + e.getMessage());
-                } finally {
-                    if (resp != null) {
-                        try {
-                            resp.body().close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
+            public void progress(String key, double percent) {
+                updateStatus(percent);
+            }
+        }, null);
+        UpCompletionHandler upCompletionHandler = new UpCompletionHandler() {
+            @Override
+            public void complete(String key, ResponseInfo respInfo, JSONObject jsonData) {
+                if (respInfo.isOK()) {
+                    uoloadComplete(key,respInfo,jsonData);
                 }
             }
-        }).start();
-
+        };
+        controller.uploadImage(this, uploadFilePath, uploadOptions, upCompletionHandler);
     }
-    private void upload(String uploadToken) {
-        if (this.uploadManager == null) {
-            this.uploadManager = new UploadManager();
+
+    private void uoloadComplete(String key, ResponseInfo respInfo, JSONObject jsonData) {
+        try {
+            long lastMillis = System.currentTimeMillis() - uploadLastTimePoint;
+            String fileKey = jsonData.getString("key");
+            String fileHash = jsonData.getString("hash");
+            DisplayMetrics dm = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(dm);
+            final int width = dm.widthPixels;
+            final String imageUrl = ApiUrl.QINIU_IMAGE_SERVER + fileKey + "?imageView2/0/w/" + width + "/format/jpg";
+            LogUtils.d("tag", imageUrl);
+            AsyncRun.run(new Runnable() {
+                @Override
+                public void run() {
+                    Uri uri = Uri.parse(imageUrl);
+                    simpleDraweeView.setImageURI(uri);
+                }
+            });
+
+            writeLog("File Size: " + DownloadUtils.formatSize(uploadFileLength));
+            writeLog("File Key: " + fileKey);
+            writeLog("File Hash: " + fileHash);
+            writeLog("Last Time: " + DownloadUtils.formatMilliSeconds(lastMillis));
+            writeLog("Average Speed: " + DownloadUtils.formatSpeed(uploadFileLength, lastMillis));
+            writeLog("X-Reqid: " + respInfo.reqId);
+            writeLog("X-Via: " + respInfo.xvia);
+            writeLog("--------------------------------");
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        File uploadFile = new File(this.uploadFilePath);
-        UploadOptions uploadOptions = new UploadOptions(null, null, false,
-                new UpProgressHandler() {
-                    @Override
-                    public void progress(String key, double percent) {
-                        updateStatus(percent);
-                    }
-                }, null);
-        final long startTime = System.currentTimeMillis();
-        final long fileLength = uploadFile.length();
-        this.uploadFileLength = fileLength;
-        this.uploadLastTimePoint = startTime;
-        this.uploadLastOffset = 0;
-
-        AsyncRun.run(new Runnable() {
-            @Override
-            public void run() {
-                // prepare status
-                uploadPercentageTextView.setText("0 %");
-                uploadSpeedTextView.setText("0 KB/s");
-                uploadFileLengthTextView.setText(Tools.formatSize(fileLength));
-                uploadStatusLayout.setVisibility(LinearLayout.VISIBLE);
-            }
-        });
-
-        writeLog( "上传文件...");
-
-        //因为是无key上传，所以key参数指定为null
-        this.uploadManager.put(uploadFile, null, uploadToken,
-                new UpCompletionHandler() {
-                    @Override
-                    public void complete(String key, ResponseInfo respInfo, JSONObject jsonData) {
-                        AsyncRun.run(new Runnable() {
-                            @Override
-                            public void run() {
-                                // reset status
-                                uploadProgressBar.setProgress(0);
-                            }
-                        });
-
-                        long lastMillis = System.currentTimeMillis() - startTime;
-                        if (respInfo.isOK()) {
-                            try {
-                                String fileKey = jsonData.getString("key");
-                                String fileHash = jsonData.getString("hash");
-                                writeLog("File Size: " + Tools.formatSize(uploadFileLength));
-                                writeLog("File Key: " + fileKey);
-                                writeLog("File Hash: " + fileHash);
-                                writeLog("Last Time: " + Tools.formatMilliSeconds(lastMillis));
-                                writeLog("Average Speed: " + Tools.formatSpeed(fileLength, lastMillis));
-                                writeLog("X-Reqid: " + respInfo.reqId);
-                                writeLog("X-Via: " + respInfo.xvia);
-                                writeLog("--------------------------------");
-                            } catch (JSONException e) {
-                                AsyncRun.run(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        ToastUtils.showToast(ImageUploadActivity.this, "上传回复解析错误!");
-                                    }
-                                });
-
-                                writeLog("上传回复解析错误!");
-                                if (jsonData != null) {
-                                    writeLog(jsonData.toString());
-                                }
-                                writeLog("--------------------------------");
-                            }
-                        } else {
-                            AsyncRun.run(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ToastUtils.showToast(ImageUploadActivity.this, "上传回复解析错误!");
-                                }
-                            });
-
-                            writeLog(respInfo.toString());
-                            if (jsonData != null) {
-                                writeLog(jsonData.toString());
-                            }
-                            writeLog("--------------------------------");
-                        }
-                    }
-
-                }, uploadOptions);
     }
+
 
     private void clearLog() {
         this.uploadLogTextView.setText("");
+    }
+
+    public void prepareUpLoad(long fileLength) {
+        uploadPercentageTextView.setText("0 %");
+        uploadSpeedTextView.setText("0 KB/s");
+        uploadFileLengthTextView.setText(DownloadUtils.formatSize(fileLength));
+        uploadStatusLayout.setVisibility(LinearLayout.VISIBLE);
     }
 
     private void updateStatus(final double percentage) {
@@ -264,7 +208,7 @@ public class ImageUploadActivity extends AppActivity {
             return;
         }
 
-        final String speed = Tools.formatSpeed(deltaSize, deltaTime);
+        final String speed = DownloadUtils.formatSpeed(deltaSize, deltaTime);
         // update
         uploadLastTimePoint = now;
         uploadLastOffset = currentOffset;
