@@ -119,6 +119,7 @@ public class ImageUploadActivity extends AppActivity {
                             final String path = FileUtils.getPath(this, uri);
                             this.uploadFilePath = path;
                             this.clearLog();
+                            LogUtils.d("tag",uploadFilePath);
                             this.writeLog("选择文件:" + path);
                         } catch (Exception e) {
                             ToastUtils.showToast(this, "选择上传文件失败!");

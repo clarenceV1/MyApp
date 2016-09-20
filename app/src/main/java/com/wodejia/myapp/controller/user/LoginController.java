@@ -65,6 +65,7 @@ public class LoginController extends AppController {
         account.setUserId(1);
         account.setUserName("caicai");
         account.setUserNickname("xiaocai");
+        account.setLevel(100);
         account.setUserIcon("http://e.hiphotos.baidu.com/image/pic/item/8d5494eef01f3a29913f38ca9b25bc315c607c3b.jpg");
         return account;
     }

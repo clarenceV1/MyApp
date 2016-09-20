@@ -28,6 +28,7 @@ public class AccountDODao extends AbstractDao<AccountDO, Long> {
         public final static Property UserNickname = new Property(3, String.class, "userNickname", false, "USER_NICKNAME");
         public final static Property UserIcon = new Property(4, String.class, "userIcon", false, "USER_ICON");
         public final static Property UserName = new Property(5, String.class, "userName", false, "USER_NAME");
+        public final static Property Level = new Property(6, int.class, "level", false, "LEVEL");
     }
 
 
@@ -48,7 +49,8 @@ public class AccountDODao extends AbstractDao<AccountDO, Long> {
                 "\"USER_ID\" INTEGER NOT NULL ," + // 2: userId
                 "\"USER_NICKNAME\" TEXT," + // 3: userNickname
                 "\"USER_ICON\" TEXT," + // 4: userIcon
-                "\"USER_NAME\" TEXT);"); // 5: userName
+                "\"USER_NAME\" TEXT," + // 5: userName
+                "\"LEVEL\" INTEGER NOT NULL );"); // 6: level
     }
 
     /** Drops the underlying database table. */
@@ -86,6 +88,7 @@ public class AccountDODao extends AbstractDao<AccountDO, Long> {
         if (userName != null) {
             stmt.bindString(6, userName);
         }
+        stmt.bindLong(7, entity.getLevel());
     }
 
     @Override
@@ -117,6 +120,7 @@ public class AccountDODao extends AbstractDao<AccountDO, Long> {
         if (userName != null) {
             stmt.bindString(6, userName);
         }
+        stmt.bindLong(7, entity.getLevel());
     }
 
     @Override
@@ -132,7 +136,8 @@ public class AccountDODao extends AbstractDao<AccountDO, Long> {
             cursor.getInt(offset + 2), // userId
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // userNickname
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // userIcon
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // userName
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // userName
+            cursor.getInt(offset + 6) // level
         );
         return entity;
     }
@@ -145,6 +150,7 @@ public class AccountDODao extends AbstractDao<AccountDO, Long> {
         entity.setUserNickname(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setUserIcon(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setUserName(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setLevel(cursor.getInt(offset + 6));
      }
     
     @Override

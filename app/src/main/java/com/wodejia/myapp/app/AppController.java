@@ -3,6 +3,7 @@ package com.wodejia.myapp.app;
 import android.text.TextUtils;
 
 import com.example.clarence.utillibrary.CommonUtils;
+import com.wodejia.myapp.table.BlockDO;
 
 import javax.inject.Inject;
 

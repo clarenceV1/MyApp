@@ -37,20 +37,34 @@ public class AccountDO {
      * 用户名
      */
     private String userName;
+    /**
+     * 等级
+     * @return
+     */
+    private int level;
 
-    @Generated(hash = 1664475347)
+    @Generated(hash = 797550883)
     public AccountDO(Long id, String account, int userId, String userNickname,
-            String userIcon, String userName) {
+            String userIcon, String userName, int level) {
         this.id = id;
         this.account = account;
         this.userId = userId;
         this.userNickname = userNickname;
         this.userIcon = userIcon;
         this.userName = userName;
+        this.level = level;
     }
 
     @Generated(hash = 443324541)
     public AccountDO() {
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public String getPassword() {

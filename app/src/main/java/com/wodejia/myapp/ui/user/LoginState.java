@@ -8,8 +8,6 @@ import com.wodejia.myapp.data.AccountDO;
 public interface LoginState {
     public void goLogin();
 
-    public void goLogout();
-
     public void goRegister();
 
     public void loginSuccess(AccountDO accountDO);

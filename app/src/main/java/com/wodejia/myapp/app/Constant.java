@@ -27,5 +27,4 @@ public class Constant {
     public static final String EXTRA_SEND_RELATIVE = "sendRelative";
 
     public final static String QUICK_START_IMAGE_DEMO_PATH = "http://115.231.183.102:9090/api/quick_start/simple_image_example_token.php";
-
 }

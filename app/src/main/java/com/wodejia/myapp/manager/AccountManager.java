@@ -25,7 +25,7 @@ public class AccountManager extends AppManager {
 
     public AccountDO getAccount() {
         List<AccountDO> accountDOList = accountDODao.queryBuilder().build().list();
-        if(accountDOList!=null&&accountDOList.size()>0){
+        if (accountDOList != null && accountDOList.size() > 0) {
             return accountDOList.get(0);
         }
         return null;

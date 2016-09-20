@@ -1,5 +1,9 @@
 package com.wodejia.myapp.dagger.components;
 
+import com.wodejia.myapp.ui.RichEditorFragment;
+import com.wodejia.myapp.ui.community.BlockFragment;
+import com.wodejia.myapp.ui.manager.ManagerAddBlockActivity;
+import com.wodejia.myapp.ui.manager.ManagerMainFragment;
 import com.wodejia.myapp.ui.qiniu.ImageUploadActivity;
 import com.wodejia.myapp.ui.MainActivity;
 import com.wodejia.myapp.app.AppActivity;
@@ -62,4 +66,12 @@ public interface ActivityComponent {
     void inject(LogisticsDetailFragment logisticsDetailFragment);
 
     void inject(ImageUploadActivity imageUploadActivity);
+
+    void inject(RichEditorFragment richEditorFragment);
+
+    void inject(ManagerMainFragment managerMainFragment);
+
+    void inject(ManagerAddBlockActivity managerAddBlockActivity);
+
+    void inject(BlockFragment blockFragment);
 }

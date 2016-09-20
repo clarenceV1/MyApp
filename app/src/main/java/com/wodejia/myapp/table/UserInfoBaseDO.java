@@ -30,6 +30,19 @@ public class UserInfoBaseDO {
      * 手机号
      */
     private String userTelephone;
+    /**
+     * 等级
+     * @return
+     */
+    private int level;
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
     public int getUserId() {
         return userId;

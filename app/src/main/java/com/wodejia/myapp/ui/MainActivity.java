@@ -16,9 +16,11 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.data.AccountDO;
+import com.wodejia.myapp.ui.community.BlockFragment;
 import com.wodejia.myapp.ui.contacts.ContactsMainFragment;
 import com.wodejia.myapp.controller.MainController;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.ui.manager.ManagerMainFragment;
 import com.wodejia.myapp.ui.user.LoginFragment;
 import com.wodejia.myapp.ui.user.LoginState;
 import com.wodejia.myapp.ui.user.RegisterFragment;
@@ -44,6 +46,8 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
     NavigationView navigationView;
 
     MainHeadManager mainHeadManager;
+
+    public static AccountDO accountDO;
 
     @Override
     public void initVariables() {
@@ -78,7 +82,6 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -107,13 +110,17 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
         switch (id) {
             case R.id.nav_camera:
                 break;
-            case R.id.nav_gallery:
+            case R.id.nav_community:
+                BlockFragment blockFragment = new BlockFragment();
+                replaceFragment(R.id.mainframelayout, blockFragment);
                 break;
             case R.id.nav_contacts:
                 ContactsMainFragment contactsActivity = new ContactsMainFragment();
                 replaceFragment(R.id.mainframelayout, contactsActivity);
                 break;
             case R.id.nav_manage:
+                ManagerMainFragment managerMainFragment = new ManagerMainFragment();
+                replaceFragment(R.id.mainframelayout, managerMainFragment);
                 break;
             case R.id.nav_share:
                 break;
@@ -143,12 +150,14 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
                 }
             }
         });
-        AccountDO accountDO = controller.getAccount();
+
+        accountDO = controller.getAccount();
         loginSuccess(accountDO);
     }
 
     @Override
     public void loginSuccess(AccountDO accountDO) {
+        this.accountDO = accountDO;
         mainHeadManager.login(accountDO);
     }
 
@@ -157,11 +166,6 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
         LoginFragment loginFragment = new LoginFragment();
         replaceFragment(R.id.mainframelayout, loginFragment);
         drawer.closeDrawer(GravityCompat.START);
-    }
-
-    @Override
-    public void goLogout() {
-
     }
 
     @Override
