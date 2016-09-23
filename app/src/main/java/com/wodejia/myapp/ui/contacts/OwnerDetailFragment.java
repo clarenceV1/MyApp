@@ -8,7 +8,7 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.controller.contacts.UserDetailController;
-import com.wodejia.myapp.data.OwnerDetailRequestDO;
+import com.wodejia.myapp.data.contacts.OwnerDetailRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 import com.wodejia.myapp.event.ContactsDetailEvent;
 import com.wodejia.myapp.table.UserInfoBaseDO;

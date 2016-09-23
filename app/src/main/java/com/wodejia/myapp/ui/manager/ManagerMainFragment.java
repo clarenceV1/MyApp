@@ -41,6 +41,7 @@ public class ManagerMainFragment extends AppFragment {
     @Override
     protected void initView(View view) {
         //todo 添加对话框验证管理密码
+        //todo 不是管理员不应该进入该页面
         adapter = new ManagerMainAdapter(getContext(), controller.getFunctions());
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -11,9 +11,9 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.controller.manager.ManagerAddBlockController;
-import com.wodejia.myapp.data.AccountDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
-import com.wodejia.myapp.table.BlockDO;
+import com.wodejia.myapp.data.community.BlockRequestDO;
+import com.wodejia.myapp.ui.MainActivity;
 
 import javax.inject.Inject;
 
@@ -28,9 +28,10 @@ public class ManagerAddBlockActivity extends AppActivity {
 
     @Inject
     ManagerAddBlockController controller;
-
-    @BindView(R.id.etBockName)
-    EditText etBockName;
+    @BindView(R.id.etBockTitle)
+    EditText etBockTitle;
+    @BindView(R.id.etBockSubtitle)
+    EditText etBockSubtitle;
     @BindView(R.id.simpleDraweeView)
     SimpleDraweeView simpleDraweeView;
 
@@ -45,6 +46,7 @@ public class ManagerAddBlockActivity extends AppActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manager_add_block);
+        //todo 不是管理员不应该进入该页面
         ButterKnife.bind(this);
         initView();
     }
@@ -57,29 +59,42 @@ public class ManagerAddBlockActivity extends AppActivity {
     }
 
     public void commit(View view) {
-        final BlockDO blockDO = new BlockDO();
-        blockDO.setBlockId(2);
-        blockDO.setBlockIcon(blockIcon);
-        String blockName = etBockName.getText().toString();
-        if (!TextUtils.isEmpty(blockName)) {
-            blockDO.setBlockName(blockName);
-            controller.addBlock(blockDO,new Subscriber<WeatherInfoResponseDO>() {
-                @Override
-                public void onCompleted() {
-
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    ToastUtils.showToast(ManagerAddBlockActivity.this, "添加板块失败");
-                }
-
-                @Override
-                public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
-                    ToastUtils.showToast(ManagerAddBlockActivity.this, "添加板块成功");
-                    controller.saveMockData(blockDO);//TODO 临时保存数据来
-                }
-            });
+        if(!controller.isManager(MainActivity.accountDO)){
+            ToastUtils.showToast(this, "你不是管理员无法使用该功能");
+            return;
         }
+        String blockTitle = etBockTitle.getText().toString();
+        String blockSubtitle = etBockSubtitle.getText().toString();
+        if (TextUtils.isEmpty(blockTitle)) {
+            ToastUtils.showToast(this, "板块标题不能为空");
+            return;
+        }
+        if (TextUtils.isEmpty(blockSubtitle)) {
+            ToastUtils.showToast(this, "板块副标题不能为空");
+            return;
+        }
+        final BlockRequestDO blockDO = new BlockRequestDO();
+        blockDO.setBlockIcon(blockIcon);
+        long managerId = MainActivity.accountDO.getUserId();
+        blockDO.setManagerId(managerId);
+        blockDO.setBlockTitle(blockTitle);
+        blockDO.setBlockSubtitle(blockSubtitle);
+        controller.addBlock(blockDO, new Subscriber<WeatherInfoResponseDO>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                ToastUtils.showToast(ManagerAddBlockActivity.this, "添加板块失败");
+            }
+
+            @Override
+            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+                ToastUtils.showToast(ManagerAddBlockActivity.this, "添加板块成功");
+                controller.saveMockData(blockDO);//TODO 临时保存数据来
+            }
+        });
     }
 }

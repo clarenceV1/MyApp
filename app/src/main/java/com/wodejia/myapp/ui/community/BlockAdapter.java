@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
-import com.wodejia.myapp.data.manager.FunctionDO;
-import com.wodejia.myapp.table.BlockDO;
+import com.wodejia.myapp.data.community.BlockRequestDO;
 
 import java.util.List;
 
@@ -20,11 +18,11 @@ import java.util.List;
  * Created by clarence on 16/9/19.
  */
 public class BlockAdapter extends BaseAdapter {
-    List<BlockDO> blockDOList;
+    List<BlockRequestDO> blockDOList;
     Context context;
     LayoutInflater layoutInflater;
 
-    public BlockAdapter(Context context, List<BlockDO> blockDOList) {
+    public BlockAdapter(Context context, List<BlockRequestDO> blockDOList) {
         this.context = context;
         this.blockDOList = blockDOList;
         layoutInflater = LayoutInflater.from(context);
@@ -36,7 +34,7 @@ public class BlockAdapter extends BaseAdapter {
     }
 
     @Override
-    public BlockDO getItem(int position) {
+    public BlockRequestDO getItem(int position) {
         return blockDOList.get(position);
     }
 
@@ -55,9 +53,11 @@ public class BlockAdapter extends BaseAdapter {
         } else {
             hodler = (Hodler) convertView.getTag();
         }
-        BlockDO blockDO = getItem(position);
+        BlockRequestDO blockDO = getItem(position);
         if (blockDO != null) {
-            hodler.tvBlockName.setText(blockDO.getBlockName());
+            hodler.tvBlockTitle.setText(blockDO.getBlockTitle());
+            hodler.tvBlockSubtitle.setText(blockDO.getBlockSubtitle());
+            hodler.tvBlockManager.setText(blockDO.getManagerName());
         }
         Uri uri = Uri.parse(blockDO.getBlockIcon());
         hodler.ivBlockIcon.setImageURI(uri);
@@ -67,12 +67,14 @@ public class BlockAdapter extends BaseAdapter {
     public class Hodler {
         View view;
         SimpleDraweeView ivBlockIcon;
-        TextView tvBlockName;
+        TextView tvBlockTitle,tvBlockSubtitle,tvBlockManager;
 
         public Hodler(View view) {
             this.view = view;
             this.ivBlockIcon = (SimpleDraweeView) view.findViewById(R.id.ivBlockIcon);
-            this.tvBlockName = (TextView) view.findViewById(R.id.tvBlockName);
+            this.tvBlockManager = (TextView) view.findViewById(R.id.tvBlockManager);
+            this.tvBlockSubtitle = (TextView) view.findViewById(R.id.tvBlockSubtitle);
+            this.tvBlockTitle = (TextView) view.findViewById(R.id.tvBlockTitle);
         }
     }
 }

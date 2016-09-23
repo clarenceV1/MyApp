@@ -10,8 +10,11 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class AccountDO {
+    /**
+     * 用户ID
+     */
     @Id(autoincrement = true)
-    private Long id;
+    private Long userId;
     /**
      * 账号
      */
@@ -21,10 +24,6 @@ public class AccountDO {
      */
     @Transient
     private String password;
-    /**
-     * 用户ID
-     */
-    private int userId;
     /**
      * 用户昵称
      */
@@ -39,16 +38,16 @@ public class AccountDO {
     private String userName;
     /**
      * 等级
+     *
      * @return
      */
     private int level;
 
-    @Generated(hash = 797550883)
-    public AccountDO(Long id, String account, int userId, String userNickname,
+    @Generated(hash = 52373536)
+    public AccountDO(Long userId, String account, String userNickname,
             String userIcon, String userName, int level) {
-        this.id = id;
-        this.account = account;
         this.userId = userId;
+        this.account = account;
         this.userNickname = userNickname;
         this.userIcon = userIcon;
         this.userName = userName;
@@ -83,14 +82,6 @@ public class AccountDO {
         this.account = account;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getUserNickname() {
         return userNickname;
     }
@@ -115,11 +106,11 @@ public class AccountDO {
         this.userName = userName;
     }
 
-    public Long getId() {
-        return this.id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

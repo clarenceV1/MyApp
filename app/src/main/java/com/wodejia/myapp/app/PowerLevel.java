@@ -14,6 +14,14 @@ public enum PowerLevel {
         this.name = name;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public static PowerLevel getName(int level) {
         for (PowerLevel powerLevel : PowerLevel.values()) {
             if (powerLevel.level == level) {

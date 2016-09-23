@@ -2,8 +2,8 @@ package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.ContactsMenuRequestDO;
-import com.wodejia.myapp.data.ContactsShopRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsShopRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 

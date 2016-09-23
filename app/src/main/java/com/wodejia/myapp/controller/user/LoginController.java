@@ -62,7 +62,7 @@ public class LoginController extends AppController {
     public AccountDO getMockData() {
         AccountDO account = new AccountDO();
         account.setAccount("13779926287");
-        account.setUserId(1);
+        account.setUserId(Long.valueOf(1));
         account.setUserName("caicai");
         account.setUserNickname("xiaocai");
         account.setLevel(100);

@@ -12,10 +12,33 @@
         android:layout_height="50dp"
         fresco:placeholderImage="@drawable/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tvBlockName"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        tools:text="顺丰" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvBlockTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            tools:text="板块标题" />
+
+        <TextView
+            android:id="@+id/tvBlockManager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            tools:text="管理员" />
+
+        <TextView
+            android:id="@+id/tvBlockSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            tools:text="板块副标题" />
+
+    </LinearLayout>
+
+
 </LinearLayout>

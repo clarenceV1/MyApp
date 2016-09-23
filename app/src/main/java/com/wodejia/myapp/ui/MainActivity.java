@@ -15,11 +15,11 @@ import android.view.View;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
+import com.wodejia.myapp.controller.MainController;
 import com.wodejia.myapp.data.AccountDO;
+import com.wodejia.myapp.data.WeatherInfoResponseDO;
 import com.wodejia.myapp.ui.community.BlockFragment;
 import com.wodejia.myapp.ui.contacts.ContactsMainFragment;
-import com.wodejia.myapp.controller.MainController;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
 import com.wodejia.myapp.ui.manager.ManagerMainFragment;
 import com.wodejia.myapp.ui.user.LoginFragment;
 import com.wodejia.myapp.ui.user.LoginState;
@@ -58,13 +58,13 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        titleBarCommon.setCustomTitleBar(-1);
         ButterKnife.bind(this);
         initView();
         load();
     }
 
     private void initView() {
-        setSupportActionBar(toolbar);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

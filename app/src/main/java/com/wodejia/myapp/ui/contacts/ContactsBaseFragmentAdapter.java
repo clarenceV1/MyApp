@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.clarence.utillibrary.CommonUtils;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 import com.wodejia.myapp.R;
-import com.wodejia.myapp.data.ContactsBaseRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsBaseRequestDO;
 
 import java.util.ArrayList;
 import java.util.Collection;

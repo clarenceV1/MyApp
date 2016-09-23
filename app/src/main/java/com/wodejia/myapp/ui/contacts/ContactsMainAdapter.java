@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.ContactsMenuRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
 
 import java.util.List;
 

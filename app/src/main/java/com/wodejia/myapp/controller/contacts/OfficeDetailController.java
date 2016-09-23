@@ -1,7 +1,7 @@
 package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
-import com.wodejia.myapp.data.OfficeDetailRequestDO;
+import com.wodejia.myapp.data.contacts.OfficeDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 

@@ -1,12 +1,9 @@
 package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
-import com.wodejia.myapp.data.ShopDetailRequestDO;
+import com.wodejia.myapp.data.contacts.ShopDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 

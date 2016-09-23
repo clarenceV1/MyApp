@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.example.clarence.utillibrary.PinyinUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.controller.contacts.ContactsLogisticsController;
-import com.wodejia.myapp.data.ContactsLogisticsRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsLogisticsRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 
 import java.util.List;

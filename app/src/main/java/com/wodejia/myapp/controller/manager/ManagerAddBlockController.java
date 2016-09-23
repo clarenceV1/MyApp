@@ -1,10 +1,11 @@
 package com.wodejia.myapp.controller.manager;
 
 import com.wodejia.myapp.app.AppController;
+import com.wodejia.myapp.data.community.BlockRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 import com.wodejia.myapp.manager.manager.BlockDOManager;
-import com.wodejia.myapp.table.BlockDO;
+import com.wodejia.myapp.ui.MainActivity;
 
 import javax.inject.Inject;
 
@@ -29,7 +30,7 @@ public class ManagerAddBlockController extends AppController {
     /**
      * 添加模块
      */
-    public void addBlock(BlockDO blockDO, Subscriber subscriber) {
+    public void addBlock(BlockRequestDO blockDO, Subscriber subscriber) {
         try {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(ApiUrl.searchWeather)
@@ -49,9 +50,11 @@ public class ManagerAddBlockController extends AppController {
 
     /**
      * 测试用
+     *
      * @param blockDO
      */
-    public void saveMockData(BlockDO blockDO) {
+    public void saveMockData(BlockRequestDO blockDO) {
+        blockDO.setManagerName(MainActivity.accountDO.getUserNickname());
         manager.insert(blockDO);
     }
 }

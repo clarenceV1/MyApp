@@ -1,45 +1,56 @@
 package com.wodejia.myapp.table;
 
-import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * 板块
  * Created by clarence on 16/9/19.
  */
-@Entity
 public class BlockDO {
+    /**
+     * 板块ID
+     */
     @Id(autoincrement = true)
-    private long blockId;
-    private String blockName;
+    private Long blockId;
+    /**
+     * 板块标题
+     */
+    private String blockTitle;
+    /**
+     * 板块副标题
+     */
+    private String blockSubtitle;
+    /**
+     * 板块图标
+     */
     private String blockIcon;
+    /**
+     * 板块管理员
+     */
+    private long managerId;
 
-    @Generated(hash = 588163810)
-    public BlockDO(long blockId, String blockName, String blockIcon) {
-        this.blockId = blockId;
-        this.blockName = blockName;
-        this.blockIcon = blockIcon;
-    }
-
-    @Generated(hash = 1061151745)
-    public BlockDO() {
-    }
-
-    public long getBlockId() {
+    public Long getBlockId() {
         return blockId;
     }
 
-    public void setBlockId(long blockId) {
+    public void setBlockId(Long blockId) {
         this.blockId = blockId;
     }
 
-    public String getBlockName() {
-        return blockName;
+    public String getBlockTitle() {
+        return blockTitle;
     }
 
-    public void setBlockName(String blockName) {
-        this.blockName = blockName;
+    public void setBlockTitle(String blockTitle) {
+        this.blockTitle = blockTitle;
+    }
+
+    public String getBlockSubtitle() {
+        return blockSubtitle;
+    }
+
+    public void setBlockSubtitle(String blockSubtitle) {
+        this.blockSubtitle = blockSubtitle;
     }
 
     public String getBlockIcon() {
@@ -48,5 +59,13 @@ public class BlockDO {
 
     public void setBlockIcon(String blockIcon) {
         this.blockIcon = blockIcon;
+    }
+
+    public long getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(long managerId) {
+        this.managerId = managerId;
     }
 }

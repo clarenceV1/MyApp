@@ -8,7 +8,7 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppFragment;
 import com.wodejia.myapp.controller.contacts.ContactsMainController;
-import com.wodejia.myapp.data.ContactsMenuRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 
 import java.util.ArrayList;

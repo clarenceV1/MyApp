@@ -3,7 +3,7 @@ package com.wodejia.myapp.app;
 import android.text.TextUtils;
 
 import com.example.clarence.utillibrary.CommonUtils;
-import com.wodejia.myapp.table.BlockDO;
+import com.wodejia.myapp.data.AccountDO;
 
 import javax.inject.Inject;
 
@@ -35,5 +35,18 @@ public class AppController {
      */
     public boolean checkPassword(String password) {
         return !TextUtils.isEmpty(password) && password.length() >= 6 && password.length() <= 12;
+    }
+
+    /**
+     * 是否是管理员
+     *
+     * @param accountDO
+     * @return
+     */
+    public boolean isManager(AccountDO accountDO) {
+        if (accountDO != null && accountDO.getLevel() == PowerLevel.Manager.getLevel()) {
+            return true;
+        }
+        return false;
     }
 }

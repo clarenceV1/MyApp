@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.ContactsShopRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsShopRequestDO;
 
 /**
  * 店铺

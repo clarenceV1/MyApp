@@ -8,10 +8,8 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppFragment;
 import com.wodejia.myapp.controller.community.BlockController;
-import com.wodejia.myapp.controller.user.LoginController;
-import com.wodejia.myapp.data.AccountDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
-import com.wodejia.myapp.table.BlockDO;
+import com.wodejia.myapp.data.community.BlockRequestDO;
 
 import java.util.List;
 
@@ -71,7 +69,7 @@ public class BlockFragment extends AppFragment {
             @Override
             public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
                 ToastUtils.showToast(getContext(), "获取板块列表成功");
-                List<BlockDO> blockDOList = controller.getMockData();
+                List<BlockRequestDO> blockDOList = controller.getMockData();
                 BlockAdapter blockAdapter = new BlockAdapter(getContext(), blockDOList);
                 listView.setAdapter(blockAdapter);
             }

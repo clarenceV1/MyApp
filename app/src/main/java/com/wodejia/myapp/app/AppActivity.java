@@ -3,8 +3,8 @@ package com.wodejia.myapp.app;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 
+import com.example.clarence.corelibrary.BaseActivity;
 import com.example.clarence.corelibrary.ConfigSwitch;
 import com.wodejia.myapp.dagger.components.ActivityComponent;
 import com.wodejia.myapp.dagger.components.AppComponent;
@@ -17,7 +17,7 @@ import javax.inject.Inject;
  * 提供必要的组件
  * Created by clarence on 16/4/4.
  */
-public abstract class AppActivity extends AppCompatActivity {
+public abstract class AppActivity extends BaseActivity {
     @Inject
     public ConfigSwitch configSwitch;
     @Inject
@@ -26,6 +26,11 @@ public abstract class AppActivity extends AppCompatActivity {
     public ActivityComponent activityComponent;
 
     public abstract void initVariables();
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

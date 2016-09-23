@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -16,12 +15,17 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             fresco:placeholderImage="@drawable/ic_launcher" />
+
         <EditText
-            android:id="@+id/etBockName"
+            android:id="@+id/etBockTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="板块名称" />
-
+        <EditText
+            android:id="@+id/etBockSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="板块副标题" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

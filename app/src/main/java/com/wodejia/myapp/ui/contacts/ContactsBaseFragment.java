@@ -12,8 +12,8 @@ import com.example.clarence.libwidget.quicksidebar.QuickSideBarView;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppFragment;
-import com.wodejia.myapp.data.ContactsBaseRequestDO;
-import com.wodejia.myapp.data.ContactsMenuRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsBaseRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
 
 import java.util.ArrayList;
 import java.util.Collection;
