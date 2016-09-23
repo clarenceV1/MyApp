@@ -1,1 +1,8 @@
 /build
+.idea
+*.iml
+gradle/
+libs/
+app/app.iml
+/.idea
+/captures
