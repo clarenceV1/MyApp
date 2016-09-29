@@ -29,5 +29,8 @@
     <string name="verifyCodeComitError">获取验证码失败</string>
     <string name="loginFail">登录失败</string>
     <string name="loginSuccess">登录成功</string>
+    <string name="managerApplyNotice">联系管理员:小蔡\n QQ:763287516\n tel:13779926287</string>
+    <string name="managerApplyNoticeTitle">管理员申请须知</string>
+    <string name="accountLogin">请登录</string>
 
 </resources>

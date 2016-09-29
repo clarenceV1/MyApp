@@ -6,6 +6,10 @@ package com.wodejia.myapp.table;
  */
 public class UserinfoAnnexDO {
     /**
+     * 表ID
+     */
+    private int userAnnexId;
+    /**
      * 用户ID
      */
     private int userId;
@@ -89,5 +93,13 @@ public class UserinfoAnnexDO {
 
     public void setOfficeId(int officeId) {
         this.officeId = officeId;
+    }
+
+    public int getUserAnnexId() {
+        return userAnnexId;
+    }
+
+    public void setUserAnnexId(int userAnnexId) {
+        this.userAnnexId = userAnnexId;
     }
 }

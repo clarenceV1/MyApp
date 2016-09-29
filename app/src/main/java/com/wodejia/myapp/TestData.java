@@ -3,8 +3,6 @@ package com.wodejia.myapp;
 import com.wodejia.myapp.table.AreasDO;
 import com.wodejia.myapp.table.EstateDO;
 import com.wodejia.myapp.table.HouseDO;
-import com.wodejia.myapp.table.UserInfoBaseDO;
-import com.wodejia.myapp.table.UserinfoAnnexDO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,40 +59,6 @@ public class TestData {
             areasDOList.add(areado);
         }
         return areasDOList;
-    }
-
-    public static List<UserInfoDO> getUserInfoDOList() {
-        List<UserInfoDO> UserInfoDOList = new ArrayList<>();
-        List<String> names = getName();
-        for (int i = 0; i < names.size(); i++) {
-            UserInfoDO userInfoDO = new UserInfoDO();
-
-            UserInfoBaseDO userInfoBaseDO = new UserInfoBaseDO();
-            userInfoBaseDO.setUserId(i + 1);
-            userInfoBaseDO.setUserName(names.get(i));
-            userInfoBaseDO.setUserTelephone(13779926287l + "");
-            userInfoBaseDO.setUserNickname("昵称" + i);
-            userInfoBaseDO.setUserQq("763287516");
-            userInfoBaseDO.setUserWechat("13779926287");
-            userInfoDO.setUserInfoBaseDO(userInfoBaseDO);
-
-            UserinfoAnnexDO userinfoAnnexDO = new UserinfoAnnexDO();
-            if (i == 1) {
-                userinfoAnnexDO.setAreasId(1);
-            } else {
-                userinfoAnnexDO.setAreasId(1);
-            }
-            userinfoAnnexDO.setPropertyId(1);
-            userinfoAnnexDO.setHouseId(1);
-            userinfoAnnexDO.setLogisticsId(1);
-            userinfoAnnexDO.setOfficeId(1);
-            userinfoAnnexDO.setShopId(1);
-            userinfoAnnexDO.setUserId(userInfoBaseDO.getUserId());
-            userInfoDO.setUserinfoAnnexDO(userinfoAnnexDO);
-
-            UserInfoDOList.add(userInfoDO);
-        }
-        return UserInfoDOList;
     }
 
     public static List<String> getName() {

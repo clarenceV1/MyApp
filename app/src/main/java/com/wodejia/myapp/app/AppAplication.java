@@ -2,6 +2,7 @@ package com.wodejia.myapp.app;
 
 import com.example.clarence.corelibrary.CApplication;
 import com.example.clarence.corelibrary.ConfigManager;
+import com.example.clarence.datastorelibrary.StoreFactory;
 import com.example.clarence.imageloaderlibrary.ImageLoaderFactory;
 import com.wodejia.myapp.dagger.components.AppComponent;
 import com.wodejia.myapp.dagger.components.DaggerAppComponent;
@@ -26,6 +27,7 @@ public class AppAplication extends CApplication {
         initializeInjector();
         ImageLoaderFactory.initFresco(this);
         DbManager.getInstance().init(this);
+        StoreFactory.getStoreSharePreference().init(this,"sharePreference");
     }
 
     private void initializeInjector() {

@@ -2,8 +2,11 @@ package com.wodejia.myapp.app;
 
 import android.text.TextUtils;
 
+import com.example.clarence.datastorelibrary.StoreFactory;
+import com.example.clarence.datastorelibrary.StoreSharePreference;
 import com.example.clarence.utillibrary.CommonUtils;
 import com.wodejia.myapp.data.AccountDO;
+import com.wodejia.myapp.manager.SharePreferenceManager;
 
 import javax.inject.Inject;
 
@@ -11,6 +14,8 @@ import javax.inject.Inject;
  * Created by clarence on 16/9/10.
  */
 public class AppController {
+    @Inject
+    public SharePreferenceManager sharePreferenceManager;
 
     @Inject
     public AppController() {

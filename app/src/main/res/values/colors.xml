@@ -10,4 +10,6 @@
     <color name="red_b">#ff5073</color>
     <color name="black_a">#323232</color>
     <color name="white_a">#ffffff</color>
+    <color name="dot_normal">#ffbbd0</color>
+    <color name="dot_press">#ff5689</color>
 </resources>

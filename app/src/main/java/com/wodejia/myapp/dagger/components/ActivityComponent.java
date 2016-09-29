@@ -1,7 +1,11 @@
 package com.wodejia.myapp.dagger.components;
 
+import com.wodejia.myapp.ui.GuideActivity;
 import com.wodejia.myapp.ui.RichEditorFragment;
+import com.wodejia.myapp.ui.WelcomeActivity;
 import com.wodejia.myapp.ui.community.BlockFragment;
+import com.wodejia.myapp.ui.community.TipsActivity;
+import com.wodejia.myapp.ui.community.TipDetailActivity;
 import com.wodejia.myapp.ui.manager.ManagerAddBlockActivity;
 import com.wodejia.myapp.ui.manager.ManagerMainFragment;
 import com.wodejia.myapp.ui.qiniu.ImageUploadActivity;
@@ -36,6 +40,10 @@ import dagger.Component;
 public interface ActivityComponent {
 
     void inject(AppActivity activity);
+
+    void inject(WelcomeActivity welcomeActivity);
+
+    void inject(GuideActivity guideActivity);
 
     void inject(LoginFragment loginFragment);
 
@@ -74,4 +82,8 @@ public interface ActivityComponent {
     void inject(ManagerAddBlockActivity managerAddBlockActivity);
 
     void inject(BlockFragment blockFragment);
+
+    void inject(TipsActivity tipActivity);
+
+    void inject(TipDetailActivity tipDetailActivity);
 }

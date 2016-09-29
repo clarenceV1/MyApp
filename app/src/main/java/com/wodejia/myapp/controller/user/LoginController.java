@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import com.example.clarence.utillibrary.CommonUtils;
 import com.wodejia.myapp.app.AppController;
+import com.wodejia.myapp.app.PowerLevel;
 import com.wodejia.myapp.data.AccountDO;
 import com.wodejia.myapp.data.AccountDODao;
 import com.wodejia.myapp.http.ApiService;
@@ -65,7 +66,7 @@ public class LoginController extends AppController {
         account.setUserId(Long.valueOf(1));
         account.setUserName("caicai");
         account.setUserNickname("xiaocai");
-        account.setLevel(100);
+        account.setLevel(PowerLevel.Manager.getLevel());
         account.setUserIcon("http://e.hiphotos.baidu.com/image/pic/item/8d5494eef01f3a29913f38ca9b25bc315c607c3b.jpg");
         return account;
     }

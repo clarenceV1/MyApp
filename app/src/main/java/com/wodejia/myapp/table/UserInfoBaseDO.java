@@ -5,6 +5,9 @@ package com.wodejia.myapp.table;
  * Created by clarence on 16/8/31.
  */
 public class UserInfoBaseDO {
+    /**
+     * 用户ID---表ID
+     */
     private int userId;
     /**
      * 用户昵称

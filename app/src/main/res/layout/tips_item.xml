@@ -1,45 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/ivBlockIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        fresco:placeholderImage="@drawable/ic_launcher" />
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvTipsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:padding="10dp"
+        android:textSize="14sp"
+        tools:text="帖子标题" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
-            android:id="@+id/tvBlockTitle"
+            android:id="@+id/tvProducterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            tools:text="板块标题" />
+            tools:text="xiaocai" />
 
         <TextView
-            android:id="@+id/tvBlockSubtitle"
+            android:id="@+id/tvUpdateTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/tvReplyNum"
             android:textSize="14sp"
-            tools:text="板块副标题" />
+            tools:text="9分钟前" />
 
         <TextView
-            android:id="@+id/tvBlockManager"
+            android:id="@id/tvReplyNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:textSize="14sp"
-            tools:text="管理员" />
+            tools:text="150" />
 
-
-    </LinearLayout>
-
-
+    </RelativeLayout>
 </LinearLayout>

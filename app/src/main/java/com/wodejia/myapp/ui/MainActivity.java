@@ -15,11 +15,13 @@ import android.view.View;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
+import com.wodejia.myapp.app.PowerLevel;
 import com.wodejia.myapp.controller.MainController;
 import com.wodejia.myapp.data.AccountDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 import com.wodejia.myapp.ui.community.BlockFragment;
 import com.wodejia.myapp.ui.contacts.ContactsMainFragment;
+import com.wodejia.myapp.ui.manager.ManagerApplyFragment;
 import com.wodejia.myapp.ui.manager.ManagerMainFragment;
 import com.wodejia.myapp.ui.user.LoginFragment;
 import com.wodejia.myapp.ui.user.LoginState;
@@ -119,8 +121,7 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
                 replaceFragment(R.id.mainframelayout, contactsActivity);
                 break;
             case R.id.nav_manage:
-                ManagerMainFragment managerMainFragment = new ManagerMainFragment();
-                replaceFragment(R.id.mainframelayout, managerMainFragment);
+                clickNavManage();
                 break;
             case R.id.nav_share:
                 break;
@@ -129,6 +130,21 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * 点击管理菜单
+     */
+    private void clickNavManage() {
+        if (accountDO == null) {
+            ToastUtils.showToast(MainActivity.this, R.string.accountLogin);
+        } else if (accountDO.getLevel() == PowerLevel.Manager.getLevel()) {
+            ManagerMainFragment managerMainFragment = new ManagerMainFragment();
+            replaceFragment(R.id.mainframelayout, managerMainFragment);
+        } else {
+            ManagerApplyFragment managerApplyFragment = new ManagerApplyFragment();
+            replaceFragment(R.id.mainframelayout, managerApplyFragment);
+        }
     }
 
     private void load() {
@@ -152,13 +168,19 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
         });
 
         accountDO = controller.getAccount();
-        loginSuccess(accountDO);
+        if (accountDO != null) {
+            loginSuccess(accountDO);
+        }
+        BlockFragment blockFragment = new BlockFragment();
+        replaceFragment(R.id.mainframelayout, blockFragment);
     }
 
     @Override
     public void loginSuccess(AccountDO accountDO) {
         this.accountDO = accountDO;
         mainHeadManager.login(accountDO);
+        BlockFragment blockFragment = new BlockFragment();
+        replaceFragment(R.id.mainframelayout, blockFragment);
     }
 
     @Override
