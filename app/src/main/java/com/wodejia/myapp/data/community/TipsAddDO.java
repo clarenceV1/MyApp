@@ -3,7 +3,7 @@ package com.wodejia.myapp.data.community;
 /**
  * Created by clarence on 16/9/29.
  */
-public class TipsAddRequestDO {
+public class TipsAddDO {
     /**
      * 板块ID
      */

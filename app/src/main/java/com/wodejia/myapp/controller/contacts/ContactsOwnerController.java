@@ -2,8 +2,8 @@ package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
-import com.wodejia.myapp.data.contacts.ContactsOwnerRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuDO;
+import com.wodejia.myapp.data.contacts.ContactsOwnerDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 import com.wodejia.myapp.manager.ContactsMainManager;
@@ -49,8 +49,8 @@ public class ContactsOwnerController extends AppController {
         }
     }
 
-    public List<ContactsOwnerRequestDO> getMockData(ContactsMenuRequestDO contactsRequestDO) {
-        List<ContactsOwnerRequestDO> result = new ArrayList<>();
+    public List<ContactsOwnerDO> getMockData(ContactsMenuDO contactsRequestDO) {
+        List<ContactsOwnerDO> result = new ArrayList<>();
         if (contactsRequestDO != null) {
             int key = contactsRequestDO.getKey();
             String value = contactsRequestDO.getValue();
@@ -60,7 +60,7 @@ public class ContactsOwnerController extends AppController {
                     for (int i = 1; i < 12; i++) {// 哪层
                         for (int j = 1; j < 12; j++) { //哪间
                             userId++;
-                            ContactsOwnerRequestDO userInfoRequetDO = new ContactsOwnerRequestDO();
+                            ContactsOwnerDO userInfoRequetDO = new ContactsOwnerDO();
                             userInfoRequetDO.setUserId(userId);
                             userInfoRequetDO.setUserIcon("http://img4.imgtn.bdimg.com/it/u=639941756,2707761062&fm=15&gp=0.jpg");
                             userInfoRequetDO.setUserName("用户" + userId);

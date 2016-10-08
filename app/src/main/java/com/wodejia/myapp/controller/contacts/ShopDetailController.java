@@ -1,7 +1,7 @@
 package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
-import com.wodejia.myapp.data.contacts.ShopDetailRequestDO;
+import com.wodejia.myapp.data.contacts.ShopDetailDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 
@@ -41,8 +41,8 @@ public class ShopDetailController extends AppController {
         }
     }
 
-    public ShopDetailRequestDO getMockData(int shopId) {
-        ShopDetailRequestDO shopDetailRequestDO = new ShopDetailRequestDO();
+    public ShopDetailDO getMockData(int shopId) {
+        ShopDetailDO shopDetailRequestDO = new ShopDetailDO();
         shopDetailRequestDO.setShopId(shopId);
         shopDetailRequestDO.setShopName("五金店");
         shopDetailRequestDO.setShopIcon("http://img1.imgtn.bdimg.com/it/u=3957342138,1132542497&fm=21&gp=0.jpg");

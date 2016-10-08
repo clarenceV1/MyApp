@@ -8,8 +8,8 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.controller.contacts.UserDetailController;
-import com.wodejia.myapp.data.contacts.OwnerDetailRequestDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.contacts.OwnerDetailDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 import com.wodejia.myapp.event.ContactsDetailEvent;
 import com.wodejia.myapp.data.UserBaseInfoDO;
 
@@ -34,7 +34,7 @@ public class OwnerDetailFragment extends ContactsDetailBaseFragment {
     @Inject
     UserDetailController controller;
 
-    OwnerDetailRequestDO userInfoDO;
+    OwnerDetailDO userInfoDO;
 
     @Override
     public void initVariables() {
@@ -53,7 +53,7 @@ public class OwnerDetailFragment extends ContactsDetailBaseFragment {
     }
 
     private void load() {
-        controller.request(new Subscriber<WeatherInfoResponseDO>() {
+        controller.request(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -70,7 +70,7 @@ public class OwnerDetailFragment extends ContactsDetailBaseFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                 userInfoDO = controller.getMockData(id, sendRelative);
                 if (sendRelative && userInfoDO.getUserinfoAnnexDO() != null) {
                     EventBus.getDefault().post(new ContactsDetailEvent(userInfoDO.getUserinfoAnnexDO()));

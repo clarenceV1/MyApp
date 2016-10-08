@@ -9,8 +9,8 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.controller.community.TipsDetailController;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
-import com.wodejia.myapp.data.community.TipsReplyRequestDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
+import com.wodejia.myapp.data.community.TipsReplyDO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class TipDetailActivity extends AppActivity {
 
     public static final String EXTRA_TIP_ID = "TipId";
     int tipId;
-    List<TipsReplyRequestDO> tipsReplyList = new ArrayList<>();
+    List<TipsReplyDO> tipsReplyList = new ArrayList<>();
     TipsDetailAdapter adapter;
 
     @Inject
@@ -68,7 +68,7 @@ public class TipDetailActivity extends AppActivity {
 
     private void load() {
         if (tipId != 0) {
-            controller.requestTipsDetail(tipId,new Subscriber<WeatherInfoResponseDO>() {
+            controller.requestTipsDetail(tipId,new Subscriber<WeatherInfoDO>() {
                 @Override
                 public void onCompleted() {
 
@@ -80,7 +80,7 @@ public class TipDetailActivity extends AppActivity {
                 }
 
                 @Override
-                public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+                public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                    // tipsReplyList.addAll(controller.getMockData(tipId));
                     adapter.notifyDataSetChanged();
                 }

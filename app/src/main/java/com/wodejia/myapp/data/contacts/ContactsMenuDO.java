@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by clarence on 16/9/2.
  */
-public class ContactsMenuRequestDO implements Serializable {
+public class ContactsMenuDO implements Serializable {
 
     private int key;
     private String value;

@@ -8,7 +8,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by clarence on 16/9/21.
  */
 @Entity
-public class BlockRequestDO {
+public class BlockDO {
     /**
      * 板块ID
      */
@@ -35,8 +35,8 @@ public class BlockRequestDO {
      */
     private String managerName;
 
-    @Generated(hash = 1430726088)
-    public BlockRequestDO(Long blockId, String blockTitle, String blockSubtitle,
+    @Generated(hash = 1363076618)
+    public BlockDO(Long blockId, String blockTitle, String blockSubtitle,
             String blockIcon, long managerId, String managerName) {
         this.blockId = blockId;
         this.blockTitle = blockTitle;
@@ -46,8 +46,8 @@ public class BlockRequestDO {
         this.managerName = managerName;
     }
 
-    @Generated(hash = 771468549)
-    public BlockRequestDO() {
+    @Generated(hash = 1061151745)
+    public BlockDO() {
     }
 
     public Long getBlockId() {

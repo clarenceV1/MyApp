@@ -2,7 +2,7 @@ package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 import com.wodejia.myapp.manager.ContactsMainManager;
@@ -48,28 +48,28 @@ public class ContactsMainController extends AppController {
         }
     }
 
-    public List<ContactsMenuRequestDO> mockData() {
-        List<ContactsMenuRequestDO> contactsRequestDOList = new ArrayList<>();
+    public List<ContactsMenuDO> mockData() {
+        List<ContactsMenuDO> contactsRequestDOList = new ArrayList<>();
 
-        ContactsMenuRequestDO t1 = new ContactsMenuRequestDO();
+        ContactsMenuDO t1 = new ContactsMenuDO();
         t1.setTitle("一期");
         t1.setKey(Constant.AREAS_TYPE);
         t1.setValue("1");
         contactsRequestDOList.add(t1);
 
-        ContactsMenuRequestDO t2 = new ContactsMenuRequestDO();
+        ContactsMenuDO t2 = new ContactsMenuDO();
         t2.setTitle("物流");
         t2.setKey(Constant.LOGISTICS_TYPE);
         t2.setValue("1");
         contactsRequestDOList.add(t2);
 
-        ContactsMenuRequestDO t4 = new ContactsMenuRequestDO();
+        ContactsMenuDO t4 = new ContactsMenuDO();
         t4.setTitle("办事处");
         t4.setKey(Constant.OFFICE_TYPE);
         t4.setValue("1");
         contactsRequestDOList.add(t4);
 
-        ContactsMenuRequestDO t5 = new ContactsMenuRequestDO();
+        ContactsMenuDO t5 = new ContactsMenuDO();
         t5.setTitle("店铺");
         t5.setKey(Constant.SHOP_TYPE);
         t5.setValue("1");

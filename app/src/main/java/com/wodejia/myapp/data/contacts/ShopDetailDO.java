@@ -4,7 +4,7 @@ package com.wodejia.myapp.data.contacts;
  * 店铺
  * Created by clarence on 16/9/2.
  */
-public class ShopDetailRequestDO {
+public class ShopDetailDO {
     /**
      * 店铺id
      */

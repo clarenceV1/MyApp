@@ -11,8 +11,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.controller.manager.ManagerAddBlockController;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
-import com.wodejia.myapp.data.community.BlockRequestDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
+import com.wodejia.myapp.data.community.BlockDO;
 import com.wodejia.myapp.ui.MainActivity;
 
 import javax.inject.Inject;
@@ -73,14 +73,14 @@ public class ManagerAddBlockActivity extends AppActivity {
             ToastUtils.showToast(this, "板块副标题不能为空");
             return;
         }
-        final BlockRequestDO blockDO = new BlockRequestDO();
+        final BlockDO blockDO = new BlockDO();
         blockDO.setBlockIcon(blockIcon);
         long managerId = MainActivity.accountDO.getUserId();
         blockDO.setManagerId(managerId);
         blockDO.setManagerName(MainActivity.accountDO.getUserNickname());
         blockDO.setBlockTitle(blockTitle);
         blockDO.setBlockSubtitle(blockSubtitle);
-        controller.addBlock(blockDO, new Subscriber<WeatherInfoResponseDO>() {
+        controller.addBlock(blockDO, new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -92,7 +92,7 @@ public class ManagerAddBlockActivity extends AppActivity {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                 etBockTitle.setText("");
                 etBockSubtitle.setText("");
                 ToastUtils.showToast(ManagerAddBlockActivity.this, "添加板块成功");

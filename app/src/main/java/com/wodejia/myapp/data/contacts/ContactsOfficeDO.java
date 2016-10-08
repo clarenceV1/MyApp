@@ -4,7 +4,7 @@ package com.wodejia.myapp.data.contacts;
  * 办事处信息
  * Created by clarence on 16/9/2.
  */
-public class ContactsOfficeRequestDO extends ContactsBaseRequestDO {
+public class ContactsOfficeDO extends ContactsBaseDO {
     /**
      * 店铺id
      */

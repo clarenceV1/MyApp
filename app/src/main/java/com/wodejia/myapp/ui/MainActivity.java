@@ -18,7 +18,7 @@ import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.app.PowerLevel;
 import com.wodejia.myapp.controller.MainController;
 import com.wodejia.myapp.data.AccountDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 import com.wodejia.myapp.ui.community.BlockActivity;
 import com.wodejia.myapp.ui.contacts.ContactsMainFragment;
 import com.wodejia.myapp.ui.manager.ManagerApplyFragment;
@@ -147,7 +147,7 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
     }
 
     private void load() {
-        controller.request(new Subscriber<WeatherInfoResponseDO>() {
+        controller.request(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -159,7 +159,7 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                 if (mainHeadManager != null) {
                     mainHeadManager.setWeather(controller.getWeather(weatherInfoResponseDO));
                 }

@@ -3,15 +3,12 @@ package com.wodejia.myapp.controller.community;
 import android.text.TextUtils;
 
 import com.wodejia.myapp.app.AppController;
-import com.wodejia.myapp.data.community.TipsAddRequestDO;
-import com.wodejia.myapp.data.community.TipsRequestDO;
+import com.wodejia.myapp.data.community.TipsAddDO;
+import com.wodejia.myapp.data.community.TipsDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 import com.wodejia.myapp.manager.manager.TipsDOManager;
 import com.wodejia.myapp.ui.MainActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -62,7 +59,7 @@ public class TipsAddController extends AppController {
      * @param tipsAddRequestDO
      * @param subscriber
      */
-    public void commitTip(TipsAddRequestDO tipsAddRequestDO, Subscriber subscriber) {
+    public void commitTip(TipsAddDO tipsAddRequestDO, Subscriber subscriber) {
         try {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(ApiUrl.searchWeather)
@@ -80,8 +77,8 @@ public class TipsAddController extends AppController {
         }
     }
 
-    public void saveMockData(TipsAddRequestDO tipsAddRequestDO) {
-        TipsRequestDO tipsRequestDO=new TipsRequestDO();
+    public void saveMockData(TipsAddDO tipsAddRequestDO) {
+        TipsDO tipsRequestDO=new TipsDO();
         tipsRequestDO.setBlockId(tipsAddRequestDO.getBlockId());
         tipsRequestDO.setUpdateTime("2016-10-8 10:00");
         tipsRequestDO.setProducterId(tipsAddRequestDO.getProducterId());

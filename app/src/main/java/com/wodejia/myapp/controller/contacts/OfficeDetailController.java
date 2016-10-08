@@ -1,7 +1,7 @@
 package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
-import com.wodejia.myapp.data.contacts.OfficeDetailRequestDO;
+import com.wodejia.myapp.data.contacts.OfficeDetailDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 
@@ -41,8 +41,8 @@ public class OfficeDetailController extends AppController {
         }
     }
 
-    public OfficeDetailRequestDO getMockData(int officeId) {
-        OfficeDetailRequestDO officeDetailRequestDO = new OfficeDetailRequestDO();
+    public OfficeDetailDO getMockData(int officeId) {
+        OfficeDetailDO officeDetailRequestDO = new OfficeDetailDO();
         officeDetailRequestDO.setOfficeId(1);
         officeDetailRequestDO.setOfficeAddress("东垵居委会");
         officeDetailRequestDO.setOfficeIcon("http://tz.sinzhu.com/UploadSoftPic/200710/20071009153755599.jpg");

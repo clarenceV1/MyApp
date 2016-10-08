@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.contacts.ContactsLogisticsRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsLogisticsDO;
 
 /**
  * 物流
@@ -27,7 +27,7 @@ public class ContactsLogisticsFragmentAdapter extends ContactsBaseFragmentAdapte
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
         Holder holder = (Holder) viewHolder;
-        final ContactsLogisticsRequestDO logisticsRequetDO = getItem(position);
+        final ContactsLogisticsDO logisticsRequetDO = getItem(position);
         holder.tvLogisticsName.setText(logisticsRequetDO.getLogisticsName());
         holder.tvPhone.setText("电话:" + logisticsRequetDO.getUserTelephone());
         holder.tvUserName.setText(logisticsRequetDO.getUserName());
@@ -41,8 +41,8 @@ public class ContactsLogisticsFragmentAdapter extends ContactsBaseFragmentAdapte
         holder.ivLogisticsIcon.setImageURI(uri);
     }
 
-    public ContactsLogisticsRequestDO getItem(int position) {
-        ContactsLogisticsRequestDO logisticsRequetDO = (ContactsLogisticsRequestDO) items.get(position);
+    public ContactsLogisticsDO getItem(int position) {
+        ContactsLogisticsDO logisticsRequetDO = (ContactsLogisticsDO) items.get(position);
         return logisticsRequetDO;
     }
 

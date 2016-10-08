@@ -10,7 +10,7 @@ import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppFragment;
 import com.wodejia.myapp.controller.user.LoginController;
 import com.wodejia.myapp.data.AccountDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 
 import javax.inject.Inject;
 
@@ -79,7 +79,7 @@ public class LoginFragment extends AppFragment {
             ToastUtils.showToast(getActivity(), R.string.passwordError);
             return;
         }
-        controller.loginComit(new Subscriber<WeatherInfoResponseDO>() {
+        controller.loginComit(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -91,7 +91,7 @@ public class LoginFragment extends AppFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                 ToastUtils.showToast(getContext(), R.string.loginSuccess);
                 AccountDO accountDO = controller.getMockData();
                 controller.saveAccount(accountDO);

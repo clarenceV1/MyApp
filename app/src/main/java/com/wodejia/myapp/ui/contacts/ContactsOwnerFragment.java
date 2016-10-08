@@ -4,8 +4,8 @@ import android.text.TextUtils;
 
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.controller.contacts.ContactsOwnerController;
-import com.wodejia.myapp.data.contacts.ContactsOwnerRequestDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.contacts.ContactsOwnerDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class ContactsOwnerFragment extends ContactsBaseFragment {
 
     @Override
     public void loadData() {
-        controller.request(new Subscriber<WeatherInfoResponseDO>() {
+        controller.request(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -45,17 +45,17 @@ public class ContactsOwnerFragment extends ContactsBaseFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO getIpInfoResponse) {
+            public void onNext(WeatherInfoDO getIpInfoResponse) {
                 loginData(controller.getMockData(contactsRequestDO));
             }
         });
     }
 
-    public void loginData(List<ContactsOwnerRequestDO> request) {
+    public void loginData(List<ContactsOwnerDO> request) {
         if (request == null) {
             return;
         }
-        for (ContactsOwnerRequestDO ownerRequetDO : request) {
+        for (ContactsOwnerDO ownerRequetDO : request) {
             if (!TextUtils.isEmpty(ownerRequetDO.getUserName())) {
                 String letter = null;
                 try {

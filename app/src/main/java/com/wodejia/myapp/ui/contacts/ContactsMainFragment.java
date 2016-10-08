@@ -8,8 +8,8 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppFragment;
 import com.wodejia.myapp.controller.contacts.ContactsMainController;
-import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class ContactsMainFragment extends AppFragment {
 
     ContactsMainAdapter adapter;
 
-    List<ContactsMenuRequestDO> contactsRequestDOList = new ArrayList<>();
+    List<ContactsMenuDO> contactsRequestDOList = new ArrayList<>();
 
     @Override
     public void initVariables() {
@@ -58,7 +58,7 @@ public class ContactsMainFragment extends AppFragment {
     }
 
     private void load() {
-        controller.request(new Subscriber<WeatherInfoResponseDO>() {
+        controller.request(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -75,7 +75,7 @@ public class ContactsMainFragment extends AppFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO getIpInfoResponse) {
+            public void onNext(WeatherInfoDO getIpInfoResponse) {
                 if (controller.mockData() != null) {
                     contactsRequestDOList.clear();
                     contactsRequestDOList.addAll(controller.mockData());

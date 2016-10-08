@@ -6,7 +6,7 @@ import com.wodejia.myapp.data.UserAnnexinfoDO;
 /**
  * Created by clarence on 16/9/2.
  */
-public class OwnerDetailRequestDO {
+public class OwnerDetailDO {
     UserBaseInfoDO userInfoBaseDO;
     UserAnnexinfoDO userinfoAnnexDO;
 

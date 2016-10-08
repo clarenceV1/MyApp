@@ -6,7 +6,7 @@ import java.util.List;
  * Created by clarence on 16/10/8.
  */
 
-public class TipsDetailRequestDO {
+public class TipsDetailDO {
     /**
      * 贴士标题
      */
@@ -14,7 +14,7 @@ public class TipsDetailRequestDO {
     /**
      * 回复信息
      */
-    private List<TipsReplyRequestDO> tipsReplyList;
+    private List<TipsReplyDO> tipsReplyList;
 
     public String getTipTitle() {
         return tipTitle;
@@ -24,11 +24,11 @@ public class TipsDetailRequestDO {
         this.tipTitle = tipTitle;
     }
 
-    public List<TipsReplyRequestDO> getTipsReplyList() {
+    public List<TipsReplyDO> getTipsReplyList() {
         return tipsReplyList;
     }
 
-    public void setTipsReplyList(List<TipsReplyRequestDO> tipsReplyList) {
+    public void setTipsReplyList(List<TipsReplyDO> tipsReplyList) {
         this.tipsReplyList = tipsReplyList;
     }
 }

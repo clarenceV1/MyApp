@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import com.example.clarence.utillibrary.PinyinUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.controller.contacts.ContactsLogisticsController;
-import com.wodejia.myapp.data.contacts.ContactsLogisticsRequestDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.contacts.ContactsLogisticsDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class ContactsLogisticsFragment extends ContactsBaseFragment {
 
     @Override
     public void loadData() {
-        controller.request(new Subscriber<WeatherInfoResponseDO>() {
+        controller.request(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -45,17 +45,17 @@ public class ContactsLogisticsFragment extends ContactsBaseFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO getIpInfoResponse) {
+            public void onNext(WeatherInfoDO getIpInfoResponse) {
                 loginData(controller.getMockData(contactsRequestDO));
             }
         });
     }
 
-    public void loginData(List<ContactsLogisticsRequestDO> request) {
+    public void loginData(List<ContactsLogisticsDO> request) {
         if (request == null) {
             return;
         }
-        for (ContactsLogisticsRequestDO logisticsRequetDO : request) {
+        for (ContactsLogisticsDO logisticsRequetDO : request) {
             if (!TextUtils.isEmpty(logisticsRequetDO.getLogisticsName())) {
                 String letter = PinyinUtils.getCharacterSimple(logisticsRequetDO.getLogisticsName().charAt(0));
                 if (letter == null) {

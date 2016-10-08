@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import com.example.clarence.utillibrary.PinyinUtils;
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.controller.contacts.ContactsShopController;
-import com.wodejia.myapp.data.contacts.ContactsShopRequestDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.contacts.ContactsShopDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class ContactsShopFragment extends ContactsBaseFragment {
 
     @Override
     public void loadData() {
-        controller.request(new Subscriber<WeatherInfoResponseDO>() {
+        controller.request(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -45,17 +45,17 @@ public class ContactsShopFragment extends ContactsBaseFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO getIpInfoResponse) {
+            public void onNext(WeatherInfoDO getIpInfoResponse) {
                 loginData(controller.getMockData(contactsRequestDO));
             }
         });
     }
 
-    public void loginData(List<ContactsShopRequestDO> request) {
+    public void loginData(List<ContactsShopDO> request) {
         if (request == null) {
             return;
         }
-        for (ContactsShopRequestDO shopRequetDO : request) {
+        for (ContactsShopDO shopRequetDO : request) {
             if (!TextUtils.isEmpty(shopRequetDO.getShopName())) {
                 String letter = PinyinUtils.getCharacterSimple(shopRequetDO.getShopName().charAt(0));
                 if (letter == null) {

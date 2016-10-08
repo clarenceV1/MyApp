@@ -1,7 +1,7 @@
 package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
-import com.wodejia.myapp.data.contacts.LogisticsDetailRequestDO;
+import com.wodejia.myapp.data.contacts.LogisticsDetailDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 
@@ -41,8 +41,8 @@ public class LogisticsDetailController extends AppController {
         }
     }
 
-    public LogisticsDetailRequestDO getMockData(int logisticsId) {
-        LogisticsDetailRequestDO logisticsDetailRequestDO = new LogisticsDetailRequestDO();
+    public LogisticsDetailDO getMockData(int logisticsId) {
+        LogisticsDetailDO logisticsDetailRequestDO = new LogisticsDetailDO();
         logisticsDetailRequestDO.setLogisticsId(1);
         logisticsDetailRequestDO.setUserId(1);
         logisticsDetailRequestDO.setLogisticsName("顺丰");

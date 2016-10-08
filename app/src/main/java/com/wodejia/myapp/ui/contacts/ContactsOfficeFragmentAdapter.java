@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.contacts.ContactsOfficeRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsOfficeDO;
 
 /**
  * 办事处
@@ -27,7 +27,7 @@ public class ContactsOfficeFragmentAdapter extends ContactsBaseFragmentAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
         Holder holder = (Holder) viewHolder;
-        final ContactsOfficeRequestDO officeRequetDO = getItem(position);
+        final ContactsOfficeDO officeRequetDO = getItem(position);
         holder.tvOfficeName.setText(officeRequetDO.getOfficeName());
         holder.tvOfficePhone.setText("电话:" + officeRequetDO.getUserTelephone());
         holder.tvOfficeAddress.setText(officeRequetDO.getOfficeAddress());
@@ -41,8 +41,8 @@ public class ContactsOfficeFragmentAdapter extends ContactsBaseFragmentAdapter {
         holder.ivOfficeIcon.setImageURI(uri);
     }
 
-    public ContactsOfficeRequestDO getItem(int position) {
-        ContactsOfficeRequestDO officeRequetDO = (ContactsOfficeRequestDO) items.get(position);
+    public ContactsOfficeDO getItem(int position) {
+        ContactsOfficeDO officeRequetDO = (ContactsOfficeDO) items.get(position);
         return officeRequetDO;
     }
 

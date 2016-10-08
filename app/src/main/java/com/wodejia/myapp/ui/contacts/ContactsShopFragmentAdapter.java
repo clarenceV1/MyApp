@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.contacts.ContactsShopRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsShopDO;
 
 /**
  * 店铺
@@ -27,7 +27,7 @@ public class ContactsShopFragmentAdapter extends ContactsBaseFragmentAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
         Holder holder = (Holder) viewHolder;
-        final ContactsShopRequestDO shopRequetDO = getItem(position);
+        final ContactsShopDO shopRequetDO = getItem(position);
         holder.tvShopName.setText(shopRequetDO.getShopName());
         holder.tvUserName.setText(shopRequetDO.getUserName());
         holder.tvPhone.setText("电话:" + shopRequetDO.getUserTelephone());
@@ -41,8 +41,8 @@ public class ContactsShopFragmentAdapter extends ContactsBaseFragmentAdapter {
         holder.ivShopIcon.setImageURI(uri);
     }
 
-    public ContactsShopRequestDO getItem(int position) {
-        ContactsShopRequestDO shopRequetDO = (ContactsShopRequestDO) items.get(position);
+    public ContactsShopDO getItem(int position) {
+        ContactsShopDO shopRequetDO = (ContactsShopDO) items.get(position);
         return shopRequetDO;
     }
 

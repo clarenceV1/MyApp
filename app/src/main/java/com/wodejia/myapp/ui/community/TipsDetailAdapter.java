@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
-import com.wodejia.myapp.data.community.TipsReplyRequestDO;
-import com.wodejia.myapp.data.community.TipsRequestDO;
+import com.wodejia.myapp.data.community.TipsReplyDO;
 
 import java.util.List;
 
@@ -20,11 +19,11 @@ import java.util.List;
  */
 
 public class TipsDetailAdapter extends BaseAdapter {
-    List<TipsReplyRequestDO> tipsReplyList;
+    List<TipsReplyDO> tipsReplyList;
     Context context;
     LayoutInflater layoutInflater;
 
-    public TipsDetailAdapter(Context context, List<TipsReplyRequestDO> tipsReplyList) {
+    public TipsDetailAdapter(Context context, List<TipsReplyDO> tipsReplyList) {
         this.context = context;
         this.tipsReplyList = tipsReplyList;
         layoutInflater = LayoutInflater.from(context);
@@ -36,7 +35,7 @@ public class TipsDetailAdapter extends BaseAdapter {
     }
 
     @Override
-    public TipsReplyRequestDO getItem(int position) {
+    public TipsReplyDO getItem(int position) {
         return tipsReplyList.get(position);
     }
 
@@ -55,7 +54,7 @@ public class TipsDetailAdapter extends BaseAdapter {
         } else {
             hodler = (Hodler) convertView.getTag();
         }
-        TipsReplyRequestDO tipsRequestDO = getItem(position);
+        TipsReplyDO tipsRequestDO = getItem(position);
         if (tipsRequestDO != null) {
             hodler.tvReplyerContent.setText(tipsRequestDO.getReplyContent());
             hodler.tvReplyerNickName.setText(tipsRequestDO.getReplyerNickname());

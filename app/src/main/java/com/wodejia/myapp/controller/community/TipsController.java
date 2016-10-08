@@ -1,12 +1,11 @@
 package com.wodejia.myapp.controller.community;
 
 import com.wodejia.myapp.app.AppController;
-import com.wodejia.myapp.data.community.TipsRequestDO;
+import com.wodejia.myapp.data.community.TipsDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 import com.wodejia.myapp.manager.manager.TipsDOManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -55,7 +54,7 @@ public class TipsController extends AppController {
         }
     }
 
-    public List<TipsRequestDO> getMockData(int blockId) {
+    public List<TipsDO> getMockData(int blockId) {
         return tipsDOManager.getTipsList(blockId);
     }
 }

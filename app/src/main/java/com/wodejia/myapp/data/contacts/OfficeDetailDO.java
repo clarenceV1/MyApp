@@ -3,7 +3,7 @@ package com.wodejia.myapp.data.contacts;
 /**
  * Created by clarence on 16/9/9.
  */
-public class OfficeDetailRequestDO {
+public class OfficeDetailDO {
     /**
      * 办事处ID
      */

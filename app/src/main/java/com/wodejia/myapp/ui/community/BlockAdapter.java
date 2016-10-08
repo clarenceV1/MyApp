@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
-import com.wodejia.myapp.data.community.BlockRequestDO;
+import com.wodejia.myapp.data.community.BlockDO;
 
 import java.util.List;
 
@@ -18,11 +18,11 @@ import java.util.List;
  * Created by clarence on 16/9/19.
  */
 public class BlockAdapter extends BaseAdapter {
-    List<BlockRequestDO> blockDOList;
+    List<BlockDO> blockDOList;
     Context context;
     LayoutInflater layoutInflater;
 
-    public BlockAdapter(Context context, List<BlockRequestDO> blockDOList) {
+    public BlockAdapter(Context context, List<BlockDO> blockDOList) {
         this.context = context;
         this.blockDOList = blockDOList;
         layoutInflater = LayoutInflater.from(context);
@@ -34,7 +34,7 @@ public class BlockAdapter extends BaseAdapter {
     }
 
     @Override
-    public BlockRequestDO getItem(int position) {
+    public BlockDO getItem(int position) {
         return blockDOList.get(position);
     }
 
@@ -53,7 +53,7 @@ public class BlockAdapter extends BaseAdapter {
         } else {
             hodler = (Hodler) convertView.getTag();
         }
-        BlockRequestDO blockDO = getItem(position);
+        BlockDO blockDO = getItem(position);
         if (blockDO != null) {
             hodler.tvBlockTitle.setText(blockDO.getBlockTitle());
             hodler.tvBlockSubtitle.setText(blockDO.getBlockSubtitle());

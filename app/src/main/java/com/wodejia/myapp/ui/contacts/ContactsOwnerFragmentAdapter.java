@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.contacts.ContactsOwnerRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsOwnerDO;
 
 /**
  * 业主
@@ -27,7 +27,7 @@ public class ContactsOwnerFragmentAdapter extends ContactsBaseFragmentAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
         Holder holder = (Holder) viewHolder;
-        final ContactsOwnerRequestDO userInfoDO = getItem(position);
+        final ContactsOwnerDO userInfoDO = getItem(position);
         holder.tvName.setText(userInfoDO.getUserName());
         holder.tvPhone.setText("电话:" + userInfoDO.getUserTelephone());
         holder.tvHouseNum.setText("房号：" + userInfoDO.getHouseFloor());
@@ -42,8 +42,8 @@ public class ContactsOwnerFragmentAdapter extends ContactsBaseFragmentAdapter {
         holder.ivUserIcon.setImageURI(uri);
     }
 
-    public ContactsOwnerRequestDO getItem(int position) {
-        ContactsOwnerRequestDO userInfoRequetDO = (ContactsOwnerRequestDO) items.get(position);
+    public ContactsOwnerDO getItem(int position) {
+        ContactsOwnerDO userInfoRequetDO = (ContactsOwnerDO) items.get(position);
         return userInfoRequetDO;
     }
 

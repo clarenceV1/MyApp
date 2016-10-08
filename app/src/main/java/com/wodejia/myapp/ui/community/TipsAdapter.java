@@ -1,17 +1,14 @@
 package com.wodejia.myapp.ui.community;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
-import com.wodejia.myapp.data.community.BlockRequestDO;
-import com.wodejia.myapp.data.community.TipsRequestDO;
+import com.wodejia.myapp.data.community.TipsDO;
 
 import java.util.List;
 
@@ -20,11 +17,11 @@ import java.util.List;
  */
 
 public class TipsAdapter extends BaseAdapter {
-    List<TipsRequestDO> tipsRequestDOList;
+    List<TipsDO> tipsRequestDOList;
     Context context;
     LayoutInflater layoutInflater;
 
-    public TipsAdapter(Context context, List<TipsRequestDO> tipsRequestDOList) {
+    public TipsAdapter(Context context, List<TipsDO> tipsRequestDOList) {
         this.context = context;
         this.tipsRequestDOList = tipsRequestDOList;
         layoutInflater = LayoutInflater.from(context);
@@ -36,7 +33,7 @@ public class TipsAdapter extends BaseAdapter {
     }
 
     @Override
-    public TipsRequestDO getItem(int position) {
+    public TipsDO getItem(int position) {
         return tipsRequestDOList.get(position);
     }
 
@@ -55,7 +52,7 @@ public class TipsAdapter extends BaseAdapter {
         } else {
             hodler = (Hodler) convertView.getTag();
         }
-        TipsRequestDO tipsRequestDO = getItem(position);
+        TipsDO tipsRequestDO = getItem(position);
         if (tipsRequestDO != null) {
             hodler.tvTipsTitle.setText(tipsRequestDO.getTipTitle());
             hodler.tvProducterName.setText(tipsRequestDO.getProducterName());

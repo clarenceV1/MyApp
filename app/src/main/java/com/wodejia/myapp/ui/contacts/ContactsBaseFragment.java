@@ -12,8 +12,8 @@ import com.example.clarence.libwidget.quicksidebar.QuickSideBarView;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppFragment;
-import com.wodejia.myapp.data.contacts.ContactsBaseRequestDO;
-import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsBaseDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuDO;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,8 +37,8 @@ public abstract class ContactsBaseFragment extends AppFragment implements OnQuic
     ContactsBaseFragmentAdapter adapter;
     HashMap<String, Integer> letters = new HashMap<>();
     List<String> customLetters = new ArrayList<>();
-    ContactsMenuRequestDO contactsRequestDO;
-    public List<ContactsBaseRequestDO> data = new ArrayList<>();
+    ContactsMenuDO contactsRequestDO;
+    public List<ContactsBaseDO> data = new ArrayList<>();
 
     public abstract void loadData();
 
@@ -90,7 +90,7 @@ public abstract class ContactsBaseFragment extends AppFragment implements OnQuic
     public void getItent() {
         Bundle bundle = getArguments();
         if (bundle != null) {
-            contactsRequestDO = (ContactsMenuRequestDO) bundle.getSerializable("ContactsRequestDO");
+            contactsRequestDO = (ContactsMenuDO) bundle.getSerializable("ContactsRequestDO");
         }
     }
 
@@ -104,15 +104,15 @@ public abstract class ContactsBaseFragment extends AppFragment implements OnQuic
         recyclerView.scrollToPosition(n);
     }
 
-    public void freshView(Collection<? extends ContactsBaseRequestDO> request) {
+    public void freshView(Collection<? extends ContactsBaseDO> request) {
         if (request == null) {
             return;
         }
         data.clear();
         data.addAll(request);
-        Collections.sort(data, new Comparator<ContactsBaseRequestDO>() {
+        Collections.sort(data, new Comparator<ContactsBaseDO>() {
             @Override
-            public int compare(ContactsBaseRequestDO lhs, ContactsBaseRequestDO rhs) {
+            public int compare(ContactsBaseDO lhs, ContactsBaseDO rhs) {
                 if (lhs.getFirstLetter() == null || rhs.getFirstLetter() == null) {
                     return 0;
                 }
@@ -120,7 +120,7 @@ public abstract class ContactsBaseFragment extends AppFragment implements OnQuic
             }
         });
         int position = 0;
-        for (ContactsBaseRequestDO contactsBaseDO : data) {
+        for (ContactsBaseDO contactsBaseDO : data) {
             String letter = contactsBaseDO.getFirstLetter();
             //如果没有这个key则加入并把位置也加入
             if (letter != null && !letters.containsKey(letter)) {

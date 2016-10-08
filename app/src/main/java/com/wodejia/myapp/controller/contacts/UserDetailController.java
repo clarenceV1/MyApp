@@ -1,7 +1,7 @@
 package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
-import com.wodejia.myapp.data.contacts.OwnerDetailRequestDO;
+import com.wodejia.myapp.data.contacts.OwnerDetailDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 import com.wodejia.myapp.data.UserBaseInfoDO;
@@ -50,8 +50,8 @@ public class UserDetailController extends AppController {
      * @param sendRelative  是否是所有信息
      * @return
      */
-    public OwnerDetailRequestDO getMockData(int userId, boolean sendRelative) {
-        OwnerDetailRequestDO userInfoDetailRequestDO = new OwnerDetailRequestDO();
+    public OwnerDetailDO getMockData(int userId, boolean sendRelative) {
+        OwnerDetailDO userInfoDetailRequestDO = new OwnerDetailDO();
         UserBaseInfoDO baseDO = new UserBaseInfoDO();
         baseDO.setUserId(userId);
         baseDO.setUserName("猜猜");

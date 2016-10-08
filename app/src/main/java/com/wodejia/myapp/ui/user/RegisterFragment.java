@@ -9,7 +9,7 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppFragment;
 import com.wodejia.myapp.controller.user.RegisterController;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 
 import javax.inject.Inject;
 
@@ -100,7 +100,7 @@ public class RegisterFragment extends AppFragment {
             return;
         }
 
-        controller.registComit(new Subscriber<WeatherInfoResponseDO>() {
+        controller.registComit(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -112,7 +112,7 @@ public class RegisterFragment extends AppFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                 ToastUtils.showToast(getContext(), R.string.registSuccess);
                 if (loginState != null) {
                     loginState.goLogin();
@@ -131,7 +131,7 @@ public class RegisterFragment extends AppFragment {
             return;
         }
 
-        controller.requestVerifyCode(new Subscriber<WeatherInfoResponseDO>() {
+        controller.requestVerifyCode(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -143,7 +143,7 @@ public class RegisterFragment extends AppFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
 
             }
         });

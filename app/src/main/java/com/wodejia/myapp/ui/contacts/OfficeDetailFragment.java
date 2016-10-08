@@ -8,8 +8,8 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.controller.contacts.OfficeDetailController;
-import com.wodejia.myapp.data.contacts.OfficeDetailRequestDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.contacts.OfficeDetailDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 import com.wodejia.myapp.event.ContactsDetailEvent;
 
 import javax.inject.Inject;
@@ -35,7 +35,7 @@ public class OfficeDetailFragment extends ContactsDetailBaseFragment {
     @Inject
     OfficeDetailController controller;
 
-    OfficeDetailRequestDO officeDetailRequestDO;
+    OfficeDetailDO officeDetailRequestDO;
 
     @Override
     public void initVariables() {
@@ -54,7 +54,7 @@ public class OfficeDetailFragment extends ContactsDetailBaseFragment {
     }
 
     private void load() {
-        controller.request(new Subscriber<WeatherInfoResponseDO>() {
+        controller.request(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -66,7 +66,7 @@ public class OfficeDetailFragment extends ContactsDetailBaseFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                 officeDetailRequestDO = controller.getMockData(id);
                 if (sendRelative && officeDetailRequestDO.getUserId() != 0 ) {
                     EventBus.getDefault().post(new ContactsDetailEvent(officeDetailRequestDO.getUserId()));

@@ -2,8 +2,8 @@ package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
-import com.wodejia.myapp.data.contacts.ContactsShopRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuDO;
+import com.wodejia.myapp.data.contacts.ContactsShopDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 
@@ -46,14 +46,14 @@ public class ContactsShopController extends AppController {
         }
     }
 
-    public static List<ContactsShopRequestDO> getMockData(ContactsMenuRequestDO contactsRequestDO) {
-        List<ContactsShopRequestDO> result = new ArrayList<>();
+    public static List<ContactsShopDO> getMockData(ContactsMenuDO contactsRequestDO) {
+        List<ContactsShopDO> result = new ArrayList<>();
         if (contactsRequestDO != null) {
             int key = contactsRequestDO.getKey();
             String value = contactsRequestDO.getValue();
             if (key == Constant.SHOP_TYPE){
                 for (int i = 0; i < 2; i++) {
-                    ContactsShopRequestDO shopRequetDO = new ContactsShopRequestDO();
+                    ContactsShopDO shopRequetDO = new ContactsShopDO();
                     if (i == 0) {
                         shopRequetDO.setUserId(1);
                         shopRequetDO.setUserName("一笑");

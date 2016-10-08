@@ -11,9 +11,8 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.controller.community.TipsController;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
-import com.wodejia.myapp.data.community.BlockRequestDO;
-import com.wodejia.myapp.data.community.TipsRequestDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
+import com.wodejia.myapp.data.community.TipsDO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class TipsActivity extends AppActivity {
     ListView listView;
 
     public static final String EXTRA_BLOCK_ID = "BlockId";
-    List<TipsRequestDO> tipsRequestDOList = new ArrayList<>();
+    List<TipsDO> tipsRequestDOList = new ArrayList<>();
     TipsAdapter adapter;
     int blockId;
 
@@ -94,7 +93,7 @@ public class TipsActivity extends AppActivity {
 
     private void load() {
         if (blockId != 0) {
-            controller.requestTipsList(blockId, new Subscriber<WeatherInfoResponseDO>() {
+            controller.requestTipsList(blockId, new Subscriber<WeatherInfoDO>() {
                 @Override
                 public void onCompleted() {
 
@@ -106,7 +105,7 @@ public class TipsActivity extends AppActivity {
                 }
 
                 @Override
-                public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+                public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                     tipsRequestDOList.clear();
                     tipsRequestDOList.addAll(controller.getMockData(blockId));
                     adapter.notifyDataSetChanged();

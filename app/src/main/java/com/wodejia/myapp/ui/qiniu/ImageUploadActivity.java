@@ -19,31 +19,22 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UpProgressHandler;
-import com.qiniu.android.storage.UploadManager;
 import com.qiniu.android.storage.UploadOptions;
 import com.qiniu.android.utils.AsyncRun;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
-import com.wodejia.myapp.app.Constant;
 import com.wodejia.myapp.controller.QiniuController;
-import com.wodejia.myapp.data.QiniuTokenDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
 import com.wodejia.myapp.http.ApiUrl;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.IOException;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.Subscriber;
 
 /**
  * Created by clarence on 16/9/18.

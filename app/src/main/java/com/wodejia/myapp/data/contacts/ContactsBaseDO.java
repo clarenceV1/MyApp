@@ -3,7 +3,7 @@ package com.wodejia.myapp.data.contacts;
 /**
  * Created by clarence on 16/9/5.
  */
-public abstract class ContactsBaseRequestDO {
+public abstract class ContactsBaseDO {
     /**
      * 名称首字母，没有就用昵称首字母 不需要存表
      */

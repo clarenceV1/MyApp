@@ -8,8 +8,8 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.controller.contacts.ShopDetailController;
-import com.wodejia.myapp.data.contacts.ShopDetailRequestDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.contacts.ShopDetailDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 import com.wodejia.myapp.event.ContactsDetailEvent;
 
 import javax.inject.Inject;
@@ -33,7 +33,7 @@ public class ShopDetailFragment extends ContactsDetailBaseFragment {
     @Inject
     ShopDetailController controller;
 
-    ShopDetailRequestDO shopDetailRequestDO;
+    ShopDetailDO shopDetailRequestDO;
 
     @Override
     public void initVariables() {
@@ -52,7 +52,7 @@ public class ShopDetailFragment extends ContactsDetailBaseFragment {
     }
 
     private void load() {
-        controller.request(new Subscriber<WeatherInfoResponseDO>() {
+        controller.request(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -66,7 +66,7 @@ public class ShopDetailFragment extends ContactsDetailBaseFragment {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                 shopDetailRequestDO = controller.getMockData(id);
                 if (sendRelative && shopDetailRequestDO.getUserId() != 0) {
                     EventBus.getDefault().post(new ContactsDetailEvent(shopDetailRequestDO.getUserId()));

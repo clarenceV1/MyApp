@@ -10,8 +10,8 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.controller.community.TipsAddController;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
-import com.wodejia.myapp.data.community.TipsAddRequestDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
+import com.wodejia.myapp.data.community.TipsAddDO;
 import com.wodejia.myapp.ui.MainActivity;
 
 import javax.inject.Inject;
@@ -79,12 +79,12 @@ public class TipAddActivity extends AppActivity {
             return;
         }
 
-        final TipsAddRequestDO tipsAddRequestDO = new TipsAddRequestDO();
+        final TipsAddDO tipsAddRequestDO = new TipsAddDO();
         tipsAddRequestDO.setBlockId(blockId);
         tipsAddRequestDO.setTipTitle(tipTitle);
         tipsAddRequestDO.setTipContent(tipContent);
         tipsAddRequestDO.setProducterId(MainActivity.accountDO.getUserId().intValue());
-        controller.commitTip(tipsAddRequestDO,new Subscriber<WeatherInfoResponseDO>() {
+        controller.commitTip(tipsAddRequestDO,new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -96,7 +96,7 @@ public class TipAddActivity extends AppActivity {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                 ToastUtils.showToast(TipAddActivity.this, "发表帖子成功");
                 controller.saveMockData(tipsAddRequestDO);
             }

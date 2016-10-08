@@ -10,8 +10,8 @@ import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.controller.community.BlockController;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
-import com.wodejia.myapp.data.community.BlockRequestDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
+import com.wodejia.myapp.data.community.BlockDO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class BlockActivity extends AppActivity {
     @BindView(R.id.listView)
     ListView listView;
 
-    List<BlockRequestDO> blockDOList = new ArrayList<>();
+    List<BlockDO> blockDOList = new ArrayList<>();
     BlockAdapter blockAdapter;
 
     @Override
@@ -70,7 +70,7 @@ public class BlockActivity extends AppActivity {
     }
 
     private void load() {
-        controller.requestBlockList(new Subscriber<WeatherInfoResponseDO>() {
+        controller.requestBlockList(new Subscriber<WeatherInfoDO>() {
             @Override
             public void onCompleted() {
 
@@ -82,7 +82,7 @@ public class BlockActivity extends AppActivity {
             }
 
             @Override
-            public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+            public void onNext(WeatherInfoDO weatherInfoResponseDO) {
                 blockDOList.addAll(controller.getMockData());
                 blockAdapter.notifyDataSetChanged();
             }

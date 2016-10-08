@@ -4,7 +4,7 @@ package com.wodejia.myapp.data.contacts;
  * 业主信息
  * Created by clarence on 16/9/2.
  */
-public class ContactsOwnerRequestDO extends ContactsBaseRequestDO {
+public class ContactsOwnerDO extends ContactsBaseDO {
     /**
      * 用户ID
      */

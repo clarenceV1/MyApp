@@ -8,7 +8,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by clarence on 16/9/29.
  */
 @Entity
-public class TipsRequestDO{
+public class TipsDO {
     /**
      * 帖子ID
      */
@@ -43,10 +43,9 @@ public class TipsRequestDO{
      */
     private String producterName;
 
-    @Generated(hash = 1752632213)
-    public TipsRequestDO(Long tipId, int blockId, String tipTitle,
-            String tipContent, String updateTime, int replyNum, int producterId,
-            String producterName) {
+    @Generated(hash = 1864201045)
+    public TipsDO(Long tipId, int blockId, String tipTitle, String tipContent,
+            String updateTime, int replyNum, int producterId, String producterName) {
         this.tipId = tipId;
         this.blockId = blockId;
         this.tipTitle = tipTitle;
@@ -57,8 +56,8 @@ public class TipsRequestDO{
         this.producterName = producterName;
     }
 
-    @Generated(hash = 1693914609)
-    public TipsRequestDO() {
+    @Generated(hash = 420695996)
+    public TipsDO() {
     }
 
     public String getTipContent() {

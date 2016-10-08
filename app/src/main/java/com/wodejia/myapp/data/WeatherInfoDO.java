@@ -1,7 +1,7 @@
 package com.wodejia.myapp.data;
 
 
-public class WeatherInfoResponseDO {
+public class WeatherInfoDO {
     public WeatherDO weatherinfo;
 
     public WeatherDO getWeatherinfo() {

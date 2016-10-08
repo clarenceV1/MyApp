@@ -4,7 +4,7 @@ package com.wodejia.myapp.data.contacts;
  * 物流信息
  * Created by clarence on 16/9/2.
  */
-public class ContactsLogisticsRequestDO extends ContactsBaseRequestDO {
+public class ContactsLogisticsDO extends ContactsBaseDO {
     /**
      * 物流id
      */

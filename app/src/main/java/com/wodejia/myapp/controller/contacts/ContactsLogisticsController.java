@@ -2,8 +2,8 @@ package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
-import com.wodejia.myapp.data.contacts.ContactsLogisticsRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuDO;
+import com.wodejia.myapp.data.contacts.ContactsLogisticsDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 
@@ -45,14 +45,14 @@ public class ContactsLogisticsController extends AppController {
         }
     }
 
-    public static List<ContactsLogisticsRequestDO> getMockData(ContactsMenuRequestDO contactsRequestDO) {
-        List<ContactsLogisticsRequestDO> result = new ArrayList<>();
+    public static List<ContactsLogisticsDO> getMockData(ContactsMenuDO contactsRequestDO) {
+        List<ContactsLogisticsDO> result = new ArrayList<>();
         if (contactsRequestDO != null) {
             int key = contactsRequestDO.getKey();
             String value = contactsRequestDO.getValue();
             if (key == Constant.LOGISTICS_TYPE) {
                 for (int i = 0; i < 2; i++) {
-                    ContactsLogisticsRequestDO logisticsRequetDO = new ContactsLogisticsRequestDO();
+                    ContactsLogisticsDO logisticsRequetDO = new ContactsLogisticsDO();
                     if (i == 0) {
                         logisticsRequetDO.setUserId(1);
                         logisticsRequetDO.setLogisticsId(1);

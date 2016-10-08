@@ -1,7 +1,7 @@
 package com.wodejia.myapp.controller.community;
 
 import com.wodejia.myapp.app.AppController;
-import com.wodejia.myapp.data.community.BlockRequestDO;
+import com.wodejia.myapp.data.community.BlockDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 import com.wodejia.myapp.manager.manager.BlockDOManager;
@@ -29,7 +29,7 @@ public class BlockController extends AppController {
     public BlockController() {
     }
 
-    public List<BlockRequestDO> getMockData(){
+    public List<BlockDO> getMockData(){
         return blockDOManager.getBlockList();
     }
 

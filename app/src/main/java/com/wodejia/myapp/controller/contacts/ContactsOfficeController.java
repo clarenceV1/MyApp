@@ -2,8 +2,8 @@ package com.wodejia.myapp.controller.contacts;
 
 import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.app.Constant;
-import com.wodejia.myapp.data.contacts.ContactsMenuRequestDO;
-import com.wodejia.myapp.data.contacts.ContactsOfficeRequestDO;
+import com.wodejia.myapp.data.contacts.ContactsMenuDO;
+import com.wodejia.myapp.data.contacts.ContactsOfficeDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 
@@ -46,14 +46,14 @@ public class ContactsOfficeController extends AppController {
         }
     }
 
-    public static List<ContactsOfficeRequestDO> getMockData(ContactsMenuRequestDO contactsRequestDO) {
-        List<ContactsOfficeRequestDO> result = new ArrayList<>();
+    public static List<ContactsOfficeDO> getMockData(ContactsMenuDO contactsRequestDO) {
+        List<ContactsOfficeDO> result = new ArrayList<>();
         if (contactsRequestDO != null) {
             int key = contactsRequestDO.getKey();
             String value = contactsRequestDO.getValue();
             if (key == Constant.OFFICE_TYPE){
                 for (int i = 0; i < 3; i++) {
-                    ContactsOfficeRequestDO officeRequetDO = new ContactsOfficeRequestDO();
+                    ContactsOfficeDO officeRequetDO = new ContactsOfficeDO();
                     if (i == 0) {
                         officeRequetDO.setUserId(1);
                         officeRequetDO.setUserTelephone("1111111");

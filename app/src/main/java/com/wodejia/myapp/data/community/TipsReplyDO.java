@@ -4,7 +4,7 @@ package com.wodejia.myapp.data.community;
  * Created by clarence on 16/10/8.
  */
 
-public class TipsReplyRequestDO {
+public class TipsReplyDO {
     /**
      * 数据库ID
      */

@@ -3,7 +3,7 @@ package com.wodejia.myapp.controller;
 import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.data.AccountDO;
 import com.wodejia.myapp.data.WeatherDO;
-import com.wodejia.myapp.data.WeatherInfoResponseDO;
+import com.wodejia.myapp.data.WeatherInfoDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 import com.wodejia.myapp.manager.AccountManager;
@@ -47,7 +47,7 @@ public class MainController extends AppController {
         }
     }
 
-    public String getWeather(WeatherInfoResponseDO weatherInfoResponseDO) {
+    public String getWeather(WeatherInfoDO weatherInfoResponseDO) {
         if (weatherInfoResponseDO != null && weatherInfoResponseDO.getWeatherinfo() != null) {
             StringBuffer stringBuffer = new StringBuffer();
             WeatherDO weather = weatherInfoResponseDO.getWeatherinfo();
