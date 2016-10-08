@@ -1,13 +1,14 @@
 package com.wodejia.myapp.ui.community;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
-import com.wodejia.myapp.app.AppFragment;
+import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.controller.community.BlockController;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 import com.wodejia.myapp.data.community.BlockRequestDO;
@@ -18,12 +19,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import rx.Subscriber;
 
 /**
  * Created by clarence on 16/9/9.
  */
-public class BlockFragment extends AppFragment {
+public class BlockActivity extends AppActivity {
 
     @Inject
     BlockController controller;
@@ -40,13 +42,17 @@ public class BlockFragment extends AppFragment {
     }
 
     @Override
-    protected int getLayout() {
-        return R.layout.block_fragment;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.block_fragment);
+        ButterKnife.bind(this);
+        initView();
+        load();
     }
 
-    @Override
-    protected void initView(View view) {
-        blockAdapter = new BlockAdapter(getContext(), blockDOList);
+    protected void initView() {
+        titleBarCommon.setTitle(R.string.block_title);
+        blockAdapter = new BlockAdapter(this, blockDOList);
         listView.setAdapter(blockAdapter);
         initListener();
         load();
@@ -57,8 +63,8 @@ public class BlockFragment extends AppFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
-                intent.putExtra(TipsActivity.EXTRA_BLOCK_ID, blockDOList.get(position).getBlockId());
-                navigator.navigateTo(getContext(), TipsActivity.class, intent);
+                intent.putExtra(TipsActivity.EXTRA_BLOCK_ID, blockDOList.get(position).getBlockId().intValue());
+                navigator.navigateTo(BlockActivity.this, TipsActivity.class, intent);
             }
         });
     }
@@ -72,7 +78,7 @@ public class BlockFragment extends AppFragment {
 
             @Override
             public void onError(Throwable e) {
-                ToastUtils.showToast(getContext(), "获取板块列表失败");
+                ToastUtils.showToast(BlockActivity.this, "获取板块列表失败");
             }
 
             @Override

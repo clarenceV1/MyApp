@@ -11,7 +11,7 @@ import com.wodejia.myapp.controller.contacts.UserDetailController;
 import com.wodejia.myapp.data.contacts.OwnerDetailRequestDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
 import com.wodejia.myapp.event.ContactsDetailEvent;
-import com.wodejia.myapp.table.UserInfoBaseDO;
+import com.wodejia.myapp.data.UserBaseInfoDO;
 
 import javax.inject.Inject;
 
@@ -82,7 +82,7 @@ public class OwnerDetailFragment extends ContactsDetailBaseFragment {
 
     private void initView() {
         if (userInfoDO != null && userInfoDO.getUserInfoBaseDO() != null) {
-            UserInfoBaseDO baseDO = userInfoDO.getUserInfoBaseDO();
+            UserBaseInfoDO baseDO = userInfoDO.getUserInfoBaseDO();
             tvName.setText(baseDO.getUserName());
             tvTelephone.setText("tel:" + baseDO.getUserTelephone());
             Uri uri = Uri.parse(baseDO.getUserIcon());

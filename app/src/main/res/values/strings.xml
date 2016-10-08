@@ -38,5 +38,7 @@
     <string name="tip_add_title_error">帖子标题至少6个字符</string>
     <string name="tip_add_content_error">帖子内容至少6个字符</string>
     <string name="tip_public">发表</string>
+    <string name="block_title">邻里圈</string>
+    <string name="tip_detial_title">帖子详情</string>
 
 </resources>

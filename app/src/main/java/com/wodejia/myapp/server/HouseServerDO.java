@@ -1,10 +1,10 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.server;
 
 /**
  * 房屋
  * Created by clarence on 16/9/2.
  */
-public class HouseDO {
+public class HouseServerDO {
     /**
      * 房屋编号
      */

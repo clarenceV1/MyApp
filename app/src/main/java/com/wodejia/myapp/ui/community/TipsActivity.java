@@ -39,7 +39,7 @@ public class TipsActivity extends AppActivity {
     public static final String EXTRA_BLOCK_ID = "BlockId";
     List<TipsRequestDO> tipsRequestDOList = new ArrayList<>();
     TipsAdapter adapter;
-    Long blockId;
+    int blockId;
 
     @Override
     public void initVariables() {
@@ -63,7 +63,7 @@ public class TipsActivity extends AppActivity {
 
     public void getIntents(Intent intent) {
         if (intent.hasExtra(EXTRA_BLOCK_ID)) {
-            blockId = (Long) intent.getSerializableExtra(EXTRA_BLOCK_ID);
+            blockId = intent.getIntExtra(EXTRA_BLOCK_ID,0);
         }
     }
 
@@ -93,8 +93,8 @@ public class TipsActivity extends AppActivity {
     }
 
     private void load() {
-        if (blockId != null) {
-            controller.requestTipsList(blockId.intValue(), new Subscriber<WeatherInfoResponseDO>() {
+        if (blockId != 0) {
+            controller.requestTipsList(blockId, new Subscriber<WeatherInfoResponseDO>() {
                 @Override
                 public void onCompleted() {
 
@@ -108,7 +108,7 @@ public class TipsActivity extends AppActivity {
                 @Override
                 public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
                     tipsRequestDOList.clear();
-                    tipsRequestDOList.addAll(controller.getMockData());
+                    tipsRequestDOList.addAll(controller.getMockData(blockId));
                     adapter.notifyDataSetChanged();
                 }
             });

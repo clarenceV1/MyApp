@@ -58,9 +58,9 @@ public class BlockAdapter extends BaseAdapter {
             hodler.tvBlockTitle.setText(blockDO.getBlockTitle());
             hodler.tvBlockSubtitle.setText(blockDO.getBlockSubtitle());
             hodler.tvBlockManager.setText(blockDO.getManagerName());
+            Uri uri = Uri.parse(blockDO.getBlockIcon());
+            hodler.ivBlockIcon.setImageURI(uri);
         }
-        Uri uri = Uri.parse(blockDO.getBlockIcon());
-        hodler.ivBlockIcon.setImageURI(uri);
         return convertView;
     }
 

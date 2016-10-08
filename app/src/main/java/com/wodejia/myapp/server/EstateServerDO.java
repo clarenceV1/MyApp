@@ -1,9 +1,9 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.server;
 
 /**
  * 房地产
  */
-public class EstateDO {
+public class EstateServerDO {
     /**
      * 房地产编号
      */

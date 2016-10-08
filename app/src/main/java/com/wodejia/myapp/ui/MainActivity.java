@@ -19,7 +19,7 @@ import com.wodejia.myapp.app.PowerLevel;
 import com.wodejia.myapp.controller.MainController;
 import com.wodejia.myapp.data.AccountDO;
 import com.wodejia.myapp.data.WeatherInfoResponseDO;
-import com.wodejia.myapp.ui.community.BlockFragment;
+import com.wodejia.myapp.ui.community.BlockActivity;
 import com.wodejia.myapp.ui.contacts.ContactsMainFragment;
 import com.wodejia.myapp.ui.manager.ManagerApplyFragment;
 import com.wodejia.myapp.ui.manager.ManagerMainFragment;
@@ -113,8 +113,7 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
             case R.id.nav_camera:
                 break;
             case R.id.nav_community:
-                BlockFragment blockFragment = new BlockFragment();
-                replaceFragment(R.id.mainframelayout, blockFragment);
+                navigator.navigateTo(MainActivity.this,BlockActivity.class);
                 break;
             case R.id.nav_contacts:
                 ContactsMainFragment contactsActivity = new ContactsMainFragment();
@@ -171,16 +170,12 @@ public class MainActivity extends AppActivity implements NavigationView.OnNaviga
         if (accountDO != null) {
             loginSuccess(accountDO);
         }
-        BlockFragment blockFragment = new BlockFragment();
-        replaceFragment(R.id.mainframelayout, blockFragment);
     }
 
     @Override
     public void loginSuccess(AccountDO accountDO) {
         this.accountDO = accountDO;
         mainHeadManager.login(accountDO);
-        BlockFragment blockFragment = new BlockFragment();
-        replaceFragment(R.id.mainframelayout, blockFragment);
     }
 
     @Override

@@ -6,7 +6,6 @@ import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
 import com.wodejia.myapp.manager.manager.TipsDOManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,22 +21,22 @@ import rx.schedulers.Schedulers;
  * Created by clarence on 16/9/29.
  */
 
-public class TipsController extends AppController {
+public class TipsDetailController extends AppController {
     @Inject
     TipsDOManager tipsDOManager;
 
     @Inject
-    public TipsController() {
+    public TipsDetailController() {
 
     }
 
     /**
-     * 获取贴士列表
+     * 获取贴士详情
      *
-     * @param blockId
+     * @param tipId
      * @param subscriber
      */
-    public void requestTipsList(int blockId, Subscriber subscriber) {
+    public void requestTipsDetail(int tipId, Subscriber subscriber) {
         try {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(ApiUrl.searchWeather)

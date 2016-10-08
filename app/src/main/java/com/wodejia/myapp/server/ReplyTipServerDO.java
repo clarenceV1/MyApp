@@ -1,10 +1,10 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.server;
 
 /**
  * 回帖
  * Created by clarence on 16/9/23.
  */
-public class ReplyTipDO {
+public class ReplyTipServerDO {
     /**
      * 数据库ID
      */

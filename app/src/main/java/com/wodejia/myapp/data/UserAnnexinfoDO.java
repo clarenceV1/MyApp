@@ -1,10 +1,10 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.data;
 
 /**
  * 用户信息附属表
  * Created by clarence on 16/9/2.
  */
-public class UserinfoAnnexDO {
+public class UserAnnexinfoDO {
     /**
      * 表ID
      */

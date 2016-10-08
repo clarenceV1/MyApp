@@ -3,7 +3,7 @@ package com.wodejia.myapp.dagger.components;
 import com.wodejia.myapp.ui.GuideActivity;
 import com.wodejia.myapp.ui.RichEditorFragment;
 import com.wodejia.myapp.ui.WelcomeActivity;
-import com.wodejia.myapp.ui.community.BlockFragment;
+import com.wodejia.myapp.ui.community.BlockActivity;
 import com.wodejia.myapp.ui.community.TipAddActivity;
 import com.wodejia.myapp.ui.community.TipsActivity;
 import com.wodejia.myapp.ui.community.TipDetailActivity;
@@ -82,7 +82,7 @@ public interface ActivityComponent {
 
     void inject(ManagerAddBlockActivity managerAddBlockActivity);
 
-    void inject(BlockFragment blockFragment);
+    void inject(BlockActivity blockFragment);
 
     void inject(TipsActivity tipActivity);
 

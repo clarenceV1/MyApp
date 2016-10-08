@@ -1,28 +1,28 @@
 package com.wodejia.myapp.data.contacts;
 
-import com.wodejia.myapp.table.UserInfoBaseDO;
-import com.wodejia.myapp.table.UserinfoAnnexDO;
+import com.wodejia.myapp.data.UserBaseInfoDO;
+import com.wodejia.myapp.data.UserAnnexinfoDO;
 
 /**
  * Created by clarence on 16/9/2.
  */
 public class OwnerDetailRequestDO {
-    UserInfoBaseDO userInfoBaseDO;
-    UserinfoAnnexDO userinfoAnnexDO;
+    UserBaseInfoDO userInfoBaseDO;
+    UserAnnexinfoDO userinfoAnnexDO;
 
-    public UserInfoBaseDO getUserInfoBaseDO() {
+    public UserBaseInfoDO getUserInfoBaseDO() {
         return userInfoBaseDO;
     }
 
-    public void setUserInfoBaseDO(UserInfoBaseDO userInfoBaseDO) {
+    public void setUserInfoBaseDO(UserBaseInfoDO userInfoBaseDO) {
         this.userInfoBaseDO = userInfoBaseDO;
     }
 
-    public UserinfoAnnexDO getUserinfoAnnexDO() {
+    public UserAnnexinfoDO getUserinfoAnnexDO() {
         return userinfoAnnexDO;
     }
 
-    public void setUserinfoAnnexDO(UserinfoAnnexDO userinfoAnnexDO) {
+    public void setUserinfoAnnexDO(UserAnnexinfoDO userinfoAnnexDO) {
         this.userinfoAnnexDO = userinfoAnnexDO;
     }
 }

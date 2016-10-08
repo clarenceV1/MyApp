@@ -4,8 +4,8 @@ import com.wodejia.myapp.app.AppController;
 import com.wodejia.myapp.data.contacts.OwnerDetailRequestDO;
 import com.wodejia.myapp.http.ApiService;
 import com.wodejia.myapp.http.ApiUrl;
-import com.wodejia.myapp.table.UserInfoBaseDO;
-import com.wodejia.myapp.table.UserinfoAnnexDO;
+import com.wodejia.myapp.data.UserBaseInfoDO;
+import com.wodejia.myapp.data.UserAnnexinfoDO;
 
 import javax.inject.Inject;
 
@@ -52,7 +52,7 @@ public class UserDetailController extends AppController {
      */
     public OwnerDetailRequestDO getMockData(int userId, boolean sendRelative) {
         OwnerDetailRequestDO userInfoDetailRequestDO = new OwnerDetailRequestDO();
-        UserInfoBaseDO baseDO = new UserInfoBaseDO();
+        UserBaseInfoDO baseDO = new UserBaseInfoDO();
         baseDO.setUserId(userId);
         baseDO.setUserName("猜猜");
         baseDO.setUserIcon("http://img4.imgtn.bdimg.com/it/u=639941756,2707761062&fm=15&gp=0.jpg");
@@ -61,7 +61,7 @@ public class UserDetailController extends AppController {
         userInfoDetailRequestDO.setUserInfoBaseDO(baseDO);
 
         if (sendRelative) {
-            UserinfoAnnexDO annexDO = new UserinfoAnnexDO();
+            UserAnnexinfoDO annexDO = new UserAnnexinfoDO();
             annexDO.setAreasId(1);
             annexDO.setHouseId(1);
             annexDO.setLogisticsId(1);

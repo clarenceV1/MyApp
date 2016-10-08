@@ -1,15 +1,15 @@
 package com.wodejia.myapp.event;
 
-import com.wodejia.myapp.table.UserinfoAnnexDO;
+import com.wodejia.myapp.data.UserAnnexinfoDO;
 
 /**
  * Created by clarence on 16/9/8.
  */
 public class ContactsDetailEvent {
-    UserinfoAnnexDO userinfoAnnexDO;
+    UserAnnexinfoDO userinfoAnnexDO;
     private int userId;
 
-    public ContactsDetailEvent(UserinfoAnnexDO userinfoAnnexDO) {
+    public ContactsDetailEvent(UserAnnexinfoDO userinfoAnnexDO) {
         this.userinfoAnnexDO = userinfoAnnexDO;
     }
 
@@ -17,11 +17,11 @@ public class ContactsDetailEvent {
         this.userId = userId;
     }
 
-    public UserinfoAnnexDO getUserinfoAnnexDO() {
+    public UserAnnexinfoDO getUserinfoAnnexDO() {
         return userinfoAnnexDO;
     }
 
-    public void setUserinfoAnnexDO(UserinfoAnnexDO userinfoAnnexDO) {
+    public void setUserinfoAnnexDO(UserAnnexinfoDO userinfoAnnexDO) {
         this.userinfoAnnexDO = userinfoAnnexDO;
     }
 

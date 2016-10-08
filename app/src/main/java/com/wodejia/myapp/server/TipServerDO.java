@@ -1,11 +1,11 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.server;
 
 /**
  * 帖子model
  * Created by clarence on 16/9/23.
  */
 
-public class TipDO {
+public class TipServerDO {
     /**
      * 帖子编号
      */

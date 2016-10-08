@@ -23,8 +23,9 @@ public class TipsDOManager extends AppManager {
         tipsDao.insert(tipsRequestDO);
     }
 
-    public List<TipsRequestDO> getTipsList() {
-        List<TipsRequestDO> blockList = tipsDao.queryBuilder().build().list();
+    public List<TipsRequestDO> getTipsList(int blockId) {
+        List<TipsRequestDO> blockList = tipsDao.queryBuilder()
+                .where(TipsRequestDODao.Properties.BlockId.eq(blockId)).build().list();
         return blockList;
     }
 }

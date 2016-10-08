@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/../../LibWidget" />
             <option value="$PROJECT_DIR$/.." />
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../servermodule" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

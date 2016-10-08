@@ -1,10 +1,10 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.server;
 
 /**
  * 办事处
  * Created by clarence on 16/9/2.
  */
-public class OfficeDO {
+public class OfficeServerDO {
     /**
      * 办事处ID
      */

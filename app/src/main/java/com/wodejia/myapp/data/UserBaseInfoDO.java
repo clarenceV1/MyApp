@@ -1,10 +1,10 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.data;
 
 /**
  * 用户基本信息表
  * Created by clarence on 16/8/31.
  */
-public class UserInfoBaseDO {
+public class UserBaseInfoDO {
     /**
      * 用户ID---表ID
      */

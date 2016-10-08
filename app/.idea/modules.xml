@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/../../LibWidget/LibWidget.iml" filepath="$PROJECT_DIR$/../../LibWidget/LibWidget.iml" />
       <module fileurl="file://$PROJECT_DIR$/../MyApp.iml" filepath="$PROJECT_DIR$/../MyApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../servermodule/servermodule.iml" filepath="$PROJECT_DIR$/../servermodule/servermodule.iml" />
     </modules>
   </component>
 </project>

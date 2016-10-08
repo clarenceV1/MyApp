@@ -11,7 +11,7 @@ import com.wodejia.myapp.R;
 import com.wodejia.myapp.app.AppActivity;
 import com.wodejia.myapp.app.Constant;
 import com.wodejia.myapp.event.ContactsDetailEvent;
-import com.wodejia.myapp.table.UserinfoAnnexDO;
+import com.wodejia.myapp.data.UserAnnexinfoDO;
 
 /**
  * Created by clarence on 16/8/31.
@@ -55,7 +55,7 @@ public class ContactsDetailActivity extends AppActivity {
     }
 
     public void onEventMainThread(ContactsDetailEvent event) {
-        UserinfoAnnexDO annexDO = event.getUserinfoAnnexDO();
+        UserAnnexinfoDO annexDO = event.getUserinfoAnnexDO();
         Fragment fragment = null;
         int userId = event.getUserId();
         if (annexDO != null) {

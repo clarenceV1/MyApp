@@ -1,4 +1,4 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.server;
 
 import org.greenrobot.greendao.annotation.Id;
 
@@ -6,7 +6,7 @@ import org.greenrobot.greendao.annotation.Id;
  * 板块
  * Created by clarence on 16/9/19.
  */
-public class BlockDO {
+public class BlockServerDO {
     /**
      * 板块ID
      */

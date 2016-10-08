@@ -89,7 +89,6 @@ public class TipsAddController extends AppController {
         tipsRequestDO.setTipContent(tipsAddRequestDO.getTipContent());
         tipsRequestDO.setProducterName(MainActivity.accountDO.getUserNickname());
         tipsRequestDO.setReplyNum(9);
-        tipsRequestDO.setTipId(Long.valueOf(1));
         tipsDOManager.insert(tipsRequestDO);
     }
 }

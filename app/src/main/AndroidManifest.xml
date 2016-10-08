@@ -22,15 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.GuideActivity"/>
-        <activity android:name=".ui.MainActivity"
+        <activity android:name=".ui.GuideActivity" />
+        <activity
+            android:name=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.contacts.ContactsDetailActivity" />
         <activity android:name=".ui.qiniu.ImageUploadActivity" />
         <activity android:name=".ui.manager.ManagerAddBlockActivity" />
+        <activity android:name=".ui.community.BlockActivity" />
         <activity android:name=".ui.community.TipsActivity" />
-        <activity android:name=".ui.community.TipDetailActivity" />
         <activity android:name=".ui.community.TipAddActivity" />
+        <activity android:name=".ui.community.TipDetailActivity" />
     </application>
 
 </manifest>

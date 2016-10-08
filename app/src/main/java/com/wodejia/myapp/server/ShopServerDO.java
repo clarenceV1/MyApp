@@ -1,10 +1,10 @@
-package com.wodejia.myapp.table;
+package com.wodejia.myapp.server;
 
 /**
  * 店铺
  * Created by clarence on 16/9/2.
  */
-public class ShopDO {
+public class ShopServerDO {
     /**
      * 店铺ID
      */
