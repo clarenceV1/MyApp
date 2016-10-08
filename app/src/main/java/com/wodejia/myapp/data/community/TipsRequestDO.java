@@ -15,9 +15,17 @@ public class TipsRequestDO{
     @Id(autoincrement = true)
     private Long  tipId;
     /**
+     * 板块ID
+     */
+    private int blockId;
+    /**
      * 贴子标题
      */
     private String tipTitle;
+    /**
+     * 帖子内容
+     */
+    private String tipContent;
     /**
      * 帖子最后更新时间
      */
@@ -35,11 +43,14 @@ public class TipsRequestDO{
      */
     private String producterName;
 
-    @Generated(hash = 1945969979)
-    public TipsRequestDO(Long tipId, String tipTitle, String updateTime,
-            int replyNum, int producterId, String producterName) {
+    @Generated(hash = 1752632213)
+    public TipsRequestDO(Long tipId, int blockId, String tipTitle,
+            String tipContent, String updateTime, int replyNum, int producterId,
+            String producterName) {
         this.tipId = tipId;
+        this.blockId = blockId;
         this.tipTitle = tipTitle;
+        this.tipContent = tipContent;
         this.updateTime = updateTime;
         this.replyNum = replyNum;
         this.producterId = producterId;
@@ -48,6 +59,22 @@ public class TipsRequestDO{
 
     @Generated(hash = 1693914609)
     public TipsRequestDO() {
+    }
+
+    public String getTipContent() {
+        return tipContent;
+    }
+
+    public void setTipContent(String tipContent) {
+        this.tipContent = tipContent;
+    }
+
+    public int getBlockId() {
+        return blockId;
+    }
+
+    public void setBlockId(int blockId) {
+        this.blockId = blockId;
     }
 
     public Long getTipId() {

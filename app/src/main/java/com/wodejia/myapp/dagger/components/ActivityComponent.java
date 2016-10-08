@@ -4,6 +4,7 @@ import com.wodejia.myapp.ui.GuideActivity;
 import com.wodejia.myapp.ui.RichEditorFragment;
 import com.wodejia.myapp.ui.WelcomeActivity;
 import com.wodejia.myapp.ui.community.BlockFragment;
+import com.wodejia.myapp.ui.community.TipAddActivity;
 import com.wodejia.myapp.ui.community.TipsActivity;
 import com.wodejia.myapp.ui.community.TipDetailActivity;
 import com.wodejia.myapp.ui.manager.ManagerAddBlockActivity;
@@ -86,4 +87,6 @@ public interface ActivityComponent {
     void inject(TipsActivity tipActivity);
 
     void inject(TipDetailActivity tipDetailActivity);
+
+    void inject(TipAddActivity tipDetailActivity);
 }

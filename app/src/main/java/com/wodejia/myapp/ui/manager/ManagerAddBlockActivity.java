@@ -77,6 +77,7 @@ public class ManagerAddBlockActivity extends AppActivity {
         blockDO.setBlockIcon(blockIcon);
         long managerId = MainActivity.accountDO.getUserId();
         blockDO.setManagerId(managerId);
+        blockDO.setManagerName(MainActivity.accountDO.getUserNickname());
         blockDO.setBlockTitle(blockTitle);
         blockDO.setBlockSubtitle(blockSubtitle);
         controller.addBlock(blockDO, new Subscriber<WeatherInfoResponseDO>() {
@@ -92,8 +93,11 @@ public class ManagerAddBlockActivity extends AppActivity {
 
             @Override
             public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+                etBockTitle.setText("");
+                etBockSubtitle.setText("");
                 ToastUtils.showToast(ManagerAddBlockActivity.this, "添加板块成功");
                 controller.saveMockData(blockDO);//TODO 临时保存数据来
+
             }
         });
     }

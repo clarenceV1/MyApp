@@ -37,7 +37,7 @@ public class TipsController extends AppController {
      * @param blockId
      * @param subscriber
      */
-    public void requestTipsList(Long blockId, Subscriber subscriber) {
+    public void requestTipsList(int blockId, Subscriber subscriber) {
         try {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(ApiUrl.searchWeather)
@@ -56,17 +56,6 @@ public class TipsController extends AppController {
     }
 
     public List<TipsRequestDO> getMockData() {
-        List<TipsRequestDO> list = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            TipsRequestDO tipsRequestDO = new TipsRequestDO();
-            tipsRequestDO.setProducterId(i);
-            tipsRequestDO.setProducterName("xiaocai_" + i);
-            tipsRequestDO.setReplyNum(tipsRequestDO.getReplyNum()*10);
-            tipsRequestDO.setTipId(Long.valueOf(i));
-            tipsRequestDO.setTipTitle("帖子标题——"+i);
-            tipsRequestDO.setUpdateTime(i*5+"分钟前");
-            list.add(tipsRequestDO);
-        }
-        return list;/*tipsDOManager.getTipsList();*/
+        return tipsDOManager.getTipsList();
     }
 }

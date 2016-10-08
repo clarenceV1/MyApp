@@ -25,11 +25,13 @@ public class TipsRequestDODao extends AbstractDao<TipsRequestDO, Long> {
      */
     public static class Properties {
         public final static Property TipId = new Property(0, Long.class, "tipId", true, "_id");
-        public final static Property TipTitle = new Property(1, String.class, "tipTitle", false, "TIP_TITLE");
-        public final static Property UpdateTime = new Property(2, String.class, "updateTime", false, "UPDATE_TIME");
-        public final static Property ReplyNum = new Property(3, int.class, "replyNum", false, "REPLY_NUM");
-        public final static Property ProducterId = new Property(4, int.class, "producterId", false, "PRODUCTER_ID");
-        public final static Property ProducterName = new Property(5, String.class, "producterName", false, "PRODUCTER_NAME");
+        public final static Property BlockId = new Property(1, int.class, "blockId", false, "BLOCK_ID");
+        public final static Property TipTitle = new Property(2, String.class, "tipTitle", false, "TIP_TITLE");
+        public final static Property TipContent = new Property(3, String.class, "tipContent", false, "TIP_CONTENT");
+        public final static Property UpdateTime = new Property(4, String.class, "updateTime", false, "UPDATE_TIME");
+        public final static Property ReplyNum = new Property(5, int.class, "replyNum", false, "REPLY_NUM");
+        public final static Property ProducterId = new Property(6, int.class, "producterId", false, "PRODUCTER_ID");
+        public final static Property ProducterName = new Property(7, String.class, "producterName", false, "PRODUCTER_NAME");
     }
 
 
@@ -46,11 +48,13 @@ public class TipsRequestDODao extends AbstractDao<TipsRequestDO, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"TIPS_REQUEST_DO\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: tipId
-                "\"TIP_TITLE\" TEXT," + // 1: tipTitle
-                "\"UPDATE_TIME\" TEXT," + // 2: updateTime
-                "\"REPLY_NUM\" INTEGER NOT NULL ," + // 3: replyNum
-                "\"PRODUCTER_ID\" INTEGER NOT NULL ," + // 4: producterId
-                "\"PRODUCTER_NAME\" TEXT);"); // 5: producterName
+                "\"BLOCK_ID\" INTEGER NOT NULL ," + // 1: blockId
+                "\"TIP_TITLE\" TEXT," + // 2: tipTitle
+                "\"TIP_CONTENT\" TEXT," + // 3: tipContent
+                "\"UPDATE_TIME\" TEXT," + // 4: updateTime
+                "\"REPLY_NUM\" INTEGER NOT NULL ," + // 5: replyNum
+                "\"PRODUCTER_ID\" INTEGER NOT NULL ," + // 6: producterId
+                "\"PRODUCTER_NAME\" TEXT);"); // 7: producterName
     }
 
     /** Drops the underlying database table. */
@@ -67,22 +71,28 @@ public class TipsRequestDODao extends AbstractDao<TipsRequestDO, Long> {
         if (tipId != null) {
             stmt.bindLong(1, tipId);
         }
+        stmt.bindLong(2, entity.getBlockId());
  
         String tipTitle = entity.getTipTitle();
         if (tipTitle != null) {
-            stmt.bindString(2, tipTitle);
+            stmt.bindString(3, tipTitle);
+        }
+ 
+        String tipContent = entity.getTipContent();
+        if (tipContent != null) {
+            stmt.bindString(4, tipContent);
         }
  
         String updateTime = entity.getUpdateTime();
         if (updateTime != null) {
-            stmt.bindString(3, updateTime);
+            stmt.bindString(5, updateTime);
         }
-        stmt.bindLong(4, entity.getReplyNum());
-        stmt.bindLong(5, entity.getProducterId());
+        stmt.bindLong(6, entity.getReplyNum());
+        stmt.bindLong(7, entity.getProducterId());
  
         String producterName = entity.getProducterName();
         if (producterName != null) {
-            stmt.bindString(6, producterName);
+            stmt.bindString(8, producterName);
         }
     }
 
@@ -94,22 +104,28 @@ public class TipsRequestDODao extends AbstractDao<TipsRequestDO, Long> {
         if (tipId != null) {
             stmt.bindLong(1, tipId);
         }
+        stmt.bindLong(2, entity.getBlockId());
  
         String tipTitle = entity.getTipTitle();
         if (tipTitle != null) {
-            stmt.bindString(2, tipTitle);
+            stmt.bindString(3, tipTitle);
+        }
+ 
+        String tipContent = entity.getTipContent();
+        if (tipContent != null) {
+            stmt.bindString(4, tipContent);
         }
  
         String updateTime = entity.getUpdateTime();
         if (updateTime != null) {
-            stmt.bindString(3, updateTime);
+            stmt.bindString(5, updateTime);
         }
-        stmt.bindLong(4, entity.getReplyNum());
-        stmt.bindLong(5, entity.getProducterId());
+        stmt.bindLong(6, entity.getReplyNum());
+        stmt.bindLong(7, entity.getProducterId());
  
         String producterName = entity.getProducterName();
         if (producterName != null) {
-            stmt.bindString(6, producterName);
+            stmt.bindString(8, producterName);
         }
     }
 
@@ -122,11 +138,13 @@ public class TipsRequestDODao extends AbstractDao<TipsRequestDO, Long> {
     public TipsRequestDO readEntity(Cursor cursor, int offset) {
         TipsRequestDO entity = new TipsRequestDO( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // tipId
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // tipTitle
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // updateTime
-            cursor.getInt(offset + 3), // replyNum
-            cursor.getInt(offset + 4), // producterId
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // producterName
+            cursor.getInt(offset + 1), // blockId
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // tipTitle
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // tipContent
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // updateTime
+            cursor.getInt(offset + 5), // replyNum
+            cursor.getInt(offset + 6), // producterId
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // producterName
         );
         return entity;
     }
@@ -134,11 +152,13 @@ public class TipsRequestDODao extends AbstractDao<TipsRequestDO, Long> {
     @Override
     public void readEntity(Cursor cursor, TipsRequestDO entity, int offset) {
         entity.setTipId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setTipTitle(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setUpdateTime(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setReplyNum(cursor.getInt(offset + 3));
-        entity.setProducterId(cursor.getInt(offset + 4));
-        entity.setProducterName(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setBlockId(cursor.getInt(offset + 1));
+        entity.setTipTitle(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setTipContent(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setUpdateTime(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setReplyNum(cursor.getInt(offset + 5));
+        entity.setProducterId(cursor.getInt(offset + 6));
+        entity.setProducterName(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override

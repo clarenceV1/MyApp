@@ -32,5 +32,11 @@
     <string name="managerApplyNotice">联系管理员:小蔡\n QQ:763287516\n tel:13779926287</string>
     <string name="managerApplyNoticeTitle">管理员申请须知</string>
     <string name="accountLogin">请登录</string>
+    <string name="tip_add_hint_titile">帖子标题</string>
+    <string name="tip_add_hint_content">帖子内容</string>
+    <string name="tip_add_commit">提交</string>
+    <string name="tip_add_title_error">帖子标题至少6个字符</string>
+    <string name="tip_add_content_error">帖子内容至少6个字符</string>
+    <string name="tip_public">发表</string>
 
 </resources>

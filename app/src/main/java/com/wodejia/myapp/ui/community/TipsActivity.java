@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.clarence.utillibrary.ToastUtils;
 import com.wodejia.myapp.R;
@@ -50,9 +51,13 @@ public class TipsActivity extends AppActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tips);
         getIntents(getIntent());
-        titleBarCommon.setCustomTitleBar(-1);
         ButterKnife.bind(this);
         initView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         load();
     }
 
@@ -63,6 +68,18 @@ public class TipsActivity extends AppActivity {
     }
 
     private void initView() {
+        TextView titleBarRight = titleBarCommon.getRightTextView();
+        titleBarRight.setVisibility(View.VISIBLE);
+        titleBarRight.setText(R.string.tip_public);
+        titleBarRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra(TipAddActivity.EXTRA_BLOCK_ID, blockId);
+                navigator.navigateTo(TipsActivity.this, TipAddActivity.class, intent);
+            }
+        });
+
         adapter = new TipsAdapter(this, tipsRequestDOList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -77,7 +94,7 @@ public class TipsActivity extends AppActivity {
 
     private void load() {
         if (blockId != null) {
-            controller.requestTipsList(blockId, new Subscriber<WeatherInfoResponseDO>() {
+            controller.requestTipsList(blockId.intValue(), new Subscriber<WeatherInfoResponseDO>() {
                 @Override
                 public void onCompleted() {
 
@@ -90,6 +107,7 @@ public class TipsActivity extends AppActivity {
 
                 @Override
                 public void onNext(WeatherInfoResponseDO weatherInfoResponseDO) {
+                    tipsRequestDOList.clear();
                     tipsRequestDOList.addAll(controller.getMockData());
                     adapter.notifyDataSetChanged();
                 }
