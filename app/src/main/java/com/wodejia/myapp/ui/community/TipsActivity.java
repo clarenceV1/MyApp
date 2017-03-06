@@ -31,12 +31,11 @@ import rx.Subscriber;
 public class TipsActivity extends AppActivity {
     @Inject
     TipsController controller;
-
     @BindView(R.id.listView)
     ListView listView;
 
     public static final String EXTRA_BLOCK_ID = "BlockId";
-    List<TipsDO> tipsRequestDOList = new ArrayList<>();
+    List<TipsDO> tipsDOList = new ArrayList<>();
     TipsAdapter adapter;
     int blockId;
 
@@ -79,13 +78,13 @@ public class TipsActivity extends AppActivity {
             }
         });
 
-        adapter = new TipsAdapter(this, tipsRequestDOList);
+        adapter = new TipsAdapter(this, tipsDOList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
-                intent.putExtra(TipDetailActivity.EXTRA_TIP_ID, tipsRequestDOList.get(position).getTipId());
+                intent.putExtra(TipDetailActivity.EXTRA_TIP_ID, tipsDOList.get(position).getTipId());
                 navigator.navigateTo(TipsActivity.this, TipDetailActivity.class, intent);
             }
         });
@@ -106,8 +105,8 @@ public class TipsActivity extends AppActivity {
 
                 @Override
                 public void onNext(WeatherInfoDO weatherInfoResponseDO) {
-                    tipsRequestDOList.clear();
-                    tipsRequestDOList.addAll(controller.getMockData(blockId));
+                    tipsDOList.clear();
+                    tipsDOList.addAll(controller.getMockData(blockId));
                     adapter.notifyDataSetChanged();
                 }
             });

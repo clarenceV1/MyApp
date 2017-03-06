@@ -52,6 +52,7 @@ public class TipsController extends AppController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public List<TipsDO> getMockData(int blockId) {

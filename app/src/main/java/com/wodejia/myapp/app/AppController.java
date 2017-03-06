@@ -7,6 +7,7 @@ import com.example.clarence.datastorelibrary.StoreSharePreference;
 import com.example.clarence.utillibrary.CommonUtils;
 import com.wodejia.myapp.data.AccountDO;
 import com.wodejia.myapp.manager.SharePreferenceManager;
+import com.wodejia.myapp.server.ServerManager;
 
 import javax.inject.Inject;
 
@@ -16,6 +17,8 @@ import javax.inject.Inject;
 public class AppController {
     @Inject
     public SharePreferenceManager sharePreferenceManager;
+    @Inject
+    public ServerManager serverManager;
 
     @Inject
     public AppController() {

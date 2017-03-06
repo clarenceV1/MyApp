@@ -105,5 +105,6 @@ public class GuideActivity extends AppActivity {
 
     private void goMainActivity() {
         navigator.navigateTo(GuideActivity.this,MainActivity.class);
+        finish();
     }
 }

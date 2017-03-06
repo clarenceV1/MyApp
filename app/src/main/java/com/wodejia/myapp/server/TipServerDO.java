@@ -1,14 +1,18 @@
 package com.wodejia.myapp.server;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+
 /**
  * 帖子model
  * Created by clarence on 16/9/23.
  */
-
+@Entity
 public class TipServerDO {
     /**
      * 帖子编号
      */
+    @Id(autoincrement = true)
     private Long tipsId;
     /**
      * 板块编号

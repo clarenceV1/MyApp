@@ -1,7 +1,5 @@
 package com.wodejia.myapp.server;
 
-import org.greenrobot.greendao.annotation.Id;
-
 /**
  * 板块
  * Created by clarence on 16/9/19.
@@ -10,7 +8,6 @@ public class BlockServerDO {
     /**
      * 板块ID
      */
-    @Id(autoincrement = true)
     private Long blockId;
     /**
      * 板块标题
